@@ -1,0 +1,26 @@
+From eb35d6047fc817a96c4d147f7fb7134baad33e62 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Tue, 29 Jan 2013 12:30:11 +0200
+Subject: [PATCH] beagle: Use ttyO2 as a console as that it should be in newer
+ kernels
+
+---
+ include/configs/omap3_beagle.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
+index 9fd80ed..54791f1 100644
+--- a/include/configs/omap3_beagle.h
++++ b/include/configs/omap3_beagle.h
+@@ -200,7 +200,7 @@
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"loadaddr=0x82000000\0" \
+ 	"usbtty=cdc_acm\0" \
+-	"console=ttyS2,115200n8\0" \
++	"console=ttyO2,115200n8\0" \
+ 	"mpurate=auto\0" \
+ 	"vram=12M\0" \
+ 	"dvimode=1024x768MR-16@60\0" \
+-- 
+1.7.11.4
+

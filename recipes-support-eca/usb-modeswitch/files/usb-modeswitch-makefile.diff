@@ -1,0 +1,19 @@
+--- a/Makefile	2013-01-29 14:57:57.485770133 +0200
++++ b/Makefile	2013-01-29 14:59:06.331767639 +0200
+@@ -22,7 +22,7 @@
+ 	install -D --mode=644 40-usb_modeswitch.rules $(RULESDIR)/40-usb_modeswitch.rules
+ 
+ db-install:
+-	install --mode=644 -t $(PREFIX)/share/usb_modeswitch ./usb_modeswitch.d/*
++	install --mode=644 -t $(ETCDIR)/usb_modeswitch.d ./usb_modeswitch.d/*
+ 
+ db-install-packed:
+ 	@# Create a compressed tar without gzip timestamp, so tar.gz
+@@ -54,6 +54,6 @@
+ 
+ files-uninstall:
+ 	$(RM) $(RULESDIR)/40-usb_modeswitch.rules
+-	$(RM) -R $(PREFIX)/share/usb_modeswitch
++	$(RM) -R $(ETCDIR)/usb_modeswitch.d
+ 
+ .PHONY:    clean install uninstall

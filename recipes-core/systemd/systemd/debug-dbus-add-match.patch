@@ -1,0 +1,28 @@
+--- a/src/core/dbus.c	2013-03-18 17:05:45.774373126 +0200
++++ b/src/core/dbus.c	2013-03-18 17:05:50.639372951 +0200
+@@ -821,6 +821,12 @@
+                            "member='NameOwnerChanged',"
+                            "path='"DBUS_PATH_DBUS"'",
+                            NULL);
++        log_debug("add rule: %s",
++                  "type='signal',"
++                  "sender='"DBUS_SERVICE_DBUS"',"
++                  "interface='"DBUS_INTERFACE_DBUS"',"
++                  "member='NameOwnerChanged',"
++                  "path='"DBUS_PATH_DBUS"'");
+ 
+         /* Get activation requests */
+         dbus_bus_add_match(m->api_bus,
+@@ -830,6 +836,12 @@
+                            "member='ActivationRequest',"
+                            "path='"DBUS_PATH_DBUS"'",
+                            NULL);
++        log_debug("add rule: %s",
++                  "type='signal',"
++                  "sender='"DBUS_SERVICE_DBUS"',"
++                  "interface='org.freedesktop.systemd1.Activator',"
++                  "member='ActivationRequest',"
++                  "path='"DBUS_PATH_DBUS"'");
+ 
+         r = request_name(m);
+         if (r < 0)

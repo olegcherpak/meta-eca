@@ -1,0 +1,19 @@
+PRINC := "${@int(PRINC) + 2}"
+
+FILESEXTRAPATHS := "${THISDIR}/files"
+
+SRC_URI += " \
+	file://usb-modeswitch-makefile.diff \
+"
+#	file://huawei_12d1-151a.diff \
+
+FILES_${PN} += " \
+	    ${base_libdir}/udev/rules.d/ \
+	    ${sysconfdir}/usb-modeswitch.d \
+	    ${datadir}/usb_modeswitch \
+"
+
+do_install_append() {
+	install -d ${D}${sysconfdir}/usb-modeswitch.d
+}
+

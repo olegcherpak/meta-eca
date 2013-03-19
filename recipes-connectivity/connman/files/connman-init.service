@@ -1,0 +1,12 @@
+[Unit]
+Description=Initialize ConnMan settings
+After=syslog.target
+ConditionFileNotEmpty=!/var/lib/connman/settings
+
+[Service]
+Type=oneshot
+ExecStart=-/usr/lib/connman/connman-init-settings.sh
+StandardOutput=null
+
+[Install]
+WantedBy=connman.service

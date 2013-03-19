@@ -1,0 +1,4 @@
+# Configuration options for eca web UI
+
+# The port where the UI should be listening
+PORT=80

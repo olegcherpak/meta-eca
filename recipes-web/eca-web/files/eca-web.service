@@ -1,0 +1,12 @@
+[Unit]
+Description=Simple web UI for Embedded Communication Appliance
+After=syslog.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/eca-web/config
+ExecStart=/usr/bin/env python /opt/eca-web/eca.py $PORT
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
