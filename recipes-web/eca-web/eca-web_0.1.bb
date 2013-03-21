@@ -30,14 +30,14 @@ FILES_${PN} = " \
 	    eca-web.service \
 	    /opt/eca-web/* \
 	    ${sysconfdir}/${PN} \
-	    ${nonarch_base_libdir}/systemd/system/${PN}.service \
+	    ${systemd_unitdir}/system/${PN}.service \
 "
 
 RDEPENDS_${PN} = "webpy"
 
 do_install_append() {
-	install -d ${D}${nonarch_base_libdir}/systemd/system
-	install -m 0755 ${WORKDIR}/eca-web.service ${D}${nonarch_base_libdir}/systemd/system
+	install -d ${D}${systemd_unitdir}/system
+	install -m 0755 ${WORKDIR}/eca-web.service ${D}${systemd_unitdir}/system
 	install -d ${D}${sysconfdir}/${PN}
 	install -m 0644 ${WORKDIR}/config ${D}${sysconfdir}/${PN}
 }
