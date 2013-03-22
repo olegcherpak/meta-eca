@@ -5,7 +5,7 @@ After=syslog.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/eca-web/config
-ExecStart=/usr/bin/env python /opt/eca-web/eca.py $PORT
+ExecStart=/opt/eca-web/start-eca-web $PORT
 Restart=on-failure
 
 [Install]

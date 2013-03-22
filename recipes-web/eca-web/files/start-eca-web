@@ -1,0 +1,13 @@
+#!/bin/sh
+
+DIR=`dirname $0`
+
+if [ ! -f $DIR/eca.py ]; then
+   echo "$0: Cannot find $DIR/eca.py"
+   exit -1
+fi
+
+cd $DIR
+/usr/bin/env python $DIR/eca.py $@
+exit $?
+

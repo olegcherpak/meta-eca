@@ -6,11 +6,12 @@ PR = "r0"
 SRC_URI = "\
 	file://eca-web-0.1.tar.gz \
 	file://eca-web.service \
+	file://start-eca-web \
 	file://config \
 "
 
 S = "${WORKDIR}/eca-web-0.1"
-PR = "r1"
+PR = "r2"
 
 PREFIX ?= "/opt/eca-web"
 
@@ -28,6 +29,7 @@ SYSTEMD_AUTO_ENABLE = "enable"
 
 FILES_${PN} = " \
 	    eca-web.service \
+	    start-eca-web \
 	    /opt/eca-web/* \
 	    ${sysconfdir}/${PN} \
 	    ${systemd_unitdir}/system/${PN}.service \
@@ -40,6 +42,7 @@ do_install_append() {
 	install -m 0755 ${WORKDIR}/eca-web.service ${D}${systemd_unitdir}/system
 	install -d ${D}${sysconfdir}/${PN}
 	install -m 0644 ${WORKDIR}/config ${D}${sysconfdir}/${PN}
+	install -m 0755 ${WORKDIR}/start-eca-web ${D}${PREFIX}
 }
 
 PACKAGES += " ${PN}-systemd"
