@@ -9,22 +9,10 @@ PACKAGES = "\
     packagegroup-core \
 "
 
-SYSTEMD_PACKAGES="\
-    busybox-syslog-systemd \
-    util-linux-systemd \
-    wpa-supplicant-systemd \
-    dropbear-systemd \
-    keymaps-systemd \
-    avahi-systemd \
-    connman-systemd \
-"
-
 RDEPENDS_packagegroup-core = "\
     packagegroup-base \
     initscripts \
     kernel-modules \
-    bluez4 \
-    connman \
     connman-init-systemd \
     connman-client \
     connman-tests \
@@ -37,8 +25,6 @@ RDEPENDS_packagegroup-core = "\
     openvpn \
     curl \
     eglibc \
-    wpa-supplicant \
-    ofono \
     ofono-tests \
     mobile-broadband-provider-info \
     usb-modeswitch \
@@ -52,6 +38,17 @@ RDEPENDS_packagegroup-core = "\
     xl2tpd \
     webpy \
     eca-web \
+    neard \
+"
+
+SYSTEMD_PACKAGES="\
+    busybox-syslog-systemd \
+    util-linux-systemd \
+    wpa-supplicant-systemd \
+    dropbear-systemd \
+    keymaps-systemd \
+    avahi-systemd \
+    connman-systemd \
 "
 
 RDEPENDS_packagegroup-core += " ${SYSTEMD_PACKAGES} "
@@ -62,12 +59,9 @@ RDEPENDS_packagegroup-core += "\
   "
 
 # network configuration for connman if running qemu
-RDEPENDS_packagegroup-core += "\
-    ${@base_contains("MACHINE", "qemux86", "connman-conf-systemd connman-conf", "", d)} \
-    ${@base_contains("MACHINE", "qemux86-64", "connman-conf-systemd connman-conf", "", d)} \
-    ${@base_contains("MACHINE", "qemuarm", "connman-conf-systemd connman-conf", "", d)} \
-    ${@base_contains("MACHINE", "qemumips", "connman-conf-systemd connman-conf", "", d)} \
-    ${@base_contains("MACHINE", "qemuppc", "connman-conf-systemd connman-conf", "", d)} \
+RDEPENDS_packagegroup-core_append_qemuall += "\
+    connman-conf \
+    connman-conf-systemd \
   "
 
 RRECOMMENDS_${PN} = "\
