@@ -19,6 +19,13 @@ SRC_URI += "\
     file://0002-build-Use-detailed-version-information-when-printing.patch \
 "
 
+# Enable debugging the easy way in systemd based distro.
+# See 0001-doc-Debugging-in-host-that-uses-systemd.patch for usage.
+SRC_URI += "\
+    file://0002-systemd-Use-environment-file-for-connmand-debug-opti.patch \
+    file://0003-systemd-Use-environment-file-for-connman-vpnd-debug-.patch \
+"
+
 S = "${WORKDIR}/git"
 PR = "${INC_PR}.0"
 
