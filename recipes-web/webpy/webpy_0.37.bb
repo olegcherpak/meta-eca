@@ -12,4 +12,7 @@ S = "${WORKDIR}/git"
 
 inherit distutils
 
-RDEPENDS_${PN} = "python-netserver"
+RDEPENDS_${PN} = "\
+    python-netserver \
+    python-compiler \
+"
