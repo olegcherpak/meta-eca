@@ -20,6 +20,7 @@ SYSTEMD_PACKAGES="\
 "
 
 RDEPENDS_packagegroup-core = "\
+    packagegroup-base \
     initscripts \
     kernel-modules \
     bluez4 \
