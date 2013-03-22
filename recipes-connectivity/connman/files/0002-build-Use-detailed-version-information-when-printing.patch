@@ -1,0 +1,86 @@
+From a8f5da5d5f1520a9396ed0af27d48ea635134a1b Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Thu, 14 Mar 2013 11:02:03 +0200
+Subject: [PATCH v3 2/2] build: Use detailed version information when printing
+ connman version
+
+The git HEAD commit id is printed in --version option and in
+log init but only if maintainer mode is enabled.
+---
+ configure.ac         | 8 ++++++++
+ include/version.h.in | 1 +
+ src/main.c           | 5 +++--
+ vpn/main.c           | 3 ++-
+ 4 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2be097d..0f2015c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -384,6 +384,14 @@ AM_CONDITIONAL(VPN, test "${enable_openconnect}" != "no" -o \
+ 			"${enable_l2tp}" != "no" -o \
+ 			"${enable_pptp}" != "no")
+ 
++if (test "${USE_MAINTAINER_MODE}" != "no"); then
++   GIT_COMMIT_HEAD=m4_esyscmd([src/get-git-head])
++else
++   GIT_COMMIT_HEAD=""
++fi
++CONNMAN_DETAILED_VERSION="${VERSION}${GIT_COMMIT_HEAD}"
++AC_SUBST(CONNMAN_DETAILED_VERSION)
++
+ AC_OUTPUT(Makefile include/version.h src/connman.service
+ 		vpn/connman-vpn.service	vpn/net.connman.vpn.service
+ 		scripts/connman	doc/version.xml connman.pc)
+diff --git a/include/version.h.in b/include/version.h.in
+index d3d6dd3..13cb107 100644
+--- a/include/version.h.in
++++ b/include/version.h.in
+@@ -27,6 +27,7 @@ extern "C" {
+ #endif
+ 
+ #define CONNMAN_VERSION	"@VERSION@"
++#define CONNMAN_DETAILED_VERSION "@CONNMAN_DETAILED_VERSION@"
+ 
+ #ifdef __cplusplus
+ }
+diff --git a/src/main.c b/src/main.c
+index e21d056..4f908c5 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -562,7 +562,7 @@ int main(int argc, char *argv[])
+ 	g_option_context_free(context);
+ 
+ 	if (option_version == TRUE) {
+-		printf("%s\n", VERSION);
++		printf("%s\n", CONNMAN_DETAILED_VERSION);
+ 		exit(0);
+ 	}
+ 
+@@ -613,7 +613,8 @@ int main(int argc, char *argv[])
+ 	g_dbus_set_disconnect_function(conn, disconnect_callback, NULL, NULL);
+ 
+ 	__connman_log_init(argv[0], option_debug, option_detach,
+-			option_backtrace, "Connection Manager", VERSION);
++			option_backtrace, "Connection Manager",
++			CONNMAN_DETAILED_VERSION);
+ 
+ 	__connman_dbus_init(conn);
+ 
+diff --git a/vpn/main.c b/vpn/main.c
+index d72fa74..f7e75ad 100644
+--- a/vpn/main.c
++++ b/vpn/main.c
+@@ -310,7 +310,8 @@ int main(int argc, char *argv[])
+ 	g_dbus_set_disconnect_function(conn, disconnect_callback, NULL, NULL);
+ 
+ 	__connman_log_init(argv[0], option_debug, option_detach, FALSE,
+-			"Connection Manager VPN daemon", VERSION);
++			"Connection Manager VPN daemon",
++			CONNMAN_DETAILED_VERSION);
+ 	__connman_dbus_init(conn);
+ 
+ 	if (option_config == NULL)
+-- 
+1.7.11.4
+
