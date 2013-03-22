@@ -12,4 +12,4 @@ SRC_URI = "\
 S = "${WORKDIR}/git"
 PR = "${INC_PR}.0"
 
-PV = "1.12+gitr${SRCREV}"
+PV = "1.x+gitr${SRCREV}"
