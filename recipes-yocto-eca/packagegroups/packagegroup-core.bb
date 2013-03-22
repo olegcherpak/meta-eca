@@ -49,15 +49,10 @@ RDEPENDS_packagegroup-core = "\
     tcpdump \
     screen \
     pptp-linux \
+    xl2tpd \
     webpy \
     eca-web \
 "
-
-
-# xl2tpd not compiled because with kernel 3.8 says:
-# fatal error: asm/linkage.h: No such file or directory
-#    xl2tpd 
-
 
 RDEPENDS_packagegroup-core += " ${SYSTEMD_PACKAGES} "
 
