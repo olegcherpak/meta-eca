@@ -1,0 +1,26 @@
+From 238a7394786522a3788350b717009eb5f7833354 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Fri, 19 Oct 2012 11:16:01 +0300
+Subject: [PATCH 2/3] service: Debug print the error we are sending
+
+This is useful when checking whether agent is giving correct error.
+---
+ src/service.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/service.c b/src/service.c
+index c479143..ebc8371 100644
+--- a/src/service.c
++++ b/src/service.c
+@@ -3285,6 +3285,8 @@ static void set_error(struct connman_service *service,
+ 	if (allow_property_changed(service) == FALSE)
+ 		return;
+ 
++	DBG("property error \"%s\"", str);
++
+ 	connman_dbus_property_changed_basic(service->path,
+ 				CONNMAN_SERVICE_INTERFACE, "Error",
+ 				DBUS_TYPE_STRING, &str);
+-- 
+1.7.11.4
+

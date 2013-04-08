@@ -1,0 +1,37 @@
+From d5ebf4e32416d673a0a032687f8bc58f0b6f0a56 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Fri, 19 Oct 2012 11:17:19 +0300
+Subject: [PATCH 3/3] service: Set error after changing state
+
+We should not set the error before state change because
+the state change might clear the error in service_indicate_state().
+A safe option is set the state after we have changed the state.
+---
+ src/service.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/service.c b/src/service.c
+index ebc8371..9316837 100644
+--- a/src/service.c
++++ b/src/service.c
+@@ -5208,8 +5208,6 @@ int __connman_service_indicate_error(struct connman_service *service,
+ 		__connman_service_connect(service);
+ 
+ 	} else {
+-		set_error(service, error);
+-
+ 		if (error == CONNMAN_SERVICE_ERROR_INVALID_KEY ||
+ 						new_connect_failed == TRUE)
+ 			__connman_service_set_passphrase(service, NULL);
+@@ -5220,6 +5218,8 @@ int __connman_service_indicate_error(struct connman_service *service,
+ 		__connman_service_ipconfig_indicate_state(service,
+ 						CONNMAN_SERVICE_STATE_FAILURE,
+ 						CONNMAN_IPCONFIG_TYPE_IPV6);
++
++		set_error(service, error);
+ 	}
+ 
+ 	return 0;
+-- 
+1.7.11.4
+

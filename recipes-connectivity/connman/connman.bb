@@ -4,7 +4,6 @@ SRCREV = "${AUTOREV}"
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/network/connman/connman.git \
 	file://add_xuser_dbus_permission.patch \
-	file://add-in.h-for-ipv6.patch \
 	file://inet-fix-ip-cleanup-functions.patch \
 "
 
@@ -24,6 +23,17 @@ SRC_URI += "\
 SRC_URI += "\
     file://0002-systemd-Use-environment-file-for-connmand-debug-opti.patch \
     file://0003-systemd-Use-environment-file-for-connman-vpnd-debug-.patch \
+"
+
+# Check if we already know the service credentials before activating
+# agent. Typically this helps in a case where we have multiple wifi
+# cards and know the credentials for one service. As the credentials
+# are stored separately for each service, we can try to use those
+# known passphrases first.
+SRC_URI += "\
+    file://0001-service-We-might-know-the-passphrase-for-SSID-alread.patch \
+    file://0002-service-Debug-print-the-error-we-are-sending.patch \
+    file://0003-service-Set-error-after-changing-state.patch \
 "
 
 S = "${WORKDIR}/git"
