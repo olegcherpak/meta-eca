@@ -23,9 +23,9 @@ EXTRA_OECONF += "\
 inherit autotools
 inherit systemd
 
-SYSTEMD_PACKAGES = "${PN}-systemd"
-SYSTEMD_SERVICE_${PN}-systemd = "eca-web.service"
 SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE_${PN} = "eca-web.service"
 
 FILES_${PN} = " \
 	    eca-web.service \
@@ -45,4 +45,3 @@ do_install_append() {
 	install -m 0755 ${WORKDIR}/start-eca-web ${D}${PREFIX}
 }
 
-PACKAGES += " ${PN}-systemd"
