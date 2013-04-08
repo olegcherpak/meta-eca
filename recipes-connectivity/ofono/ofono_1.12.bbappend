@@ -2,9 +2,9 @@ PRINC := "${@int(PRINC) + 3}"
 
 inherit systemd
 
-SYSTEMD_PACKAGES = "${PN}-systemd"
-SYSTEMD_SERVICE_${PN}-systemd = "ofono.service"
 SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE_${PN} = "ofono.service"
 
 # Don't register init scripts
 INITSCRIPT_NAME = ""
