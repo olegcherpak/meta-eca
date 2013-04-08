@@ -48,7 +48,6 @@ SYSTEMD_PACKAGES="\
     dropbear-systemd \
     keymaps-systemd \
     avahi-systemd \
-    connman-systemd \
 "
 
 RDEPENDS_packagegroup-core += " ${SYSTEMD_PACKAGES} "
