@@ -27,7 +27,7 @@ VPN_PACKAGES = "${OPENVPN_PACKAGE} ${VPNC_PACKAGE}"
 
 # we need to define the depends here, the dynamic stuff is too late
 DEPENDS  = "dbus glib-2.0 ppp iptables gnutls \
-            ${@base_contains('DISTRO_FEATURES', 'bluetooth','bluez4', '', d)} \
+            ${@base_contains('DISTRO_FEATURES', 'bluetooth','bluez5', '', d)} \
             ${@base_contains('DISTRO_FEATURES', 'wifi','wpa-supplicant', '', d)} \
             ${@base_contains('DISTRO_FEATURES', '3g','ofono', '', d)} \
             ${@base_contains('DISTRO_FEATURES', 'vpn','${VPN_PACKAGES}', '', d)} \
@@ -102,7 +102,7 @@ RPROVIDES_${PN} = "\
 
 RDEPENDS_${PN} = "\
 	dbus \
-	${@base_contains('DISTRO_FEATURES', 'bluetooth', 'bluez4', '', d)} \
+	${@base_contains('DISTRO_FEATURES', 'bluetooth', 'bluez5', '', d)} \
 	${@base_contains('DISTRO_FEATURES', 'wifi','wpa-supplicant', '', d)} \
 	${@base_contains('DISTRO_FEATURES', '3g','ofono', '', d)} \
 	"
