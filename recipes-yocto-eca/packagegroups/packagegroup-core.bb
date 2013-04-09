@@ -39,6 +39,8 @@ RDEPENDS_packagegroup-core = "\
     webpy \
     eca-web \
     neard \
+    bluez5 \
+    bluez5-test \
 "
 
 SYSTEMD_PACKAGES="\
