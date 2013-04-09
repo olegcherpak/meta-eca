@@ -6,7 +6,7 @@ After=syslog.target
 Type=dbus
 BusName=org.neard
 Restart=on-failure
-ExecStart=/usr/sbin/neard -n
+ExecStart=/usr/lib/neard/neard -n
 StandardOutput=null
 
 [Install]
