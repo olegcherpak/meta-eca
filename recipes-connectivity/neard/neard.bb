@@ -53,7 +53,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e \
  "
 S	= "${WORKDIR}/git"
 SRCREV = "${AUTOREV}"
-PV	= "0.x+gitr${SRCPV}"
+PV	= "0.x+git${SRCPV}"
 PR	= "r0"
 
 SRC_URI  = "git://git.kernel.org/pub/scm/network/nfc/neard.git;protocol=git \

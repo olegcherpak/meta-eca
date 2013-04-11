@@ -2,7 +2,7 @@ require ofono.inc
 
 S	= "${WORKDIR}/git"
 SRCREV	= "${AUTOREV}"
-PV	= "1.x+gitr${SRCREV}"
+PV	= "1.x+git${SRCREV}"
 PR	= "${INC_PR}.0"
 
 SRC_URI = "\
