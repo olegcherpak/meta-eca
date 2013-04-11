@@ -1,7 +1,7 @@
 DESCRIPTION = "Core packages"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${ECA_COREBASE}/meta-eca/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
-PR = "r0"
+PR = "r2"
 
 inherit packagegroup
 
