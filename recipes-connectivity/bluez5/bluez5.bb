@@ -7,6 +7,10 @@ SRC_URI = "\
 	file://fix-udev-paths.patch \
 "
 
+S = "${WORKDIR}/git"
+PR = "${INC_PR}.0"
+PV = "5.x+git${SRCREV}"
+
 RCONFLICTS_${PN} = "bluez4"
 RREPLACES_${PN} = "bluez4"
 
@@ -38,7 +42,13 @@ FILES_${PN}-dbg += "\
   ${base_libdir}/udev/.debug \
   "
 
-S = "${WORKDIR}/git"
-PR = "${INC_PR}.0"
+SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE_${PN} = "bluetooth.service"
 
-PV = "5.x+gitr${SRCREV}"
+do_install_append() {
+	# Remove init scripts
+	case "${DISTRO_FEATURES}" in
+		*systemd*) rm -rf ${D}${sysconfdir}/init.d/
+	esac
+}

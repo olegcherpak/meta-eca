@@ -41,13 +41,3 @@ EXTRA_OECONF = "\
   ${@base_contains('DISTRO_FEATURES', 'systemd', '--with-systemdunitdir=${systemd_unitdir}/system/', '--disable-systemd', d)} \
 "
 
-SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_PACKAGES = "${PN}"
-SYSTEMD_SERVICE_${PN} = "bluetooth.service"
-
-do_install_append() {
-	# Remove init scripts
-	case "${DISTRO_FEATURES}" in
-		*systemd*) rm -rf ${D}${sysconfdir}/init.d/
-	esac
-}
