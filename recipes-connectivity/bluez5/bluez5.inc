@@ -28,6 +28,7 @@ EXTRA_OECONF = "\
   --enable-bccmd \
   --enable-hid2hci \
   --enable-dfutool \
+  --disable-obex \
   --disable-hidd \
   --enable-pand \
   --enable-dund \
