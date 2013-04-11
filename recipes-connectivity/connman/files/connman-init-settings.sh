@@ -29,6 +29,37 @@ if [ ! -d $CONNMAN_DIR ]; then
     mkdir -p $CONNMAN_DIR
 fi
 
+TETHERING="$1"
+TETHERING_AP_PASSPHRASE="$2"
+TETHERING_AP_SSID="$3"
+
+if [ -z "$TETHERING" ]; then
+    TETHERING="true"
+fi
+
+function get_mac
+{
+    # Get the mac address of the first network interface returned by kernel
+    IFACE=`head -n 3 /proc/net/dev|tail -n 1|awk '{ print $1 }'|sed 's/://'`
+    if [ -z "$IFACE" -o ! -d /sys/class/net/$IFACE ]; then
+	echo 010203040506
+    else
+	sed 's/://g' /sys/class/net/$IFACE/address
+    fi
+}
+
+if [ -z "$TETHERING_AP_SSID" ]; then
+    MAC=`get_mac`
+    TETHERING_AP_SSID=eca-$MAC
+fi
+
+if [ -z "$TETHERING_AP_PASSPHRASE" ]; then
+    if [ -z "$MAC" ]; then
+	MAC=`get_mac`
+    fi
+    TETHERING_AP_PASSPHRASE=$MAC
+fi
+
 cat > $CONNMAN_SETTINGS <<EOF
 [global]
 OfflineMode=false
@@ -41,6 +72,10 @@ Enable=true
 
 [WiFi]
 Enable=true
+Tethering=$TETHERING
+Tethering.Identifier=$TETHERING_AP_SSID
+Tethering.Passphrase=$TETHERING_AP_PASSPHRASE
+
 
 [Wired]
 Enable=true
