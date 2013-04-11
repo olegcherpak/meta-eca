@@ -49,7 +49,6 @@ SYSTEMD_PACKAGES="\
     wpa-supplicant-systemd \
     dropbear-systemd \
     keymaps-systemd \
-    avahi-systemd \
 "
 
 RDEPENDS_packagegroup-core += " ${SYSTEMD_PACKAGES} "
