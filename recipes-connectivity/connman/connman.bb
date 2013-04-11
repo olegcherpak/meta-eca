@@ -12,7 +12,9 @@ SRC_URI = "\
 SRC_URI += " file://0001-technology-Start-tethering-automatically.patch "
 
 # Add git commit id to connman version. Needed so that we know
-# what connman version we are running.
+# what connman version we are running. The patch also requires
+# that we enable maintainer mode
+EXTRA_OECONF += " --enable-maintainer-mode "
 SRC_URI += "\
     file://0001-build-Script-to-generate-current-git-HEAD-commit-id.patch \
     file://0002-build-Use-detailed-version-information-when-printing.patch \
