@@ -1,7 +1,7 @@
-From a8f5da5d5f1520a9396ed0af27d48ea635134a1b Mon Sep 17 00:00:00 2001
+From dc5e025e68e97ad98362cd4f86f8276db0a2f5b0 Mon Sep 17 00:00:00 2001
 From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
 Date: Thu, 14 Mar 2013 11:02:03 +0200
-Subject: [PATCH v3 2/2] build: Use detailed version information when printing
+Subject: [PATCH v4 2/2] build: Use detailed version information when printing
  connman version
 
 The git HEAD commit id is printed in --version option and in
@@ -14,15 +14,15 @@ log init but only if maintainer mode is enabled.
  4 files changed, 14 insertions(+), 3 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 2be097d..0f2015c 100644
+index cff8b47..1673f08 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -384,6 +384,14 @@ AM_CONDITIONAL(VPN, test "${enable_openconnect}" != "no" -o \
+@@ -393,6 +393,14 @@ AM_CONDITIONAL(VPN, test "${enable_openconnect}" != "no" -o \
  			"${enable_l2tp}" != "no" -o \
  			"${enable_pptp}" != "no")
  
 +if (test "${USE_MAINTAINER_MODE}" != "no"); then
-+   GIT_COMMIT_HEAD=m4_esyscmd([src/get-git-head])
++   GIT_COMMIT_HEAD=m4_esyscmd([sh src/get-git-head])
 +else
 +   GIT_COMMIT_HEAD=""
 +fi
@@ -45,7 +45,7 @@ index d3d6dd3..13cb107 100644
  #ifdef __cplusplus
  }
 diff --git a/src/main.c b/src/main.c
-index e21d056..4f908c5 100644
+index 0f47943..bc87858 100644
 --- a/src/main.c
 +++ b/src/main.c
 @@ -562,7 +562,7 @@ int main(int argc, char *argv[])
@@ -82,5 +82,5 @@ index d72fa74..f7e75ad 100644
  
  	if (option_config == NULL)
 -- 
-1.7.11.4
+1.7.11.7
 
