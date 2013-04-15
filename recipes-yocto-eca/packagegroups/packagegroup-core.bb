@@ -43,6 +43,7 @@ RDEPENDS_packagegroup-core = "\
     bluez5-test \
     bridge-utils \
     lsof \
+    linux-firmware \
 "
 
 SYSTEMD_PACKAGES="\
