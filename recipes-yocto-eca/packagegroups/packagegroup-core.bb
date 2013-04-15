@@ -41,6 +41,8 @@ RDEPENDS_packagegroup-core = "\
     neard \
     bluez5 \
     bluez5-test \
+    bridge-utils \
+    lsof \
 "
 
 SYSTEMD_PACKAGES="\
