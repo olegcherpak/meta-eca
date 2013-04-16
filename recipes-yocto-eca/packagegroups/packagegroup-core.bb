@@ -56,9 +56,11 @@ SYSTEMD_PACKAGES="\
 
 RDEPENDS_packagegroup-core += " ${SYSTEMD_PACKAGES} "
 
-# For NUC device add iwlwifi firmware. This should be done more intelligently.
+# Add iwlwifi firmware for some Intel devices. This should probably be done
+# more intelligently.
 RDEPENDS_packagegroup-core += "\
     ${@base_contains("MACHINE", "nuc", "linux-firmware-iwlwifi-6000g2b-6", "", d)} \
+    ${@base_contains("MACHINE", "atom-pc", "linux-firmware-iwlwifi-6000g2b-6", "", d)} \
   "
 
 # network configuration for connman if running qemu
