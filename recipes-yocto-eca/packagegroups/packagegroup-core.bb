@@ -46,6 +46,17 @@ RDEPENDS_packagegroup-core = "\
     linux-firmware \
 "
 
+SYSTEMD_PACKAGES="\
+    busybox-syslog-systemd \
+    util-linux-systemd \
+    wpa-supplicant-systemd \
+    dropbear-systemd \
+    keymaps-systemd \
+"
+
+RDEPENDS_packagegroup-core += " ${SYSTEMD_PACKAGES} "
+
+
 # Try to install as many wlan firmwares as possible
 RDEPENDS_packagegroup-core += "\
     linux-firmware-ralink \
