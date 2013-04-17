@@ -46,16 +46,6 @@ RDEPENDS_packagegroup-core = "\
     linux-firmware \
 "
 
-SYSTEMD_PACKAGES="\
-    busybox-syslog-systemd \
-    util-linux-systemd \
-    wpa-supplicant-systemd \
-    dropbear-systemd \
-    keymaps-systemd \
-"
-
-RDEPENDS_packagegroup-core += " ${SYSTEMD_PACKAGES} "
-
 # Add iwlwifi firmware for some Intel devices. This should probably be done
 # more intelligently.
 RDEPENDS_packagegroup-core += "\
