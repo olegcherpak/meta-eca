@@ -46,6 +46,16 @@ RDEPENDS_packagegroup-core = "\
     linux-firmware \
 "
 
+# Try to install as many wlan firmwares as possible
+RDEPENDS_packagegroup-core += "\
+    linux-firmware-ralink \
+    linux-firmware-rtl8192ce \
+    linux-firmware-rtl8192cu \
+    linux-firmware-rtl8192su \
+    linux-firmware-sd8686 \
+    linux-firmware-wl12xx \
+"
+
 # Add iwlwifi firmware for some Intel devices. This should probably be done
 # more intelligently.
 RDEPENDS_packagegroup-core += "\
