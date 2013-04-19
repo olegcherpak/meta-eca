@@ -44,6 +44,7 @@ RDEPENDS_packagegroup-core = "\
     bridge-utils \
     lsof \
     linux-firmware \
+    rsync \
 "
 
 SYSTEMD_PACKAGES="\
