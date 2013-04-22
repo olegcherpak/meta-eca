@@ -1,0 +1,98 @@
+* What is ECA (Embedded Communication Appliance)?
+
+ECA is a platform for building network appliances. ECA is not a product itself
+but it can be used to create networking devices. ECA is also a platform for
+prototyping various networking technologies, like use of Bluetooth low
+energy devices in IP networks.
+As an example, a tethering network appliance is built using ECA. This
+tethering application can provide Wifi AP that various devices can use
+to connect to internet via ECA.
+
+
+* What do you mean by tethering in this context?
+
+Tethering means that ECA provides network access point that clients can use
+it to connect to internet. ECA can tether wifi, bluetooth and ethernet networks.
+These technologies can be tethered all at the same time.
+
+
+* What is Wifi tethering?
+
+In Wifi tethering, ECA creates a Wifi access point using a configured
+name (SSID) and passphrase. The created AP uses WPA security. The internet
+access is typically provided by ethernet interface.
+
+
+* What is Bluetooth tethering?
+
+In Bluetooth tethering, ECA creates a PAN network and Bluetooth clients can
+connect to it. Internet access can be provided by ethernet, cellular or wifi.
+
+
+* What is ethernet tethering?
+
+Ethernet tethering means that client is connected to ECA via ethernet cable.
+ECA runs a DHCP server, and provides an IP address to the client. The internet
+access is typically provided either by wifi or cellular network.
+Note that ECA device that is configured to use ethernet tethering MUST not be
+connected to network that has other dhcp servers running, like corporate network
+or your home network. The corporate or home network might get confused if
+there are multiple DHCP servers running and providing IP addresses.
+
+
+* What hardware platform does it run?
+
+ECA is created using Yocto (see https://www.yoctoproject.org/ for details),
+so in theory it can run in all the devices that are supported by Yocto.
+In practice there are some restrictions, like available RAM, CPU speed etc.
+In is also important to have enough connectors for networking devices that
+are typically connected via USB, like usb wifi or cellular dongles.
+
+ECA has been successfully running in the following devices:
+- Intel NUC
+- Beagleboard
+- RaspberryPi
+- Intel Atom PC
+- VirtualBox image
+
+
+* What wifi USB dongles are supported?
+
+The ECA kernel is compiled with all the wifi devices supported by the kernel.
+It is still possible that some wifi hardware is not supported by the ECA.
+Even if kernel supports the wifi hardware, it is possible that the wifi dongle
+firmware is not available for Linux.
+
+
+* What Bluetooth USB dongles are supported?
+
+Same issue as in Wifi dongles, your dongle might be supported or not.
+Usually the issues are firmware related i.e., the firmware file is missing.
+
+
+* What cellular USB dongles are supported?
+
+Same issue as in Wifi dongles, your dongle might be supported or not.
+Usually the issues are firmware related i.e., the firmware file is missing.
+Many cellular USB modems are complicated to configure as they provide
+also mass storage mode that contains the Windows setup files. When cellular
+modem is inserted, the usb-modeswitch program tries to activate the cellular
+chip but sometimes it fails to do so.
+
+
+* What USB ethernet dongles are supported?
+
+All the kernel supported ethernet dongles should work. If the ethernet dongle
+is a new one, it might be that the kernel support is not yet activated.
+
+
+* Where do I get it?
+
+You can get the meta-eca layer for Yocto from
+https://www.yoctoproject.org/downloads or from git at
+http://git.yoctoproject.org/
+
+
+* How do I start using the ECA tethering appliance?
+
+See the README file in the meta-eca sources.
