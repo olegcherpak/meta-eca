@@ -7,10 +7,6 @@ SRC_URI = "\
 	file://inet-fix-ip-cleanup-functions.patch \
 "
 
-# Start tethering automatically when device boots if it was
-# activated when device shutdown.
-SRC_URI += " file://0001-technology-Start-tethering-automatically.patch "
-
 # Add git commit id to connman version. Needed so that we know
 # what connman version we are running. The patch also requires
 # that we enable maintainer mode
