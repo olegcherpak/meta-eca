@@ -37,6 +37,14 @@ if [ -z "$TETHERING" ]; then
     TETHERING="true"
 fi
 
+# Create main.conf with those values that we need
+MAINCONF=/etc/connman/main.conf
+cat > $MAINCONF <<EOF
+[General]
+AllowedTetheringTechnologies=wifi,bluetooth,gadget,ethernet
+PersistentTetheringMode=true
+EOF
+
 function get_mac
 {
     # Get the mac address of the first network interface returned by kernel
