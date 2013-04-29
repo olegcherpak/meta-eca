@@ -35,9 +35,6 @@ DEPENDS  = "dbus glib-2.0 ppp iptables gnutls \
 
 INC_PR = "r20"
 
-TIST = "--enable-tist"
-TIST_powerpc = ""
-
 EXTRA_OECONF += "\
     ac_cv_path_WPASUPPLICANT=${sbindir}/wpa_supplicant \
     ac_cv_path_PPPD=${sbindir}/pppd \
@@ -51,8 +48,8 @@ EXTRA_OECONF += "\
     --enable-client \
     --enable-tools \
     --disable-polkit \
-    ${@base_contains('DISTRO_FEATURES', 'wifi','--enable-wifi ${TIST}', '--disable-wifi', d)} \
-    ${@base_contains('DISTRO_FEATURES', 'bluetooth','--enable-bluetooth ${TIST}', '--disable-bluetooth', d)} \
+    ${@base_contains('DISTRO_FEATURES', 'wifi','--enable-wifi', '--disable-wifi', d)} \
+    ${@base_contains('DISTRO_FEATURES', 'bluetooth','--enable-bluetooth', '--disable-bluetooth', d)} \
     ${@base_contains('DISTRO_FEATURES', '3g', '--enable-ofono', '--disable-ofono', d)} \
     ${@base_contains('DISTRO_FEATURES', 'vpn', '${VPN}', '', d)} \
 "
