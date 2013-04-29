@@ -19,11 +19,7 @@ CONNMAN_PACKAGES="\
     connman-client \
     connman-tests \
     connman-tools \
-    connman-plugin-tist \
     connman-plugin-vpn-openvpn \
-    connman-plugin-bluetooth \
-    connman-plugin-ofono \
-    connman-plugin-wifi \
 "
 
 NFC_PACKAGES="\
