@@ -9,11 +9,12 @@ PACKAGES = "\
     packagegroup-core \
 "
 
-RDEPENDS_packagegroup-core = "\
-    packagegroup-base \
-    initscripts \
-    systemd-compat-units \
-    kernel-modules \
+BLUEZ_PACKAGES="\
+    bluez5 \
+    bluez5-test \
+"
+
+CONNMAN_PACKAGES="\
     connman-init-systemd \
     connman-client \
     connman-tests \
@@ -23,29 +24,16 @@ RDEPENDS_packagegroup-core = "\
     connman-plugin-bluetooth \
     connman-plugin-ofono \
     connman-plugin-wifi \
-    openvpn \
-    curl \
-    eglibc \
+"
+
+NFC_PACKAGES="\
+    neard \
+"
+
+OFONO_PACKAGES="\
     ofono-tests \
     mobile-broadband-provider-info \
     usb-modeswitch \
-    less \
-    avahi \
-    avahi-daemon \
-    iproute2 \
-    tcpdump \
-    screen \
-    pptp-linux \
-    xl2tpd \
-    webpy \
-    eca-web \
-    neard \
-    bluez5 \
-    bluez5-test \
-    bridge-utils \
-    lsof \
-    linux-firmware \
-    rsync \
 "
 
 SYSTEMD_PACKAGES="\
@@ -56,17 +44,56 @@ SYSTEMD_PACKAGES="\
     keymaps-systemd \
 "
 
-RDEPENDS_packagegroup-core += " ${SYSTEMD_PACKAGES} "
+UI_PACKAGES="\
+    webpy \
+    eca-web \
+"
 
+UTIL_PACKAGES="\
+    curl \
+    less \
+    avahi \
+    avahi-daemon \
+    iproute2 \
+    tcpdump \
+    screen \
+    bridge-utils \
+    lsof \
+    rsync \
+"
+
+VPN_PACKAGES="\
+    openvpn \
+    pptp-linux \
+    xl2tpd \
+"
 
 # Try to install as many wlan firmwares as possible
-RDEPENDS_packagegroup-core += "\
+WLAN_FIRMWARE="\
     linux-firmware-ralink \
     linux-firmware-rtl8192ce \
     linux-firmware-rtl8192cu \
     linux-firmware-rtl8192su \
     linux-firmware-sd8686 \
     linux-firmware-wl12xx \
+"
+
+RDEPENDS_packagegroup-core = "\
+    packagegroup-base \
+    initscripts \
+    systemd-compat-units \
+    kernel-modules \
+    eglibc \
+    linux-firmware \
+    ${BLUEZ_PACKAGES} \
+    ${CONNMAN_PACKAGES} \
+    ${NFC_PACKAGES} \
+    ${OFONO_PACKAGES} \
+    ${SYSTEMD_PACKAGES} \
+    ${UI_PACKAGES} \
+    ${UTIL_PACKAGES} \
+    ${VPN_PACKAGES} \
+    ${WLAN_FIRMWARE} \
 "
 
 # Add iwlwifi firmware for some Intel devices. This should probably be done
