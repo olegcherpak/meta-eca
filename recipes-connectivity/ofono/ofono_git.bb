@@ -7,7 +7,6 @@ PR	= "${INC_PR}.0"
 
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/network/ofono/ofono.git;protocol=git \
-	file://ofono \
 "
 
 # Add git commit id to ofono version. Needed so that we know
