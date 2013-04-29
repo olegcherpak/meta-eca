@@ -12,6 +12,7 @@ PACKAGES = "\
 RDEPENDS_packagegroup-core = "\
     packagegroup-base \
     initscripts \
+    systemd-compat-units \
     kernel-modules \
     connman-init-systemd \
     connman-client \
