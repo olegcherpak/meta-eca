@@ -6,25 +6,14 @@ LICENSE  = "GPLv2"
 
 DEPENDS  = "dbus glib-2.0 libnl"
 
-inherit autotools pkgconfig update-rc.d
-
-INITSCRIPT_NAME = "neard"
-INITSCRIPT_PARAMS = "defaults 64"
+inherit autotools pkgconfig
 
 do_install() {
 	oe_runmake DESTDIR=${D} libexecdir=${libexecdir} install
 }
 
-# This would copy neard start-stop shell and test scripts
+# This would copy neard test scripts
 do_install_append() {
-	# start/stop
-	install -d ${D}${sysconfdir}/init.d/
-
-	sed "s:@installpath@:${libexecdir}:" ${WORKDIR}/neard.in \
-		> ${D}${sysconfdir}/init.d/neard
-
-	chmod 0755 ${D}${sysconfdir}/init.d/neard
-
 	#test files
 	install -d ${D}${libdir}/neard
 	install -m 0755 ${S}/test/* ${D}${libdir}/${BPN}/
@@ -54,10 +43,9 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e \
 S	= "${WORKDIR}/git"
 SRCREV = "3365ffe98e856b87ce337c103153271e24dcef9f"
 PV	= "0.x+git${SRCPV}"
-PR	= "r0"
+PR	= "r1"
 
 SRC_URI  = "git://git.kernel.org/pub/scm/network/nfc/neard.git;protocol=git \
-	file://neard.in \
 	"
 
 # Add git commit id to neard version. Needed so that we know
