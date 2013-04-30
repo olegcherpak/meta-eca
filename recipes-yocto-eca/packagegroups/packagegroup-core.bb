@@ -58,7 +58,6 @@ VPN_PACKAGES="\
 
 # Try to install as many wlan firmwares as possible
 WLAN_FIRMWARE="\
-    linux-firmware-iwlwifi-6000g2b-6 \
     linux-firmware-ralink \
     linux-firmware-rtl8192ce \
     linux-firmware-rtl8192cu \
@@ -83,6 +82,13 @@ RDEPENDS_packagegroup-core = "\
     ${UTIL_PACKAGES} \
     ${VPN_PACKAGES} \
     ${WLAN_FIRMWARE} \
+"
+
+# Add iwlwifi firmware for Intel devices.
+RDEPENDS_packagegroup-core_append_x86 += "\
+    linux-firmware-iwlwifi-licence \
+    linux-firmware-iwlwifi-6000g2a-5 \
+    linux-firmware-iwlwifi-6000g2b-6 \
 "
 
 # network configuration for connman if running qemu
