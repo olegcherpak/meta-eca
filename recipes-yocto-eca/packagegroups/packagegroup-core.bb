@@ -15,6 +15,7 @@ BLUEZ_PACKAGES="\
 "
 
 CONNMAN_PACKAGES="\
+    connman \
     connman-init-systemd \
     connman-client \
     connman-tests \
@@ -27,6 +28,7 @@ NFC_PACKAGES="\
 "
 
 OFONO_PACKAGES="\
+    ofono \
     ofono-tests \
     mobile-broadband-provider-info \
     usb-modeswitch \
