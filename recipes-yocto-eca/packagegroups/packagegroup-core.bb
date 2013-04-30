@@ -32,14 +32,6 @@ OFONO_PACKAGES="\
     usb-modeswitch \
 "
 
-SYSTEMD_PACKAGES="\
-    busybox-syslog-systemd \
-    util-linux-systemd \
-    wpa-supplicant-systemd \
-    dropbear-systemd \
-    keymaps-systemd \
-"
-
 UI_PACKAGES="\
     webpy \
     eca-web \
@@ -82,11 +74,11 @@ RDEPENDS_packagegroup-core = "\
     kernel-modules \
     eglibc \
     linux-firmware \
+    \
     ${BLUEZ_PACKAGES} \
     ${CONNMAN_PACKAGES} \
     ${NFC_PACKAGES} \
     ${OFONO_PACKAGES} \
-    ${SYSTEMD_PACKAGES} \
     ${UI_PACKAGES} \
     ${UTIL_PACKAGES} \
     ${VPN_PACKAGES} \
