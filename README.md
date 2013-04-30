@@ -2,7 +2,7 @@ meta-eca, the Yocto layer for communication appliances
 ======================================================
 
 This layer's purpose is to add Embedded Communication Appliance (ECA) support
-when used with Poky.
+when used with Poky packagegroup base.
 
 Please see the MAINTAINERS file for information on contacting the maintainers
 of this layer, as well as instructions for submitting patches.
@@ -12,11 +12,11 @@ Layer Dependencies
 
 URI: git://git.yoctoproject.org/poky
 branch: master
-revision: ...
+revision: 07ef66f079ec648c22c14610011dd79b0af1c424
 
 URI: git://git.openembedded.org/meta-openembedded
 branch: master
-revision: ...
+revision: 3c47bd59d0315c98364a175a686e8a4b8ba66867
 
 Using the above git sha's and master meta-eca, bitbaking eca-image is
 known to work.
@@ -44,23 +44,19 @@ following steps:
 6. Set MACHINE ??= "qemux86" in COREBASE/build/conf/local.conf file to build
    for an emulated IA-32 instruction-set machine respectively.
 
-7. Add
-BBMASK = "meta-systemd/meta-efl|meta-systemd/meta-gnome|\
-meta-systemd/meta-multimedia|meta-systemd/meta-oe/recipes-support|\
-meta-gnome/recipes-gnome"
-in COREBASE/build/conf/local.conf file.
+7. Set DISTRO ?= "eca" in COREBASE/build/conf/local.conf file.
+   If you want a bleeding edge versions of ConnMan, oFono, Bluez5 or Neard,
+   then you can set the DISTRO to "eca-bleeding"
 
-8. Set DISTRO ?= "eca" in COREBASE/build/conf/local.conf file.
-
-9. Optional: In COREBASE/build/conf/local.conf file, you may uncomment
+8. Optional: In COREBASE/build/conf/local.conf file, you may uncomment
    BB_NUMBER_THREADS = "4" and PARALLEL_MAKE = "-j 4" if you build on a
    quad-core machine.
 
-10. Build eca-image
+9. Build eca-image
 
    > $ bitbake eca-image
 
-11. Run the emulator:
+10. Run the emulator:
 
    > for qemux86:
    > $ PATH_TO_POKY/poky/scripts/runqemu qemux86 eca-image
