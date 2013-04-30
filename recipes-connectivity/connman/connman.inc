@@ -78,7 +78,7 @@ do_compile_append() {
 do_install_append() {
 	install -d ${D}${sysconfdir}/init.d
 	install -d ${D}${sysconfdir}/connman
-	install -m 0644 ${S}/src/main.conf ${D}${sysconfdir}/connman
+	install -m 0644 ${S}/src/main.conf ${D}${sysconfdir}/connman/main.conf.example
 
 	install -d ${D}${bindir}
 	install -m 0755 ${S}/tools/wispr ${D}${bindir}
