@@ -1,4 +1,4 @@
-require connman.inc
+require recipes-connectivity/connman/connman.inc
 
 SRCREV = "a5a030ecc15f2cfdcabc45238832f0b9e41097f7"
 SRC_URI = "\
@@ -43,3 +43,16 @@ PV = "1.x+git${SRCREV}"
 # gives "cast increases required alignment of target type" warning
 # which aborts connman compilation
 CFLAGS_prepend_arm = " -Wno-error=cast-align "
+
+
+# Override some options from poky connman recipe
+EXTRA_OECONF += "\
+    --enable-loopback=builtin \
+    --enable-ethernet=builtin \
+    --enable-test \
+    --enable-client \
+    --enable-tools \
+    --disable-fake \
+    --disable-polkit \
+    --disable-threads \
+"
