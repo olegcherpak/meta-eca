@@ -20,7 +20,6 @@ CONNMAN_PACKAGES="\
     connman-client \
     connman-tests \
     connman-tools \
-    connman-plugin-vpn-openvpn \
 "
 
 NFC_PACKAGES="\
