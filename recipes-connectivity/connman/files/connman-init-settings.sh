@@ -41,7 +41,7 @@ fi
 MAINCONF=/etc/connman/main.conf
 cat > $MAINCONF <<EOF
 [General]
-AllowedTetheringTechnologies=wifi,bluetooth,gadget,ethernet
+TetheringTechnologies=wifi,bluetooth,gadget,ethernet
 PersistentTetheringMode=true
 EOF
 
