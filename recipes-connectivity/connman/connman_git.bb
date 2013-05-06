@@ -56,3 +56,8 @@ EXTRA_OECONF += "\
     --disable-polkit \
     --disable-threads \
 "
+
+do_install_append() {
+	install -d ${D}${sysconfdir}/connman
+	install -m 0644 ${S}/src/main.conf ${D}${sysconfdir}/connman/main.conf.example
+}
