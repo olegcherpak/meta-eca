@@ -45,18 +45,22 @@ following steps:
    for an emulated IA-32 instruction-set machine respectively.
 
 7. Set DISTRO ?= "eca" in COREBASE/build/conf/local.conf file.
-   If you want a bleeding edge versions of ConnMan, oFono, Bluez5 or Neard,
+   If you want a bleeding edge versions of ConnMan, oFono, Bluez5 and Neard,
    then you can set the DISTRO to "eca-bleeding"
 
-8. Optional: In COREBASE/build/conf/local.conf file, you may uncomment
+8. Mask out bluez4 as we want to use bluez5, set BBMASK in your local.conf file
+   BBMASK = "meta/recipes-connectivity/bluez/bluez4*|\
+   meta-openembedded/meta-systemd/oe-core/recipes-connectivity/bluez/bluez4*"
+
+9. Optional: In COREBASE/build/conf/local.conf file, you may uncomment
    BB_NUMBER_THREADS = "4" and PARALLEL_MAKE = "-j 4" if you build on a
    quad-core machine.
 
-9. Build eca-image
+10. Build eca-image
 
    > $ bitbake eca-image
 
-10. Run the emulator:
+11. Run the emulator:
 
    > for qemux86:
    > $ PATH_TO_POKY/poky/scripts/runqemu qemux86 eca-image

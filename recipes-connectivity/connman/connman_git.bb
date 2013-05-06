@@ -57,6 +57,17 @@ EXTRA_OECONF += "\
     --disable-threads \
 "
 
+
+# Make sure we will use bluez5 instead of older bluez4
+PACKAGECONFIG[bluetooth] = "--enable-bluetooth, --disable-bluetooth, bluez5"
+RDEPENDS_${PN} = "\
+	dbus \
+	${@base_contains('PACKAGECONFIG', 'bluetooth', 'bluez5', '', d)} \
+	${@base_contains('PACKAGECONFIG', 'wifi','wpa-supplicant', '', d)} \
+	${@base_contains('PACKAGECONFIG', '3g','ofono', '', d)} \
+	"
+
+
 do_install_append() {
 	install -d ${D}${sysconfdir}/connman
 	install -m 0644 ${S}/src/main.conf ${D}${sysconfdir}/connman/main.conf.example
