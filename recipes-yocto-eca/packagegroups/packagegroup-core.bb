@@ -107,7 +107,6 @@ RDEPENDS_packagegroup-core_append_x86 += "\
 # network configuration for connman if running qemu
 RDEPENDS_packagegroup-core_append_qemuall += "\
     connman-conf \
-    connman-conf-systemd \
 "
 
 RRECOMMENDS_${PN} = "\
