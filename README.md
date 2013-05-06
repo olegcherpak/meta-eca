@@ -64,3 +64,12 @@ following steps:
 
    > for qemux86:
    > $ PATH_TO_POKY/poky/scripts/runqemu qemux86 eca-image
+
+12. Set the password for root user
+    The default password for root user is "root". You should change
+    that to something that only you know. If connecting to the host
+    using browser (use http://eca.local/ address), the web-ui
+    forces you to change the root password and it also asks you to
+    set the username/password for the web management UI.
+    If connecting to host using ssh, you need to set the root password
+    manually using "passwd" command.
