@@ -22,6 +22,12 @@ CONNMAN_PACKAGES="\
     connman-tools \
 "
 
+CONNMAN_VPN_PLUGINS="\
+    connman-plugin-vpn-openvpn \
+    connman-plugin-vpn-l2tp \
+    connman-plugin-vpn-pptp \
+"
+
 NFC_PACKAGES="\
     neard \
 "
@@ -82,6 +88,7 @@ RDEPENDS_packagegroup-core = "\
     ${UI_PACKAGES} \
     ${UTIL_PACKAGES} \
     ${@base_contains('DISTRO_FEATURES', 'vpn','${VPN_PACKAGES}', '', d)} \
+    ${@base_contains('DISTRO_FEATURES', 'vpn','${CONNMAN_VPN_PLUGINS}', '', d)} \
     ${WLAN_FIRMWARE} \
 "
 
