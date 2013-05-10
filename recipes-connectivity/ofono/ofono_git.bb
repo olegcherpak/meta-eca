@@ -10,9 +10,8 @@ SRC_URI = "\
 "
 
 # Add git commit id to ofono version. Needed so that we know
-# what ofono version we are running. The patch also requires
-# that we enable maintainer mode
-EXTRA_OECONF += " --enable-maintainer-mode "
+# what ofono version we are running (important if using the
+# bleeding edge version)
 SRC_URI += "\
     file://0001-build-Script-to-generate-current-git-HEAD-commit-id.patch \
     file://0002-build-Use-detailed-version-information-when-printing.patch \
