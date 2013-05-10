@@ -1,28 +1,24 @@
-From 2d0c7764873bdbc3b82a6336590da64d17f75490 Mon Sep 17 00:00:00 2001
+From 97223971e48afc26a7117dfd38dcaf63f9fa7540 Mon Sep 17 00:00:00 2001
 From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
 Date: Sun, 21 Apr 2013 22:22:12 +0300
 Subject: [PATCH 2/2] build: Use detailed version information when printing
  ofono version
 
 ---
- configure.ac | 8 ++++++++
+ configure.ac | 4 ++++
  src/log.c    | 2 +-
  src/main.c   | 2 +-
- 3 files changed, 10 insertions(+), 2 deletions(-)
+ 3 files changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index a4a350f..d4a2442 100644
+index a4a350f..61cace6 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -245,5 +245,13 @@ fi
+@@ -245,5 +245,9 @@ fi
  AC_DEFINE_UNQUOTED(CONFIGDIR, "${configdir}",
  			[Directory for the configuration files])
  
-+if (test "${USE_MAINTAINER_MODE}" != "no"); then
-+   GIT_COMMIT_HEAD=m4_esyscmd([sh src/get-git-head])
-+else
-+   GIT_COMMIT_HEAD=""
-+fi
++GIT_COMMIT_HEAD=m4_esyscmd([sh src/get-git-head])
 +AC_DEFINE_UNQUOTED(OFONO_DETAILED_VERSION, "${VERSION}${GIT_COMMIT_HEAD}",
 +					   [oFono git head])
 +
