@@ -81,7 +81,7 @@ RDEPENDS_packagegroup-core = "\
     ${OFONO_PACKAGES} \
     ${UI_PACKAGES} \
     ${UTIL_PACKAGES} \
-    ${VPN_PACKAGES} \
+    ${@base_contains('DISTRO_FEATURES', 'vpn','${VPN_PACKAGES}', '', d)} \
     ${WLAN_FIRMWARE} \
 "
 
