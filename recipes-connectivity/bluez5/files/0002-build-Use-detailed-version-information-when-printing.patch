@@ -1,27 +1,23 @@
-From a865af95ece0ebe83a58da65ff74ad594063bc2b Mon Sep 17 00:00:00 2001
+From b3dffe66acecb6ff50b7ced1e7758b20e1f3cba1 Mon Sep 17 00:00:00 2001
 From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
 Date: Fri, 12 Apr 2013 17:38:56 +0300
-Subject: [PATCH 2/2] build: Use detailed version information when printing bluez
- version
+Subject: [PATCH 2/2] build: Use detailed version information when printing
+ bluez version
 
 ---
- configure.ac | 8 ++++++++
+ configure.ac | 4 ++++
  src/main.c   | 2 +-
- 2 files changed, 9 insertions(+), 1 deletion(-)
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 14f3a99..c990f20 100644
+index 14f3a99..8e73bd2 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -254,4 +254,12 @@ fi
+@@ -254,4 +254,8 @@ fi
  AC_DEFINE_UNQUOTED(CONFIGDIR, "${configdir}",
  			[Directory for the configuration files])
  
-+if (test "${USE_MAINTAINER_MODE}" != "no"); then
-+   GIT_COMMIT_HEAD=m4_esyscmd([sh src/get-git-head])
-+else
-+   GIT_COMMIT_HEAD=""
-+fi
++GIT_COMMIT_HEAD=m4_esyscmd([sh src/get-git-head])
 +AC_DEFINE_UNQUOTED(BLUEZ_DETAILED_VERSION, "${VERSION}${GIT_COMMIT_HEAD}",
 +					   [Bluez git head])
 +
