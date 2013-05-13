@@ -7,14 +7,6 @@ SRC_URI = "\
 	file://fix-udev-paths.patch \
 "
 
-# Add git commit id to bluez version. Needed so that we know
-# what bluez version we are running (important if using the
-# bleeding edge version)
-SRC_URI += "\
-    file://0001-build-Script-to-generate-current-git-HEAD-commit-id.patch \
-    file://0002-build-Use-detailed-version-information-when-printing.patch \
-"
-
 S = "${WORKDIR}/git"
 PR = "${INC_PR}.0"
 PV = "5.x+git${SRCREV}"
