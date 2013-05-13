@@ -8,14 +8,6 @@ SRC_URI = "\
 	file://inet-fix-ip-cleanup-functions.patch \
 "
 
-# Add git commit id to connman version. Needed so that we know
-# what connman version we are running (important if using the
-# bleeding edge version)
-SRC_URI += "\
-    file://0001-build-Script-to-generate-current-git-HEAD-commit-id.patch \
-    file://0002-build-Use-detailed-version-information-when-printing.patch \
-"
-
 # Enable debugging the easy way in systemd based distro.
 # See 0001-doc-Debugging-in-host-that-uses-systemd.patch for usage.
 SRC_URI += "\
