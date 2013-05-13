@@ -22,12 +22,6 @@ CONNMAN_PACKAGES="\
     connman-tools \
 "
 
-CONNMAN_VPN_PLUGINS="\
-    connman-plugin-vpn-openvpn \
-    connman-plugin-vpn-l2tp \
-    connman-plugin-vpn-pptp \
-"
-
 NFC_PACKAGES="\
     neard \
 "
@@ -57,10 +51,9 @@ UTIL_PACKAGES="\
     rsync \
 "
 
-VPN_PACKAGES="\
-    openvpn \
-    pptp-linux \
-    xl2tpd \
+# vpnc needs perl but does not seem to depend on it
+UTIL_PACKAGES+="\
+    ${@base_contains('PACKAGECONFIG', 'vpnc','perl','', d)} \
 "
 
 # Try to install as many wlan firmwares as possible
@@ -87,8 +80,6 @@ RDEPENDS_packagegroup-core = "\
     ${OFONO_PACKAGES} \
     ${UI_PACKAGES} \
     ${UTIL_PACKAGES} \
-    ${@base_contains('DISTRO_FEATURES', 'vpn','${VPN_PACKAGES}', '', d)} \
-    ${@base_contains('DISTRO_FEATURES', 'vpn','${CONNMAN_VPN_PLUGINS}', '', d)} \
     ${WLAN_FIRMWARE} \
 "
 
