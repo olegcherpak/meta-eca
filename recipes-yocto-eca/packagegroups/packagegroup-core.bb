@@ -51,11 +51,6 @@ UTIL_PACKAGES="\
     rsync \
 "
 
-# vpnc needs perl but does not seem to depend on it
-UTIL_PACKAGES+="\
-    ${@base_contains('PACKAGECONFIG', 'vpnc','perl','', d)} \
-"
-
 # Try to install as many wlan firmwares as possible
 WLAN_FIRMWARE="\
     linux-firmware-ralink \
