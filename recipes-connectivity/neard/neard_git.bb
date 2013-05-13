@@ -10,14 +10,6 @@ PV     = "0.x+git${SRCREV}"
 PR     = "r1"
 
 
-# Add git commit id to neard version. Needed so that we know
-# what neard version we are running (important if using the
-# bleeding edge version)
-SRC_URI += "\
-    file://0001-build-Script-to-generate-current-git-HEAD-commit-id.patch \
-    file://0002-build-Use-detailed-version-information-when-printing.patch \
-"
-
 EXTRA_OECONF += "--enable-tools \
 	"
 
