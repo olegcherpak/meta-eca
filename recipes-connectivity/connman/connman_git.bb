@@ -47,6 +47,8 @@ EXTRA_OECONF += "\
     --disable-fake \
     --disable-polkit \
     --disable-threads \
+    --enable-pacrunner \
+    --enable-wispr \
 "
 
 
