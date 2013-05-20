@@ -10,4 +10,5 @@ do_configure_append () {
 	echo "CONFIG_AP=y" >> wpa_supplicant/.config
 	echo "CONFIG_CTRL_IFACE_DBUS_NEW=y" >> wpa_supplicant/.config
 	echo "CONFIG_BGSCAN_SIMPLE=y" >> wpa_supplicant/.config
+	echo "CONFIG_AUTOSCAN_EXPONENTIAL=y" >> wpa_supplicant/.config
 }
