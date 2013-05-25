@@ -27,7 +27,7 @@ SRC_URI += " \
 	file://mac80211.cfg \
 	file://nfc.cfg \
 	file://high-speed-mobile-devices.cfg \
-	file://netfilter-ipv4.cfg \
+	file://netfilter-3.8.cfg \
 "
 
 KBRANCH_vexpressa9 = "standard/beagleboard"
