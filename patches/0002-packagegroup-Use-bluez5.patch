@@ -1,0 +1,35 @@
+From 42bdb036c84547f1d9836dbb28cc29fd65793ed8 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Thu, 11 Apr 2013 12:11:33 +0300
+Subject: [PATCH 2/2] packagegroup: Use bluez5
+
+
+Signed-off-by: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+---
+ meta/recipes-core/packagegroups/packagegroup-base.bb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meta/recipes-core/packagegroups/packagegroup-base.bb b/meta/recipes-core/packagegroups/packagegroup-base.bb
+index 799e12a..1133bf7 100644
+--- a/meta/recipes-core/packagegroups/packagegroup-base.bb
++++ b/meta/recipes-core/packagegroups/packagegroup-base.bb
+@@ -1,6 +1,6 @@
+ DESCRIPTION = "Merge machine and distro options to create a basic machine task/package"
+ LICENSE = "MIT"
+-PR = "r76"
++PR = "r77"
+ 
+ inherit packagegroup
+ 
+@@ -209,7 +209,7 @@ RRECOMMENDS_packagegroup-base-pcmcia = "\
+ 
+ SUMMARY_packagegroup-base-bluetooth = "Bluetooth support"
+ RDEPENDS_packagegroup-base-bluetooth = "\
+-    bluez4 \
++    bluez5 \
+     ${@base_contains('COMBINED_FEATURES', 'alsa', 'libasound-module-bluez', '',d)} \
+     "
+ 
+-- 
+1.7.11.7
+

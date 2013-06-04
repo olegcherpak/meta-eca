@@ -1,0 +1,38 @@
+From 1ae1390eee97768a93868059519181cca094a3d9 Mon Sep 17 00:00:00 2001
+From: Cristian Iorga <cristian.iorga@intel.com>
+Date: Mon, 25 Mar 2013 15:07:21 +0200
+Subject: [PATCH 1/2] bluez4: conflicts with/replaces bluez5
+
+- RCONFLICTS/RREPLACES bluez5
+
+Signed-off-by: Cristian Iorga <cristian.iorga@intel.com>
+Signed-off-by: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+---
+ meta/recipes-connectivity/bluez/bluez4_4.101.bb | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/meta/recipes-connectivity/bluez/bluez4_4.101.bb b/meta/recipes-connectivity/bluez/bluez4_4.101.bb
+index f48adfd..91ebc63 100644
+--- a/meta/recipes-connectivity/bluez/bluez4_4.101.bb
++++ b/meta/recipes-connectivity/bluez/bluez4_4.101.bb
+@@ -1,6 +1,6 @@
+ require bluez4.inc
+ 
+-PR = "r5"
++PR = "r6"
+ 
+ SRC_URI += "file://bluetooth.conf \
+             file://sbc_mmx.patch \
+@@ -11,6 +11,9 @@ SRC_URI += "file://bluetooth.conf \
+ SRC_URI[md5sum] = "fb42cb7038c380eb0e2fa208987c96ad"
+ SRC_URI[sha256sum] = "59738410ade9f0e61a13c0f77d9aaffaafe49ba9418107e4ad75fe52846f7487"
+ 
++RCONFLICTS_${PN} = "bluez5"
++RREPLACES_${PN} = "bluez5"
++
+ do_install_append() {
+ 	install -m 0644 ${S}/audio/audio.conf ${D}/${sysconfdir}/bluetooth/
+ 	install -m 0644 ${S}/network/network.conf ${D}/${sysconfdir}/bluetooth/
+-- 
+1.7.11.7
+
