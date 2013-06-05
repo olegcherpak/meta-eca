@@ -49,6 +49,7 @@ UTIL_PACKAGES="\
     bridge-utils \
     lsof \
     rsync \
+    socat \
 "
 
 # Try to install as many wlan firmwares as possible
