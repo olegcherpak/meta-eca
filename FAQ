@@ -4,9 +4,9 @@ ECA is a platform for building network appliances. ECA is not a product itself
 but it can be used to create networking devices. ECA is also a platform for
 prototyping various networking technologies, like use of Bluetooth low
 energy devices in IP networks.
-As an example, a tethering network appliance is built using ECA. This
-tethering application can provide Wifi AP that various devices can use
-to connect to internet via ECA.
+As an example, a tethering network appliance (mobile access point) is built
+using ECA. This tethering application can provide Wifi AP that various devices
+can use to connect to internet via ECA.
 
 
 * What do you mean by tethering in this context?
