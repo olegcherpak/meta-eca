@@ -1,13 +1,23 @@
-DESCRIPTION = "Core packages"
+DESCRIPTION = "Packagegroup for ECA packages"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${ECA_COREBASE}/meta-eca/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+DEPENDS = "virtual/kernel"
 PR = "r2"
 
 inherit packagegroup
 
 PACKAGES = "\
-    packagegroup-core \
+    packagegroup-eca \
 "
+
+MACHINE_ESSENTIAL_EXTRA_RDEPENDS ?= ""
+MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS ?= ""
+
+VIRTUAL-RUNTIME_dev_manager ?= "udev"
+VIRTUAL-RUNTIME_login_manager ?= "tinylogin"
+VIRTUAL-RUNTIME_init_manager ?= "sysvinit"
+VIRTUAL-RUNTIME_initscripts ?= "initscripts"
+VIRTUAL-RUNTIME_keymaps ?= "keymaps "
 
 BLUEZ_PACKAGES="\
     bluez5 \
@@ -62,7 +72,19 @@ WLAN_FIRMWARE="\
     linux-firmware-wl12xx \
 "
 
-RDEPENDS_packagegroup-core = "\
+RDEPENDS_packagegroup-eca = "\
+    base-files \
+    base-passwd \
+    busybox \
+    ${VIRTUAL-RUNTIME_initscripts} \
+    ${@base_contains("MACHINE_FEATURES", "keyboard", "${VIRTUAL-RUNTIME_keymaps}", "", d)} \
+    netbase \
+    ${VIRTUAL-RUNTIME_login_manager} \
+    ${VIRTUAL-RUNTIME_init_manager} \
+    ${VIRTUAL-RUNTIME_dev_manager} \
+    ${VIRTUAL-RUNTIME_update-alternatives} \
+    ${MACHINE_ESSENTIAL_EXTRA_RDEPENDS} \
+    procps \
     packagegroup-base \
     initscripts \
     systemd-compat-units \
@@ -94,14 +116,15 @@ IWLWIFI := "\
 
 # Add iwlwifi firmware for Intel devices but not for qemu images because
 # user probably does not have Intel layer defined there
-RDEPENDS_packagegroup-core_append_x86 += "\
+RDEPENDS_packagegroup-eca_append_x86 += "\
     ${IWLWIFI} \
 "
 
 # network configuration for connman if running qemu
-RDEPENDS_packagegroup-core_append_qemuall += "\
+RDEPENDS_packagegroup-eca_append_qemuall += "\
     connman-conf \
 "
 
 RRECOMMENDS_${PN} = "\
+    ${MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS} \
 "

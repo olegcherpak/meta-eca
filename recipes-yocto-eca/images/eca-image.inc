@@ -1,4 +1,4 @@
-IMAGE_INSTALL = "packagegroup-core-boot-eca \
+IMAGE_INSTALL = "packagegroup-eca \
 	      ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
 	      ${CORE_IMAGE_EXTRA_INSTALL}"
 
