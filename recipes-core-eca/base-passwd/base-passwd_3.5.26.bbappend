@@ -1,4 +1,3 @@
-PRINC := "${@int(PRINC) + 2}"
 FILESEXTRAPATHS := "${THISDIR}/${PN}"
 
 SRC_URI += " \
