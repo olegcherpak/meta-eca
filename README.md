@@ -19,7 +19,7 @@ branch: master
 revision: 17ace92714bccf64d0d9fcefaabe3067f59fdf0a
 
 Using the above git sha's and master meta-eca, bitbaking eca-image is
-known to work.
+known to work. Using head versions should work also just fine.
 
 Build a QEMU image including ECA components
 -------------------------------------------
@@ -68,7 +68,7 @@ following steps:
 11. Run the emulator:
 
    > for qemux86:
-   > $ PATH_TO_POKY/poky/scripts/runqemu qemux86 eca-image
+   > $ runqemu qemux86 eca-image
 
 12. Set the password for root user
     The default password for root user is "root". You should change
