@@ -27,11 +27,6 @@ Build a QEMU image including ECA components
 You can build a QEMU image including ECA components using the
 following steps:
 
-0. Apply Bluez5 patches to meta
-
-   > $ cd yocto/poky
-   > $ git am meta-eca/patches/000*.patch
-
 1. Run the following command:
 
    > $ source poky/oe-init-build-env
