@@ -75,3 +75,13 @@ following steps:
     set the username/password for the web management UI.
     If connecting to host using ssh, you need to set the root password
     manually using "passwd" command.
+
+14. Connecting to the device
+    After you have booted the appliance, you can connect to it using
+    ethernet or wifi. If you have wifi card or usb dongle installed
+    in appliance, you should see access point called "eca-aabbccddeeff"
+    (this is just an example) in your wifi scans.
+    You can connect to that AP, the default passphrase in this case
+    would be "aabbccddeeff".
+    Connection can be done either via "ssh root@eca.local" or via
+    browser http://eca.local
