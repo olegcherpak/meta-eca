@@ -38,39 +38,41 @@ following steps:
 
 2. Add meta-eca path to COREBASE/build/conf/bblayers.conf file.
 
-3. Add meta-openembedded/meta-systemd path to COREBASE/build/conf/bblayers.conf
+3. Add meta-eca/meta-eca-bsp path to COREBASE/build/conf/bblayers.conf file.
+
+4. Add meta-openembedded/meta-systemd path to COREBASE/build/conf/bblayers.conf
    file.
 
-4. Add meta-openembedded/meta-oe path to COREBASE/build/conf/bblayers.conf file.
+5. Add meta-openembedded/meta-oe path to COREBASE/build/conf/bblayers.conf file.
 
-5. Add meta-openembedded/meta-networking path to
+6. Add meta-openembedded/meta-networking path to
    COREBASE/build/conf/bblayers.conf file.
 
-6. Set MACHINE ??= "qemux86" in COREBASE/build/conf/local.conf file to build
+7. Set MACHINE ??= "qemux86" in COREBASE/build/conf/local.conf file to build
    for an emulated IA-32 instruction-set machine respectively.
 
-7. Set DISTRO ?= "eca" in COREBASE/build/conf/local.conf file.
+8. Set DISTRO ?= "eca" in COREBASE/build/conf/local.conf file.
    If you want a bleeding edge versions of ConnMan, oFono, Bluez5 and Neard,
    then you can set the DISTRO to "eca-bleeding"
 
-8. Mask out bluez4 as we want to use bluez5, set BBMASK in your local.conf file
+9. Mask out bluez4 as we want to use bluez5, set BBMASK in your local.conf file
    BBMASK = "meta/recipes-connectivity/bluez/bluez4*|\
    meta-openembedded/meta-systemd/oe-core/recipes-connectivity/bluez/bluez4*"
 
-9. Optional: In COREBASE/build/conf/local.conf file, you may uncomment
+10. Optional: In COREBASE/build/conf/local.conf file, you may uncomment
    BB_NUMBER_THREADS = "4" and PARALLEL_MAKE = "-j 4" if you build on a
    quad-core machine.
 
-10. Build eca-image
+11. Build eca-image
 
    > $ bitbake eca-image
 
-11. Run the emulator:
+12. Run the emulator:
 
    > for qemux86:
    > $ runqemu qemux86 eca-image
 
-12. Set the password for root user
+13. Set the password for root user
     The default password for root user is "root". You should change
     that to something that only you know. If connecting to the host
     using browser (use http://eca.local/ address), the web-ui

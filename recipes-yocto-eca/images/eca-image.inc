@@ -24,7 +24,4 @@ IMAGE_ROOTFS_SIZE = "8192"
 # remove not needed ipkg informations
 #ROOTFS_POSTPROCESS_COMMAND += "remove_packaging_data_files ; "
 
-# Create SD image symlink correctly
-IMAGE_POSTPROCESS_COMMAND_imx53qsb += "rename_symlink ; "
-
 BUILDHISTORY_COMMIT = "1"

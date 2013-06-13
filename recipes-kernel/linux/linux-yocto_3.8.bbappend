@@ -1,15 +1,6 @@
 # find defconfig path
 FILESEXTRAPATHS := "${THISDIR}/${PN}"
 
-# Kernel configs
-SRC_URI_append_beagleboard = " \
-	file://beagle_qemu.cfg \
-	"
-
-SRC_URI_append_vexpressa9 = " \
-	file://vexpress_a9.cfg  \
-	"
-
 SRC_URI += " \
 	file://wlan-atheros.cfg \
 	file://wlan-ralink.cfg \
@@ -29,7 +20,3 @@ SRC_URI += " \
 	file://high-speed-mobile-devices.cfg \
 	file://netfilter-3.8.cfg \
 "
-
-KBRANCH_vexpressa9 = "standard/beagleboard"
-SRCREV_machine_vexpressa9 ?= "AUTOINC"
-COMPATIBLE_MACHINE_vexpressa9 = "vexpressa9"
