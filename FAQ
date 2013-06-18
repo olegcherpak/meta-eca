@@ -4,6 +4,12 @@ ECA is a platform for building network appliances. ECA is not a product itself
 but it can be used to create networking devices. ECA is also a platform for
 prototyping various networking technologies, like use of Bluetooth low
 energy devices in IP networks.
+
+ECA is Yocto based layer that ties together various open source
+connectivity components like ConnMan for connection management,
+oFono for cellular access, BlueZ for Bluetooth connectivity and
+neard for NFC support.
+
 As an example, a tethering network appliance (mobile access point) is built
 using ECA. This tethering application can provide Wifi AP that various devices
 can use to connect to internet via ECA.
@@ -45,7 +51,7 @@ there are multiple DHCP servers running and providing IP addresses.
 ECA is created using Yocto (see https://www.yoctoproject.org/ for details),
 so in theory it can run in all the devices that are supported by Yocto.
 In practice there are some restrictions, like available RAM, CPU speed etc.
-In is also important to have enough connectors for networking devices that
+It is also important to have enough connectors for networking devices that
 are typically connected via USB, like usb wifi or cellular dongles.
 
 ECA has been successfully running in the following devices:
@@ -53,6 +59,8 @@ ECA has been successfully running in the following devices:
 - Beagleboard
 - RaspberryPi
 - Intel Atom PC
+- Intel FRI2 (Fish River Island 2)
+- Beaglebone
 - VirtualBox image
 
 
