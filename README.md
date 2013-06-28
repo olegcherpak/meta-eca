@@ -12,14 +12,12 @@ Layer Dependencies
 
 URI: git://git.yoctoproject.org/poky
 branch: master
-revision: 697f74988a50a992c25853272aaf0963b2b3cf28
+revision: head
 
 URI: git://git.openembedded.org/meta-openembedded
 branch: master
-revision: 17ace92714bccf64d0d9fcefaabe3067f59fdf0a
+revision: head
 
-Using the above git sha's and master meta-eca, bitbaking eca-image is
-known to work. Using head versions should work also just fine.
 
 Build a QEMU image including ECA components
 -------------------------------------------
