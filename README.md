@@ -1,7 +1,7 @@
 meta-eca, the Yocto layer for communication appliances
 ======================================================
 
-This layer's purpose is to add Embedded Communication Appliance (ECA) support
+This layer's purpose is to add Embedded Connectivity Appliance (ECA) support
 when used with Poky packagegroup base.
 
 Please see the MAINTAINERS file for information on contacting the maintainers

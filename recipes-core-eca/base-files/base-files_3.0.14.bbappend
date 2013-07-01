@@ -8,5 +8,5 @@ do_install_append() {
 
 	# create /etc/issue that shows whether we are building
 	# standard eca or bleeding version
-	echo "Embedded Communication Appliance (${DISTRO})" > ${D}${sysconfdir}/issue
+	echo "Embedded Connectivity Appliance (${DISTRO})" > ${D}${sysconfdir}/issue
 }

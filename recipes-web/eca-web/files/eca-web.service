@@ -1,5 +1,5 @@
 [Unit]
-Description=Simple web UI for Embedded Communication Appliance
+Description=Simple web UI for Embedded Connectivity Appliance
 After=syslog.target
 
 [Service]
