@@ -9,6 +9,7 @@ SRC_URI += " \
 	file://wlan-zydas.cfg \
 	file://wlan-marwel.cfg \
 	file://wlan-ti.cfg \
+        file://wlan-intel.cfg \
 	file://bluetooth.cfg \
 	file://nokia-phonet.cfg \
 	file://usb-serial.cfg \
