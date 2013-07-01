@@ -1,7 +1,7 @@
 require recipes-connectivity/ofono/ofono.inc
 
 S	= "${WORKDIR}/git"
-SRCREV	= "fc7de0f6e18e6b9cf874207cc78d9993d122f3ff"
+SRCREV	= "a96aa11bb5bb314c003f054f433f709f65c16290"
 PV	= "1.x+git${SRCREV}"
 
 SRC_URI = "\
