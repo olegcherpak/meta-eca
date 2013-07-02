@@ -1,6 +1,7 @@
 # Remove unnecessary stuff from depends
 DEPENDS := "${@oe_filter_out('wpa-supplicant-cli', '${DEPENDS}', d)}"
 DEPENDS := "${@oe_filter_out('wpa-supplicant-passphrase', '${DEPENDS}', d)}"
+DEPENDS := "${@oe_filter_out('wpa-supplicant-doc', '${DEPENDS}', d)}"
 
 do_configure_append () {
 	# Activate config options needed by connman and tethering
