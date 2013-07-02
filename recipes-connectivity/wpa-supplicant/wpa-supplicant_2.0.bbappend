@@ -1,3 +1,9 @@
+FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
+
+# This patch is in upstream but not in 2.0. The patch is needed
+# so that autoscan works in ConnMan
+SRC_URI += "file://dbus-Register-the-AutoScan-method-call-at-the-right-place.patch"
+
 # Remove unnecessary stuff from depends
 DEPENDS := "${@oe_filter_out('wpa-supplicant-cli', '${DEPENDS}', d)}"
 DEPENDS := "${@oe_filter_out('wpa-supplicant-passphrase', '${DEPENDS}', d)}"
