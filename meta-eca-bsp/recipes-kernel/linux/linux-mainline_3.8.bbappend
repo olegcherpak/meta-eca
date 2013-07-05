@@ -1,12 +1,10 @@
 # find defconfig path
-FILESEXTRAPATHS := ":${THISDIR}/${PN}"
+FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 
 # netfilter stuff is missing from beaglebone kernel
-SRC_URI += " \
-        file://netfilter.cfg \
-"
+SRC_URI_append_beaglebone += "file://netfilter.cfg"
 
-do_configure() {
+do_configure_append_beaglebone () {
 	for i in ${S}/../*.cfg; do
 		echo "Adding ${i} to ${S}/.config"
 		cat ${i} >> ${S}/.config
@@ -14,4 +12,3 @@ do_configure() {
 
 	yes '' | oe_runmake oldconfig
 }
-
