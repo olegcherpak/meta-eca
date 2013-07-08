@@ -15,17 +15,6 @@ SRC_URI += "\
     file://0003-systemd-Use-environment-file-for-connman-vpnd-debug-.patch \
 "
 
-# Check if we already know the service credentials before activating
-# agent. Typically this helps in a case where we have multiple wifi
-# cards and know the credentials for one service. As the credentials
-# are stored separately for each service, we can try to use those
-# known passphrases first.
-SRC_URI += "\
-    file://0001-service-We-might-know-the-passphrase-for-SSID-alread.patch \
-    file://0002-service-Debug-print-the-error-we-are-sending.patch \
-    file://0003-service-Set-error-after-changing-state.patch \
-"
-
 S = "${WORKDIR}/git"
 PR = "${INC_PR}.0"
 PV = "1.x+git${SRCREV}"
