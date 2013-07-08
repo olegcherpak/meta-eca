@@ -1,17 +1,20 @@
 DESCRIPTION = "Simple web UI for Embedded Connectivity Appliance"
 LICENSE  = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e"
-PR = "r0"
 
+SRCREV_default_pn-eca-web ?= "${AUTOREV}"
 SRC_URI = "\
-	file://eca-web-0.1.tar.gz \
+	git://github.com/jukkar/eca-web.git \
 	file://eca-web.service \
 	file://start-eca-web \
 	file://config \
 "
 
-S = "${WORKDIR}/eca-web-0.1"
-PR = "r2"
+SRC_URI[md5sum] = "71469efd6798ea62c788db34d8da0a93"
+SRC_URI[sha256sum] = "bc08d8345854c4ec6740bcef6d563fb3f8317f9a6a4b47ba327454a3b75f4afc"
+
+S = "${WORKDIR}/git"
+PR = "r0"
 
 PREFIX ?= "/opt/eca-web"
 
