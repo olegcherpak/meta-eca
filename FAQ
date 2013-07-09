@@ -97,10 +97,10 @@ is a new one, it might be that the kernel support is not yet activated.
 * Where do I get it?
 
 You can get the meta-eca layer for Yocto from
-https://www.yoctoproject.org/downloads or from git at
-http://git.yoctoproject.org/
+git://github.com/jukkar/meta-eca.git
 
 
 * How do I start using the ECA tethering appliance?
 
-See the README file in the meta-eca sources.
+See the README file in the meta-eca sources or blog at
+http://metaeca.wordpress.com
