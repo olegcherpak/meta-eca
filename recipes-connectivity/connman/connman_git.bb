@@ -1,11 +1,10 @@
 require recipes-connectivity/connman/connman.inc
 
 # We use a known good version instead of some buggy point version.
-SRCREV = "df37290e13bb535bf607f6585b28c40d92a036a0"
+SRCREV = "54f0d5c2d28cb0fbde23f6484448329e582d949a"
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/network/connman/connman.git \
 	file://add_xuser_dbus_permission.patch \
-	file://inet-fix-ip-cleanup-functions.patch \
 "
 
 # Enable debugging the easy way in systemd based distro.
