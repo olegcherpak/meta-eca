@@ -22,4 +22,5 @@ SRC_URI += " \
 	file://netfilter-3.8.cfg \
 	file://usb-eth-gadget.cfg \
 	file://usb-net.cfg \
+	file://ipv6.cfg \
 "
