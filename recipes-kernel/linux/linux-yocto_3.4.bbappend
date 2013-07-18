@@ -14,4 +14,5 @@ SRC_URI += " \
 	file://usb-net.cfg \
 	file://rfkill.cfg \
 	file://ipv6.cfg \
+	file://nfc-3.4.cfg \
 "
