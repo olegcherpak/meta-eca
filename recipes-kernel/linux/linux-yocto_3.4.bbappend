@@ -10,4 +10,6 @@ SRC_URI += " \
 	file://nokia-phonet.cfg \
 	file://usb-serial.cfg \
 	file://tun-device.cfg \
+	file://usb-eth-gadget.cfg \
+	file://usb-net.cfg \
 "
