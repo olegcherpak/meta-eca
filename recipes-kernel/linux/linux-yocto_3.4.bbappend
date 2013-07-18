@@ -15,4 +15,5 @@ SRC_URI += " \
 	file://rfkill.cfg \
 	file://ipv6.cfg \
 	file://nfc-3.4.cfg \
+	file://nfacct.cfg \
 "
