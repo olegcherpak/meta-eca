@@ -32,7 +32,7 @@ following steps:
 
    > $ source poky/oe-init-build-env
 
-2. Add meta-eca path to COREBASE/build/conf/bblayers.conf file.
+2. Add meta-eca/meta-eca path to COREBASE/build/conf/bblayers.conf file.
 
 3. Add meta-eca/meta-eca-bsp path to COREBASE/build/conf/bblayers.conf file.
 
