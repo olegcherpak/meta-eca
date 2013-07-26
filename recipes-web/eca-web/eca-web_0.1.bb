@@ -26,7 +26,6 @@ EXTRA_OECONF += "\
 inherit autotools
 inherit systemd
 
-SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "eca-web.service"
 

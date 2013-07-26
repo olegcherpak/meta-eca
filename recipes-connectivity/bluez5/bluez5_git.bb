@@ -44,7 +44,6 @@ FILES_${PN}-dbg += "\
   ${base_libdir}/udev/.debug \
   "
 
-SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "bluetooth.service"
 

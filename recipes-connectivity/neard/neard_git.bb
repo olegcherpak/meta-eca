@@ -18,6 +18,3 @@ RRECOMMENDS_${PN} = "\
     ${@base_contains('DISTRO_FEATURES', 'bluetooth', 'bluez5', '', d)} \
     ${@base_contains('DISTRO_FEATURES', 'wifi','wpa-supplicant', '', d)} \
     "
-
-# Activate neard by default
-SYSTEMD_AUTO_ENABLE = "enable"

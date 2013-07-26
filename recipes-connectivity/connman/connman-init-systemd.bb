@@ -17,8 +17,6 @@ PR = "r0"
 
 inherit systemd
 
-SYSTEMD_AUTO_ENABLE = "enable"
-
 SYSTEMD_PACKAGES = "connman-init-systemd"
 
 SYSTEMD_SERVICE_${PN} = " connman-init.service"

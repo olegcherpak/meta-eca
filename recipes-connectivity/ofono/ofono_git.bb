@@ -24,7 +24,6 @@ inherit systemd
 
 EXTRA_OECONF += "--with-systemdunitdir=${systemd_unitdir}/system/"
 
-SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = "ofono.service"
 
