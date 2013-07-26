@@ -3,6 +3,11 @@ From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
 Date: Wed, 13 Mar 2013 11:16:33 +0200
 Subject: [PATCH 2/3] systemd: Use environment file for connmand debug options
 
+Upstream-Status: Denied
+
+Not accepted as distros can override the default ConnMan service file.
+
+Signed-off-by: Jukka Rissanen <jukka.rissanen@linux.intel.com>
 ---
  src/connman.service.in | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)

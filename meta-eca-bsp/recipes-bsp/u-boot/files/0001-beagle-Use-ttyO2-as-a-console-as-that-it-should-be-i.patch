@@ -4,6 +4,9 @@ Date: Tue, 29 Jan 2013 12:30:11 +0200
 Subject: [PATCH] beagle: Use ttyO2 as a console as that it should be in newer
  kernels
 
+Upstream-Status: Pending
+
+Signed-off-by: Jukka Rissanen <jukka.rissanen@linux.intel.com>
 ---
  include/configs/omap3_beagle.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
