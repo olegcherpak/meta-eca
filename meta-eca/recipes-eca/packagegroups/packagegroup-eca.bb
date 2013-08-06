@@ -59,6 +59,7 @@ UTIL_PACKAGES="\
     lsof \
     rsync \
     socat \
+    links \
 "
 
 # Try to install as many wlan firmwares as possible
