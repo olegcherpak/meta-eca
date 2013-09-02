@@ -61,6 +61,7 @@ UTIL_PACKAGES="\
     socat \
     links \
     iw \
+    mosh \
 "
 
 # Try to install as many wlan firmwares as possible
