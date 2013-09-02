@@ -62,6 +62,7 @@ UTIL_PACKAGES="\
     links \
     iw \
     mosh \
+    macchanger \
 "
 
 # Try to install as many wlan firmwares as possible
