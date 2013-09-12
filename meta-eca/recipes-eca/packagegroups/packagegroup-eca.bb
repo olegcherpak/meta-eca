@@ -20,7 +20,7 @@ VIRTUAL-RUNTIME_keymaps ?= "keymaps "
 
 BLUEZ_PACKAGES="\
     bluez5 \
-    bluez5-test \
+    bluez5-testtools \
 "
 
 CONNMAN_PACKAGES="\
