@@ -26,9 +26,7 @@ EXTRA_OECONF += "\
     --enable-test \
     --enable-client \
     --enable-tools \
-    --disable-fake \
     --disable-polkit \
-    --disable-threads \
     --enable-pacrunner \
     --enable-wispr \
 "
