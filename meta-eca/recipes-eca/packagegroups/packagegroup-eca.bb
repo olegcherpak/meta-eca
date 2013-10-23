@@ -64,6 +64,7 @@ UTIL_PACKAGES="\
     mosh \
     macchanger \
     netcat-openbsd \
+    python-scapy \
 "
 
 # Try to install as many wlan firmwares as possible
