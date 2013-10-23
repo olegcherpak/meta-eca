@@ -63,6 +63,7 @@ UTIL_PACKAGES="\
     iw \
     mosh \
     macchanger \
+    netcat-openbsd \
 "
 
 # Try to install as many wlan firmwares as possible
