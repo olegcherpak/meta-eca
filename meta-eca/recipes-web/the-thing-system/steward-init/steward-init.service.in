@@ -1,0 +1,14 @@
+[Unit]
+Description=Initialize TheThingSystem steward settings
+After=syslog.target
+Before=eca-web.service
+ConditionFileNotEmpty=!@the_thing_system_dir@/steward/db/server.key
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/TheThingSystem/config
+ExecStart=-@the_thing_system_dir@/steward/steward-init-settings.sh
+StandardOutput=null
+
+[Install]
+WantedBy=steward.service

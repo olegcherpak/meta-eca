@@ -1,0 +1,12 @@
+[Unit]
+Description=Steward for TheThingSystem
+After=steward-init.service
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/TheThingSystem/config
+ExecStart=@the_thing_system_dir@/steward/start-steward
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
