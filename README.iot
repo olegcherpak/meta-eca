@@ -1,0 +1,25 @@
+Internet of Things
+==================
+
+This version of eca contains TheThingSystem Steward support.
+
+In order to include it in the image, just set this in your local.conf file.
+
+	DISTRO_FEATURES_append = " internet-of-things"
+
+Note that during the build, the TheThingSystem steward needs Internet
+access to load node.js components. There might be issues with this
+loading if you are behind a proxy. If the steward installation does
+not proceed, try to build the image using a direct Internet link.
+
+You can connect to Steward UI at
+
+	http://eca.local/
+
+Creating user and credentials can be done at
+
+	https://eca.local:8888/client.html
+
+Console raw data can be seen at
+
+	https://eca.local:8888/console.html

@@ -8,6 +8,7 @@ inherit packagegroup
 
 PACKAGES = "\
     packagegroup-eca \
+    ${@base_contains('DISTRO_FEATURES', 'internet-of-things', 'packagegroup-iot', '', d)} \
 "
 
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS ?= ""
@@ -77,6 +78,12 @@ WLAN_FIRMWARE="\
     linux-firmware-wl12xx \
 "
 
+THE_THING_SYSTEM="\
+    steward-init \
+    steward \
+    tts-nodejs \
+"
+
 RDEPENDS_packagegroup-eca = "\
     base-files \
     base-passwd \
@@ -103,6 +110,11 @@ RDEPENDS_packagegroup-eca = "\
     ${UI_PACKAGES} \
     ${UTIL_PACKAGES} \
     ${WLAN_FIRMWARE} \
+"
+
+SUMMARY_packagegroup-iot = "Internet of Things support"
+RDEPENDS_packagegroup-iot = "\
+    ${THE_THING_SYSTEM} \
 "
 
 RRECOMMENDS_${PN} = "\

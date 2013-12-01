@@ -1,6 +1,9 @@
-IMAGE_INSTALL = "packagegroup-eca \
-	      ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
-	      ${CORE_IMAGE_EXTRA_INSTALL}"
+IMAGE_INSTALL = "\
+	packagegroup-eca \
+	${@base_contains('DISTRO_FEATURES', 'internet-of-things', 'packagegroup-iot', '', d)} \
+	${ROOTFS_PKGMANAGE_BOOTSTRAP} \
+	${CORE_IMAGE_EXTRA_INSTALL} \
+"
 
 EXTRA_IMAGE_FEATURES = "debug-tweaks package-management ssh-server-dropbear"
 EXTRA_IMAGEDEPENDS += "qemu-native qemu-helper-native"
