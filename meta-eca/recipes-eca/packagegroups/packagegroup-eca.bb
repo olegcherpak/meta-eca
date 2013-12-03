@@ -66,6 +66,7 @@ UTIL_PACKAGES="\
     macchanger \
     netcat-openbsd \
     python-scapy \
+    tzdata \
 "
 
 # Try to install as many wlan firmwares as possible
