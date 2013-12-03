@@ -67,6 +67,7 @@ UTIL_PACKAGES="\
     netcat-openbsd \
     python-scapy \
     tzdata \
+    bind-utils \
 "
 
 # Try to install as many wlan firmwares as possible
