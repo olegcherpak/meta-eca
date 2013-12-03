@@ -55,8 +55,10 @@ following steps:
    then you can set the DISTRO to "eca-bleeding"
 
 10. Mask out bluez4 as we want to use bluez5, set BBMASK in your local.conf file
+   also ignore ofono recipe as ECA has own one.
    BBMASK = "meta/recipes-connectivity/bluez/bluez4*|\
-   meta-openembedded/meta-systemd/oe-core/recipes-connectivity/bluez/bluez4*"
+   meta-openembedded/meta-systemd/oe-core/recipes-connectivity/bluez/bluez4*|\
+   meta-openembedded/meta-systemd/oe-core/recipes-connectivity/ofono/ofono*"
 
 11. Optional: In COREBASE/build/conf/local.conf file, you may uncomment
    BB_NUMBER_THREADS = "4" and PARALLEL_MAKE = "-j 4" if you build on a
