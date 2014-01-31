@@ -68,6 +68,8 @@ UTIL_PACKAGES="\
     python-scapy \
     tzdata \
     bind-utils \
+    usbutils \
+    wireless-tools \
 "
 
 # Try to install as many wlan firmwares as possible
