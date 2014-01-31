@@ -7,6 +7,9 @@ In order to include it in the image, just set this in your local.conf file.
 
 	DISTRO_FEATURES_append = " internet-of-things"
 
+and add meta-eca/meta-iot to your BBLAYERS in your bblayers.conf file.
+
+
 Note that during the build, the TheThingSystem steward needs Internet
 access to load node.js components. There might be issues with this
 loading if you are behind a proxy. If the steward installation does
