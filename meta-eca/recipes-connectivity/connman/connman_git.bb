@@ -1,7 +1,7 @@
 require recipes-connectivity/connman/connman.inc
 
 # We use a known good version instead of some buggy point version.
-SRCREV = "4da8143928cb299742c95cd424ca205b339e0860"
+SRCREV = "9e59cc847cddbd603bf99ed04e32226ddfe1d212"
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/network/connman/connman.git \
 	file://add_xuser_dbus_permission.patch \
