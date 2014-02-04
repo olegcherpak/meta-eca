@@ -73,10 +73,13 @@ do_install_append() {
 	# Setup the node.js environment
 	cd ${D}${THE_THING_SYSTEM}/steward
 
+	# There seems to be some issues (npm hanging) if you try to run
+	# install when behind the proxy. So we try to setup proxies for npm
+	# See README.iot file for details.
+	if [ -x ~/npm-setup-proxies ]; then ~/npm-setup-proxies; fi
+
 	# Some of the packages put -pthreads into ld params and ld does not
 	# understand it. So install packages using gcc as a linker.
-	# There seems to be some issues (npm hanging) if you try to run
-	# this when behind the proxy.
 	LD=${TARGET_PREFIX}gcc npm install --production -l ${TTS_ARCH}
 
 	# No need for static libraries

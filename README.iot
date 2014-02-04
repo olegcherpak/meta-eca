@@ -11,9 +11,13 @@ and add meta-eca/meta-iot to your BBLAYERS in your bblayers.conf file.
 
 
 Note that during the build, the TheThingSystem steward needs Internet
-access to load node.js components. There might be issues with this
-loading if you are behind a proxy. If the steward installation does
-not proceed, try to build the image using a direct Internet link.
+access to load node.js components.
+
+If you are behind a proxy, then you need a special hack to set the
+proxies for npm.
+	cp meta-eca/meta-iot/recipes-web/the-thing-system/steward/npm-setup-proxies.example ~/npm-setup-proxies
+	chmod 755 ~/npm-setup-proxies
+Edit ~/npm-setup-proxies and set your proxy settings there.
 
 You can connect to Steward UI at
 
