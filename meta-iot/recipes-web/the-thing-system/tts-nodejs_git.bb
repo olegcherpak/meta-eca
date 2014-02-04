@@ -1,13 +1,13 @@
 DESCRIPTION = "Node.js is a server-side JavaScript environment for TheThingSystem"
 LICENSE  = "MIT & BSD"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=c61ec54d119e218dbe45d9f69a421b5f"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=4a31e6c424761191227143b86f58a1ef"
 
 S	= "${WORKDIR}/git"
-SRCREV	= "597fa2921db63b57fc7367e156da226f8174271c"
-PV	= "0.10.x+git${SRCREV}"
+SRCREV	= "d7234c8d50a1af73f60d2d3c0cc7eed17429a481"
+PV	= "0.10.20"
 
 SRC_URI = "\
-	git://github.com/TheThingSystem/node.git \
+	git://github.com/TheThingSystem/node.git;branch=v0.10.20-release \
 "
 
 THE_THING_SYSTEM ?= "/opt/TheThingSystem"
@@ -18,6 +18,7 @@ DEPENDS = "openssl ninja-native"
 CCACHE = ""
 
 ARCHFLAGS_arm = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '--with-arm-float-abi=hard', '--with-arm-float-abi=softfp', d)}"
+ARCHFLAGS_genericx86 = "--dest-cpu=ia32"
 ARCHFLAGS ?= ""
 
 do_configure() {
