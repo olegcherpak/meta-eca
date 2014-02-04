@@ -30,3 +30,8 @@ Creating user and credentials can be done at
 Console raw data can be seen at
 
 	https://eca.local:8888/console.html
+
+Normally ECA management console would be found at port 80 but as the
+steward controls that, the ECA web UI can be found at
+
+	https://eca.local:8080
