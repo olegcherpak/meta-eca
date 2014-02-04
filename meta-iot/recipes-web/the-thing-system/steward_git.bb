@@ -41,10 +41,16 @@ FILES_${PN}-dbg += "\
 
 RDEPENDS_${PN} = "openssl tts-nodejs steward-init ruby"
 
+def get_arch(bb, d, flag):
+    val = (bb.data.getVar("MACHINEOVERRIDES", d) or "")
+    if val.find("genericx86") > 0:
+        return flag
+    else:
+        return ""
+
 # Always compile 32-bit in npm because many modules that npm
 # compiles do not support 64 bit in x86.
-TTS_ARCH_genericx86 = "--arch=i686"
-TTS_ARCH ?= ""
+TTS_ARCH := "${@get_arch(bb, d, '--arch=i686')}"
 
 do_install_append() {
 	install -d ${D}${THE_THING_SYSTEM}/steward
