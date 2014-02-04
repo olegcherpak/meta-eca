@@ -1,0 +1,15 @@
+Installation instructions for Galileo (clanton) device
+------------------------------------------------------
+
+Format a micro SD card with FAT32 (one partition is enough).
+Lets assume the micro SD is mounted at /media/BOOT.
+
+$ cd $BUILDDIR
+
+you should now be in Yocto build directory.
+
+$ cd tmp-eglibc/deploy/images/clanton
+$ cp -r boot /media/BOOT
+$ cp bzImage grub.efi /media/BOOT
+$ cp core-image-minimal-initramfs-clanton.cpio.gz rootfs.img /media/BOOT
+
