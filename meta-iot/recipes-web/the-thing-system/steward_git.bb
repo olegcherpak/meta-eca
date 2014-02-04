@@ -78,6 +78,9 @@ do_install_append() {
 	# See README.iot file for details.
 	if [ -x ~/npm-setup-proxies ]; then ~/npm-setup-proxies; fi
 
+	# Cleaning cache should help to some weird compilation errors
+	npm cache clean
+
 	# Some of the packages put -pthreads into ld params and ld does not
 	# understand it. So install packages using gcc as a linker.
 	LD=${TARGET_PREFIX}gcc npm install --production -l ${TTS_ARCH}
