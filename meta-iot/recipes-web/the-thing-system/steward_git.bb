@@ -57,9 +57,11 @@ do_install_append() {
 	install -d ${D}${systemd_unitdir}/system
 	install -m 0755 ${WORKDIR}/start-steward ${D}${THE_THING_SYSTEM}/steward
 
-        sed 's,@the_thing_system_dir@,${THE_THING_SYSTEM},g' < ${WORKDIR}/steward.service.in \
+        sed 's,@the_thing_system_dir@,${THE_THING_SYSTEM},g' \
+           < ${WORKDIR}/steward.service.in \
            > ${D}${systemd_unitdir}/system/steward.service
-        sed 's,@the_thing_system_dir@,${THE_THING_SYSTEM},g' < ${WORKDIR}/server.js.in \
+        sed 's,@the_thing_system_dir@,${THE_THING_SYSTEM},g' \
+           < ${WORKDIR}/server.js.in \
            > ${D}${THE_THING_SYSTEM}/steward/server.js
 
 	cp -pR ${S}/steward/* ${D}${THE_THING_SYSTEM}/steward/
