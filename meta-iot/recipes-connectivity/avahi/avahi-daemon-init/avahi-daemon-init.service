@@ -1,0 +1,12 @@
+[Unit]
+Description=Initialize avahi-daemon settings
+After=syslog.target
+Before=avahi-daemon.service
+
+[Service]
+Type=oneshot
+ExecStart=-/usr/bin/avahi-daemon-init-settings.sh
+StandardOutput=null
+
+[Install]
+WantedBy=steward.service
