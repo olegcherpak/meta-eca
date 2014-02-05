@@ -119,6 +119,7 @@ RDEPENDS_packagegroup-eca = "\
 SUMMARY_packagegroup-iot = "Internet of Things support"
 RDEPENDS_packagegroup-iot = "\
     ${THE_THING_SYSTEM} \
+    avahi-daemon-init \
 "
 
 RRECOMMENDS_${PN} = "\
