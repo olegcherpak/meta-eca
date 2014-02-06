@@ -1,5 +1,7 @@
 # TheThingSystem steward needs avahi compat headers
-EXTRA_OECONF += "--enable-compat-libdns_sd"
+EXTRA_OECONF += "\
+	--enable-compat-libdns_sd \
+"
 
 # node.js npm needs dns_sd.h but it's components do not search
 # the header from correct place
