@@ -14,3 +14,8 @@ EXTRA_OECONF += "\
     --disable-obex \
     --enable-client \
 "
+
+do_install_append() {
+	# gatttool is useful to have so add it to the bluez5 package
+	install -m 0755 ${S}/attrib/gatttool ${D}/${bindir}
+}
