@@ -12,7 +12,5 @@ PV = "5.x+git${SRCREV}"
 
 EXTRA_OECONF += "\
     --disable-obex \
-    --enable-pand \
-    --enable-dund \
     --enable-client \
 "
