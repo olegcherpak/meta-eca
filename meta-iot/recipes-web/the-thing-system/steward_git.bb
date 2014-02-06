@@ -17,7 +17,12 @@ PR = "r0"
 PV = "0.x+git${SRCREV}"
 
 DEPENDS = "tts-nodejs-native"
-DEPENDS_${PN} = "libdns-sd-dev libusb1"
+DEPENDS_${PN} = "\
+	libdns-sd-dev \
+	libpcap-dev \
+	libusb1 \
+	${@base_contains('DISTRO_FEATURES', 'systemd', 'systemd-dev', 'libudev-dev', d)} \
+"
 
 THE_THING_SYSTEM ?= "/opt/TheThingSystem"
 
@@ -41,16 +46,18 @@ FILES_${PN}-dbg += "\
 
 RDEPENDS_${PN} = "openssl tts-nodejs steward-init ruby"
 
-def get_arch(bb, d, flag):
+def get_arch(bb, d):
     val = (bb.data.getVar("MACHINEOVERRIDES", d) or "")
     if val.find("genericx86") > 0:
-        return flag
+        return "--arch=i686"
+    elif val.find("arm") > 0:
+        return "--arch=arm"
     else:
         return ""
 
 # Always compile 32-bit in npm because many modules that npm
 # compiles do not support 64 bit in x86.
-TTS_ARCH := "${@get_arch(bb, d, '--arch=i686')}"
+TTS_ARCH := "${@get_arch(bb, d)}"
 
 do_install_append() {
 	install -d ${D}${THE_THING_SYSTEM}/steward
