@@ -1,0 +1,86 @@
+Instructions for BeagleBoneBlack device
+---------------------------------------
+
+You might want to check from README.md file what poky and meta-oe
+revisions are supported. Usually HEAD version work ok but if it
+does not, then you can use the tested version mentioned in that file.
+
+$ mkdir yocto
+$ cd yocto
+$ git clone git://git.yoctoproject.org/poky
+$ cd poky
+$ git clone git://git.openembedded.org/meta-openembedded
+$ git clone git://git.yoctoproject.org/meta-eca
+$ export YOCTO=`pwd`
+$ git clone git://github.com/beagleboard/meta-beagleboard.git
+$ . oe-init-build-env build-bbb
+$ cd conf
+
+Edit bblayers.conf file and add these layers to BBLAYERS variable,
+if your name is not “user”, then fix the path accordingly.
+
+/home/user/yocto/poky/meta-eca/meta-eca
+/home/user/yocto/poky/meta-eca/meta-eca-bsp
+/home/user/yocto/poky/meta-beagleboard/common-bsp
+/home/user/yocto/poky/meta-openembedded/meta-oe
+/home/user/yocto/poky/meta-openembedded/meta-systemd
+/home/user/yocto/poky/meta-openembedded/meta-networking
+/home/user/yocto/poky/meta-openembedded/meta-ruby
+
+Edit local.conf file
+
+* set BB_NUMBER_THREADS and PARALLEL_MAKE accordingly to your machine
+  capabilities
+* set your target to MACHINE ?= "beaglebone"
+* set DISTRO ?= "eca"
+* add BBMASK = "meta/recipes-connectivity/bluez/bluez4*|meta-openembedded/meta-systemd/oe-core/recipes-connectivity/bluez/bluez4*"
+
+
+If you want to build the Internet-of-Things version of ECA, then add
+
+/home/user/yocto/poky/meta-eca/meta-iot
+
+to bblayers.conf and also add
+
+DISTRO_FEATURES_append = " internet-of-things"
+
+to local.conf file.
+
+
+Then build the distro
+
+$ cd $BUILDDIR
+$ bitbake eca-image
+
+If the build succeeds, the result image can be found at
+tmp-eglibc/deploy/images/beaglebone
+
+Partition and format an SD card:
+
+# fdisk -lu /dev/mmcblk0
+
+Disk /dev/mmcblk0: 3951 MB, 3951034368 bytes
+255 heads, 63 sectors/track, 480 cylinders, total 7716864 sectors
+Units = sectors of 1 * 512 = 512 bytes
+
+        Device Boot      Start         End      Blocks  Id System
+/dev/mmcblk0p1   *          63      144584       72261   c Win95 FAT32
+/dev/mmcblk0p2          144585      465884      160650  83 Linux
+
+# mkfs.vfat -F 16 -n "boot" /dev/mmcblk0p1
+# mke2fs -j -L "root" /dev/mmcblk0p2
+
+The following assumes the SD card partition 1 and 2 are mounted at
+/media/boot and /media/root respectively. Removing the card and reinserting
+it will do just that on most modern Linux desktop environments.
+
+$ sudo -s
+# cd tmp-eglibc/deploy/images/beaglebone
+# cp MLO /media/boot/
+# cp u-boot.img /media/boot/u-boot.bin
+# cp uImage /media/boot/
+# tar x -C /media/root -f eca-image-beaglebone.tar.gz
+# tar x -C /media/root -f modules-beaglebone.tgz
+# sync
+
+Then eject the SD card, insert it to your Beaglebone and boot.
