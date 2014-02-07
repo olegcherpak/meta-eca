@@ -11,7 +11,7 @@ SRC_URI = "\
 "
 
 #SRCREV_default_pn-steward = "${AUTOREV}"
-SRCREV = "08f4d4f0bcb55338e05e34894301c2ebc3ffc1d9"
+SRCREV = "6c3db578a7edf874e7c9c8dfcc730c734193c338"
 S = "${WORKDIR}/git"
 PR = "r0"
 PV = "0.x+git${SRCREV}"
@@ -42,6 +42,8 @@ FILES_${PN}-dbg += "\
 	${THE_THING_SYSTEM}/steward/*/*/*/*/*/.debug \
 	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/.debug \
 	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/.debug \
+	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/.debug \
+	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/*/.debug \
 "
 
 RDEPENDS_${PN} = "openssl tts-nodejs steward-init ruby"
