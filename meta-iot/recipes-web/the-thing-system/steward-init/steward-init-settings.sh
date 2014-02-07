@@ -39,6 +39,8 @@ node <<EOF
 require('x509-keygen').x509_keygen({ subject  : '/CN=steward'
                       , keyfile  : '${STEWARD_DIR}/db/server.key'
                       , certfile : '${STEWARD_DIR}/sandbox/server.crt'
+                      , sha1file : '${STEWARD_DIR}/sandbox/server.sha1'
+                      , alternates : [ 'DNS:' + require('os').hostname(), 'DNS:eca.local' ]
                       , destroy  : false }, function(err, data) {
   if (err) return console.log('keypair generation error: ' + err.message);
 
@@ -49,12 +51,10 @@ EOF
 if [ -f ${STEWARD_DIR}/db/server.key ]; then
     chmod 400 ${STEWARD_DIR}/db/server.key
     chmod 444 ${STEWARD_DIR}/sandbox/server.crt
-
-    openssl x509 -sha1 -in ${STEWARD_DIR}/sandbox/server.crt -noout \
-	-fingerprint > ${STEWARD_DIR}/sandbox/server.sha1
     chmod 444 ${STEWARD_DIR}/sandbox/server.sha1
 else
-    rm -f ${STEWARD_DIR}/db/server.key ${STEWARD_DIR}/sandbox/server.crt
+    rm -f ${STEWARD_DIR}/db/server.key ${STEWARD_DIR}/sandbox/server.crt \
+	${STEWARD_DIR}/sandbox/server.sha1
     echo "unable to create self-signed server certificate" 1>&2
     RET=1
 fi
