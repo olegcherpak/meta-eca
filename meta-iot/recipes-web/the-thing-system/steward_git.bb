@@ -50,6 +50,8 @@ def get_arch(bb, d):
     val = (bb.data.getVar("MACHINEOVERRIDES", d) or "")
     if val.find("genericx86") > 0:
         return "--arch=i686"
+    elif val.find("x86") > 0:
+        return "--arch=i686"
     elif val.find("arm") > 0:
         return "--arch=arm"
     else:
