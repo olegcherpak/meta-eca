@@ -17,7 +17,8 @@ DEPENDS = "openssl ninja-native"
 # v8 errors out if you have set CCACHE
 CCACHE = ""
 
-ARCHFLAGS_arm = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '--with-arm-float-abi=hard', '--with-arm-float-abi=softfp', d)}"
+ARCHFLAGS_arm = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard',\
+	       '--with-arm-float-abi=hard', '--with-arm-float-abi=softfp', d)}"
 ARCHFLAGS ?= ""
 
 do_configure() {
