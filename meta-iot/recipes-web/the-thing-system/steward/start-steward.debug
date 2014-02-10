@@ -1,0 +1,22 @@
+#!/bin/sh
+
+DIR=`dirname $0`
+
+if [ ! -f $DIR/server.js ]; then
+   echo "$0: Cannot find $DIR/server.js"
+   exit -1
+fi
+
+if [ -z "$THE_THING_SYSTEM" ]; then
+    THE_THING_SYSTEM=/opt/TheThingSystem
+    export THE_THING_SYSTEM
+fi
+
+if [ -z "$NODE_PATH" ]; then
+    NODE_PATH=${THE_THING_SYSTEM}/steward
+    export NODE_PATH
+fi
+
+cd $DIR
+DEBUG=hci-ble node $DIR/server.js $@
+exit $?

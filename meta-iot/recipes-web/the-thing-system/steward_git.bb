@@ -6,6 +6,7 @@ SRC_URI = "\
 	git://github.com/TheThingSystem/steward.git \
 	file://steward.service.in \
 	file://start-steward \
+	file://start-steward.debug \
 	file://server.js.in \
 	file://package.json \
 "
@@ -67,6 +68,7 @@ do_install_append() {
 	install -d ${D}${THE_THING_SYSTEM}/steward
 	install -d ${D}${systemd_unitdir}/system
 	install -m 0755 ${WORKDIR}/start-steward ${D}${THE_THING_SYSTEM}/steward
+	install -m 0755 ${WORKDIR}/start-steward.debug ${D}${THE_THING_SYSTEM}/steward
 
         sed 's,@the_thing_system_dir@,${THE_THING_SYSTEM},g' \
            < ${WORKDIR}/steward.service.in \
