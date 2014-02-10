@@ -12,10 +12,10 @@ SRC_URI = "\
 "
 
 #SRCREV_default_pn-steward = "${AUTOREV}"
-SRCREV = "6c3db578a7edf874e7c9c8dfcc730c734193c338"
+SRCREV = "9ca2c07b2d7b8e470b5cfe94d697449b5579af8f"
 S = "${WORKDIR}/git"
-PR = "r0"
-PV = "0.x+git${SRCREV}"
+PR = "r1"
+PV = "1.4+git${SRCREV}"
 
 DEPENDS = "tts-nodejs-native"
 DEPENDS_${PN} = "\
@@ -94,8 +94,11 @@ do_install_append() {
 	# Cleaning cache should help to some weird compilation errors
 	npm cache clean
 
-	# Some of the packages put -pthreads into ld params and ld does not
-	# understand it. So install packages using gcc as a linker.
+	# Do a fresh start
+	rm -rf node_modules
+
+	# Some of the node.js packages put -pthreads into ld params and ld
+	# does not understand it. So install packages using gcc as a linker.
 	LD=${TARGET_PREFIX}gcc npm install --production -l ${TTS_ARCH}
 
 	# No need for static libraries
