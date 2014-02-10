@@ -19,9 +19,17 @@ proxies for npm.
 	chmod 755 ~/npm-setup-proxies
 Edit ~/npm-setup-proxies and set your proxy settings there.
 
+If you see this python error while building steward
+
+	gyp ERR! stack KeyError: 'getpwuid(): uid not found: 1000'
+
+then one solution (really ugly and hackish one) is to add your uid to
+sysroot $BUILDDIR/tmp-eglibc/sysroots/genericx86/etc/passwd file.
+
+
 You can connect to Steward UI at
 
-	http://eca.local/
+	https://eca.local:8888/
 
 Creating user and credentials can be done at
 
