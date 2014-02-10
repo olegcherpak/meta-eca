@@ -26,6 +26,15 @@ If you see this python error while building steward
 then one solution (really ugly and hackish one) is to add your uid to
 sysroot $BUILDDIR/tmp-eglibc/sysroots/genericx86/etc/passwd file.
 
+If you see this error
+
+	log.do_install.16119:npm ERR! Error: shasum check failed for \
+	/home/user/tmp/npm-16155/1392027924404-0.427580259507522/tmp.tgz
+
+then just remove npm temp files like this
+
+	rm -rf ~/tmp/npm-*
+
 
 You can connect to Steward UI at
 
