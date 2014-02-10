@@ -22,6 +22,7 @@ DEPENDS_${PN} = "\
 	libdns-sd-dev \
 	libpcap-dev \
 	libusb1 \
+	libbluetooth-dev \
 	${@base_contains('DISTRO_FEATURES', 'systemd', 'systemd-dev', 'libudev-dev', d)} \
 "
 
