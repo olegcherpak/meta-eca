@@ -17,7 +17,7 @@ $ . oe-init-build-env build-rpi
 $ cd conf
 
 Edit bblayers.conf file and add these layers to BBLAYERS variable,
-if your name is not “user”, then fix the path accordingly.
+if your name is not "user", then fix the path accordingly.
 
 /home/user/yocto/poky/meta-eca/meta-eca
 /home/user/yocto/poky/meta-eca/meta-eca-bsp
