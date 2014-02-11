@@ -1,0 +1,65 @@
+Instructions for Intel FRI2
+---------------------------
+
+You might want to check from README.md file what poky and meta-oe
+revisions are supported. Usually HEAD version work ok but if it
+does not, then you can use the tested version mentioned in that file.
+
+$ mkdir yocto
+$ cd yocto
+$ git clone git://git.yoctoproject.org/poky
+$ cd poky
+$ git clone git://git.openembedded.org/meta-openembedded
+$ git clone git://git.yoctoproject.org/meta-eca
+$ export YOCTO=`pwd`
+$ git clone git://git.yoctoproject.org/meta-intel
+$ . oe-init-build-env build-fri2
+$ cd conf
+
+Edit bblayers.conf file and add these layers to BBLAYERS variable,
+if your name is not "user", then fix the path accordingly.
+
+/home/user/yocto/poky/meta-eca/meta-eca
+/home/user/yocto/poky/meta-eca/meta-eca-bsp
+/home/user/yocto/poky/meta-intel
+/home/user/yocto/poky/meta-intel/meta-fri2
+/home/user/yocto/poky/meta-openembedded/meta-oe
+/home/user/yocto/poky/meta-openembedded/meta-systemd
+/home/user/yocto/poky/meta-openembedded/meta-networking
+/home/user/yocto/poky/meta-openembedded/meta-ruby
+
+Edit local.conf file
+
+* set BB_NUMBER_THREADS and PARALLEL_MAKE accordingly to your machine
+  capabilities
+* set your target to MACHINE ?= "fri2-noemgd"
+* set DISTRO ?= "eca"
+* add BBMASK = "meta/recipes-connectivity/bluez/bluez4*|meta-openembedded/meta-systemd/oe-core/recipes-connectivity/bluez/bluez4*"
+
+
+If you want to build the Internet-of-Things version of ECA, then add
+
+/home/user/yocto/poky/meta-eca/meta-iot
+
+to bblayers.conf and also add
+
+DISTRO_FEATURES_append = " internet-of-things"
+
+to local.conf file.
+
+
+Then build the distro
+
+$ cd $BUILDDIR
+$ bitbake eca-image
+
+If the build succeeds, the result image can be found at
+tmp-eglibc/deploy/images/fri2-noemgd
+
+Insert USB mass storage stick and figure out its device name (use dmesg
+and see messages at the end). Lets assume the USB stick is at /dev/sdX
+
+$ cd tmp-eglibc/deploy/images/fri2-noemgd
+$ sudo dd if=eca-image-fri2-noemgd.hddimg of=/dev/sdX
+
+Then eject the USB stick, insert it to FRI2 device and boot.
