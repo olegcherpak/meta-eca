@@ -1,6 +1,6 @@
 require recipes-connectivity/bluez5/bluez5.inc
 
-SRCREV = "4a9ce2ed68f0b8e2904ade4e5e376c0ad8570556"
+SRCREV = "e94fc26ea2e57b139ed2dbe0f5cd2e86d6b91b1f"
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/bluetooth/bluez.git \
 	file://bluetooth.conf \
