@@ -52,7 +52,7 @@
     , "robosmart"               : "0.1.1"
     , "roku"                    : "0.2.0"
     , "samsung-airconditioner"  : "git://github.com/TheThingSystem/node-samsung-airconditioner.git"
-    , "sensortag"               : "0.1.1"
+    , "sensortag"		: "git://github.com/sandeepmistry/node-sensortag.git"
     , "serialport"              : "~1.1.0"
     , "soap"                    : "0.2.7"
     , "sonos"                   : "git://github.com/TheThingSystem/node-sonos.git"
