@@ -98,6 +98,11 @@ do_install_append() {
 	# Do a fresh start
 	rm -rf node_modules
 
+	# Telling npm to use known registrars will prevent this error
+	#   | npm ERR! Error: SSL Error: SELF_SIGNED_CERT_IN_CHAIN
+	# when running npm
+	npm config set ca ""
+
 	# Some of the node.js packages put -pthreads into ld params and ld
 	# does not understand it. So install packages using gcc as a linker.
 	LD=${TARGET_PREFIX}gcc npm install --production -l ${TTS_ARCH}
