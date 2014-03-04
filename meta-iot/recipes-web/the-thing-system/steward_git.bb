@@ -12,10 +12,10 @@ SRC_URI = "\
 "
 
 #SRCREV_default_pn-steward = "${AUTOREV}"
-SRCREV = "9ca2c07b2d7b8e470b5cfe94d697449b5579af8f"
+SRCREV = "311f48529d07ceefafd29ede9da5beeb54312f34"
 S = "${WORKDIR}/git"
 PR = "r1"
-PV = "1.4+git${SRCREV}"
+PV = "1.5+git${SRCREV}"
 
 DEPENDS = "tts-nodejs-native"
 DEPENDS_${PN} = "\
