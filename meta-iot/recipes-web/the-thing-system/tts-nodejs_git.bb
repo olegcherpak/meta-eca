@@ -3,11 +3,11 @@ LICENSE  = "MIT & BSD"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=4a31e6c424761191227143b86f58a1ef"
 
 S	= "${WORKDIR}/git"
-SRCREV	= "cbff8f091c22fb1df6b238c7a1b9145db950fa65"
-PV	= "0.10.22"
+SRCREV	= "cc56c62ed879ad4f93b1fdab3235c43e60f48b7e"
+PV	= "0.10.26"
 
 SRC_URI = "\
-	git://github.com/joyent/node.git;branch=v0.10.22-release \
+	git://github.com/joyent/node.git;branch=v0.10.26-release \
 "
 
 THE_THING_SYSTEM ?= "/opt/TheThingSystem"
