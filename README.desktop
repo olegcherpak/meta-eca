@@ -1,0 +1,17 @@
+ECA with graphics
+-----------------
+
+For demo purposes it might be useful to have a configuration
+that is able to use browser in localhost.
+
+Get the browser layer from git://github.com/OSSystems/meta-browser.git
+
+Set following things in local.conf file:
+
+DISTRO = "eca-graphics"
+
+
+and these things in bblayers.conf:
+
+  /home/user/yocto/poky/meta-openembedded/meta-gnome
+  /home/user/yocto/poky/meta-browser
