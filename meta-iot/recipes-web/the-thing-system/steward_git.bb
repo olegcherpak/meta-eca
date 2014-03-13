@@ -14,7 +14,7 @@ SRC_URI = "\
 #SRCREV_default_pn-steward = "${AUTOREV}"
 SRCREV = "311f48529d07ceefafd29ede9da5beeb54312f34"
 S = "${WORKDIR}/git"
-PR = "r1"
+PR = "r2"
 PV = "1.5+git${SRCREV}"
 
 DEPENDS = "tts-nodejs-native"
