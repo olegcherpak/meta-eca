@@ -66,6 +66,14 @@ def get_arch(bb, d):
 TTS_ARCH := "${@get_arch(bb, d)}"
 
 do_install_append() {
+	# Some python issue prevents installation if the current
+	# user id is not in sysroots /etc/passwd file. So add user
+	# information there (this is actually quite ugly hack)
+	# See http://bugs.python.org/issue10496 for details.
+	PASSLINE=`grep \`echo ${HOME}|cut -d / -f 3\` /etc/passwd`; \
+	grep "'${PASSLINE}'" ${PKG_CONFIG_SYSROOT_DIR}/etc/passwd || \
+	echo "${PASSLINE}" >> ${PKG_CONFIG_SYSROOT_DIR}/etc/passwd
+
 	install -d ${D}${THE_THING_SYSTEM}/steward
 	install -d ${D}${systemd_unitdir}/system
 	install -m 0755 ${WORKDIR}/start-steward ${D}${THE_THING_SYSTEM}/steward
