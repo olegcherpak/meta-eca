@@ -16,7 +16,7 @@ SRC_URI += "\
 
 S = "${WORKDIR}/git"
 PR = "${INC_PR}.0"
-PV = "1.x+git${SRCREV}"
+PV = "1.x+git${SRCPV}"
 
 
 # Override some options from poky connman recipe

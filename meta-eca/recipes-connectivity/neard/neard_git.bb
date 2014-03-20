@@ -6,7 +6,7 @@ SRC_URI  = "git://git.kernel.org/pub/scm/network/nfc/neard.git;protocol=git \
 
 S      = "${WORKDIR}/git"
 SRCREV = "df2467cdc815bcb879c32cc844d1ff8d3b15eb8f"
-PV     = "0.x+git${SRCREV}"
+PV     = "0.x+git${SRCPV}"
 PR     = "r1"
 
 

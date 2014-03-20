@@ -8,7 +8,7 @@ SRC_URI = "\
 "
 
 S = "${WORKDIR}/git"
-PV = "5.x+git${SRCREV}"
+PV = "5.x+git${SRCPV}"
 
 EXTRA_OECONF += "\
     --disable-obex \
