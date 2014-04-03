@@ -1,10 +1,11 @@
 { "name"                      : "node-steward"
   , "readmeFilename"            : "README.md"
-  , "version"                   : "0.0.1"
+  , "version"                   : "1.5.1"
   , "private"                   : true
   , "engines"                   :
     { "node"                    : ">=0.10.22"
     }
+  , "license"                   : "MIT"
   , "dependencies"              :
     { "MD5"                     : "1.0.3"
     , "aerogel"                 : "git://github.com/TheThingSystem/aerogel.git"
@@ -24,9 +25,11 @@
     , "flower-power-cloud"      : "0.2.0"
     , "geocoder"                : "0.1.0"
     , "greenwave-gop"           : "0.0.2"
+    , "grovestreams-api"        : "0.2.3"
     , "irobot"                  : "git://github.com/TheThingSystem/irobot.git"
     , "json-stringify-safe"     : "4.0.0"
     , "koubachi"                : "0.0.4"
+    , "lifx"                    : "git://github.com/TheThingSystem/lifxjs.git"
     , "line-reader"             : "0.2.3"
     , "lockitron-api"           : "0.3.1"
     , "longjohn"                : "0.2.0"
@@ -37,6 +40,7 @@
     , "netmask"                 : "1.0.4"
     , "noble"                   : "git://github.com/jukkar/noble.git"
     , "node-blink1"             : "0.1.0"
+    , "node-cassandra-cql"      : "git://github.com/TheThingSystem/node-cassandra-cql.git"
     , "node-dweetio"            : "0.0.8"
     , "node-hid"                : "0.2.3"
     , "node-lsof"               : "git://github.com/TheThingSystem/node-lsof.git"
@@ -51,7 +55,8 @@
     , "openzwave"               : "0.0.32"
     , "pcap"                    : "git://github.com/TheThingSystem/node_pcap.git"
     , "pkginfo"                 : "0.3.0"
-    , "pixelpusher"             : "0.1.0"
+    , "pixelpusher"             : "0.1.1"
+    , "polyline-encoded"        : "0.0.4"
     , "portfinder"              : "0.2.1"
     , "rfxcom"                  : "git://github.com/TheThingSystem/node-rfxcom.git"
     , "robosmart"               : "0.1.1"
@@ -67,7 +72,6 @@
     , "stack-trace"             : "0.0.6"
     , "suncalc"                 : "1.2.1"
     , "teslams"                 : "0.8.6"
-    , "tinycolor2"              : "0.9"
     , "underscore"              : "1.5.1"
     , "unofficial-nest-api"     : "git://github.com/TheThingSystem/unofficial_nodejs_nest.git"
     , "validator"               : "1.1.3"
@@ -81,6 +85,6 @@
     , "xmldom"		        : "0.1.x"
     , "xmlhttprequest"          : "git://github.com/TheThingSystem/node-XMLHttpRequest.git"
     , "yoctolib"                : "git://github.com/TheThingSystem/yoctolib_nodejs.git"
-    , "yql"                     : "0.4.8"
+    , "yql"                     : "git://github.com/TheThingSystem/node-yql.git"
     }
 }

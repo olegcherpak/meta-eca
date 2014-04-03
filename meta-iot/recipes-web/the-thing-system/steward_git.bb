@@ -11,10 +11,10 @@ SRC_URI = "\
 	file://package.json \
 "
 
-SRCREV = "311f48529d07ceefafd29ede9da5beeb54312f34"
+SRCREV = "bbc9e0c9aec8f3087e67f2093f7884340644e4c1"
 S = "${WORKDIR}/git"
-PR = "r2"
-PV = "1.5+git${SRCPV}"
+PR = "r4"
+PV = "1.6+git${SRCPV}"
 
 DEPENDS = "tts-nodejs-native"
 DEPENDS_${PN} = "\
