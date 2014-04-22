@@ -1,8 +1,8 @@
 require recipes-connectivity/ofono/ofono.inc
 
 S	= "${WORKDIR}/git"
-SRCREV	= "c54e4763f8f4f6239a778994cf68f077ad2b170d"
-PV	= "1.x+git${SRCPV}"
+SRCREV	= "516165c3114471400b4551ff9b04ff9ca7c1fc25"
+PV	= "1.14+git${SRCPV}"
 
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/network/ofono/ofono.git;protocol=git \
@@ -13,3 +13,5 @@ SRC_URI = "\
 DEPENDS := "${@oe_filter_out('bluez4', '${DEPENDS}', d)}"
 DEPENDS += "${@base_contains('DISTRO_FEATURES', 'bluetooth','bluez5', '', d)}"
 
+# Test scripts use python3
+RDEPENDS_${PN} = "python3"

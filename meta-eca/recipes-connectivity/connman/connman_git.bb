@@ -1,10 +1,13 @@
 require recipes-connectivity/connman/connman.inc
 
 # We use a known good version instead of some buggy point version.
-SRCREV = "97c31890592867cc047154bc385d97620c3bb2f0"
+SRCREV = "f5a441e9d636eefd98335322e79e71ca7e4f55cc"
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/network/connman/connman.git \
 	file://add_xuser_dbus_permission.patch \
+"
+LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e \
+                    file://src/main.c;beginline=1;endline=20;md5=486a279a6ab0c8d152bcda3a5b5edc36 \
 "
 
 # Enable debugging the easy way in systemd based distro.
@@ -16,7 +19,7 @@ SRC_URI += "\
 
 S = "${WORKDIR}/git"
 PR = "${INC_PR}.0"
-PV = "1.x+git${SRCPV}"
+PV = "1.23+git${SRCPV}"
 
 
 # Override some options from poky connman recipe
