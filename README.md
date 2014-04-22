@@ -12,11 +12,11 @@ Layer Dependencies
 
 URI: git://git.yoctoproject.org/poky
 branch: master
-revision: 54562006c1327c5b99daa4cc05a3ba7e38412da1
+revision: 57e8d56a6b63942b616a1e6dd894fd4ea7b409cf
 
 URI: git://git.openembedded.org/meta-openembedded
 branch: master
-revision: 3c5bd3a077d04c140d774d258ac9f2652dda2669
+revision: 0f56bc4e2818a051a511ceb48596cbfa2f51ff3d
 
 Using the above git sha's and master revisions, bitbaking eca-image is
 known to work. Using head versions should work also just fine.
