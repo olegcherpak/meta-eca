@@ -13,7 +13,7 @@ SRC_URI = "\
 
 SRCREV = "bbc9e0c9aec8f3087e67f2093f7884340644e4c1"
 S = "${WORKDIR}/git"
-PR = "r4"
+PR = "r6"
 PV = "1.6+git${SRCPV}"
 
 DEPENDS = "tts-nodejs-native"
