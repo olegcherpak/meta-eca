@@ -15,4 +15,3 @@ do_compile_prepend() {
     cp ${STAGING_LIBDIR}/libltdl* ${S}/libltdl
 }
 
-PACKAGECONFIG[bluez] = "--enable-bluetooth, --disable-bluetooth, bluez5"
