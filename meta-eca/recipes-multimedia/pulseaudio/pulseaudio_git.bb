@@ -1,14 +1,20 @@
-# Recipe for Pulseaudio 4.0 that uses bluez5
+# Recipe for Pulseaudio that uses bluez5
+
+PACKAGECONFIG = "${@base_contains('DISTRO_FEATURES', 'bluetooth', 'bluez5', '', d)} \
+                   ${@base_contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)} \
+                   ${@base_contains('DISTRO_FEATURES', 'zeroconf', 'avahi', '', d)} \
+                   ${@base_contains('DISTRO_FEATURES', 'x11', 'x11', '', d)}"
 
 require recipes-multimedia/pulseaudio/pulseaudio.inc
 
-PV="4.0"
+PV="5.0"
 
 SRC_URI = "http://freedesktop.org/software/pulseaudio/releases/pulseaudio-${PV}.tar.xz \
+           file://0001-configure.ac-Check-only-for-libsystemd-not-libsystem.patch \
            file://volatiles.04_pulse"
 
-SRC_URI[md5sum] = "591f211db2790a7e4d222f2dc6858db3"
-SRC_URI[sha256sum] = "35ceb36bb1822fe54f0b5e4863b4f486769fdfb8ff2111f01fd8778928f9cdae"
+SRC_URI[md5sum] = "c43749838612f4860465e83ed62ca38e"
+SRC_URI[sha256sum] = "99c13a8b1249ddbd724f195579df79484e9af6418cecf6a15f003a7f36caf939"
 
 do_compile_prepend() {
     mkdir -p ${S}/libltdl
