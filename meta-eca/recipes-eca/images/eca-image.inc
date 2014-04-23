@@ -1,6 +1,7 @@
 IMAGE_INSTALL = "\
 	packagegroup-eca \
 	${@base_contains('DISTRO_FEATURES', 'internet-of-things', 'packagegroup-iot', '', d)} \
+	${@base_contains('DISTRO_FEATURES', 'desktop', 'packagegroup-eca-desktop', '', d)} \
 	${ROOTFS_PKGMANAGE_BOOTSTRAP} \
 	${CORE_IMAGE_EXTRA_INSTALL} \
 "
