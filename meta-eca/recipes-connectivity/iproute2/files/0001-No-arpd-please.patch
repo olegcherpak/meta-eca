@@ -1,0 +1,28 @@
+From 9ff7e5aefcb72bc0c481dc777f6a50ef7503d640 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Tue, 6 May 2014 12:51:09 +0300
+Subject: [PATCH] No arpd please
+
+Upstream-Status: Inappropriate [configuration]
+
+Signed-off-by: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+---
+ misc/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/misc/Makefile b/misc/Makefile
+index a59ff87..d0a33e8 100644
+--- a/misc/Makefile
++++ b/misc/Makefile
+@@ -1,7 +1,7 @@
+ SSOBJ=ss.o ssfilter.o
+ LNSTATOBJ=lnstat.o lnstat_util.o
+ 
+-TARGETS=ss nstat ifstat rtacct arpd lnstat
++TARGETS=ss nstat ifstat rtacct lnstat
+ 
+ include ../Config
+ 
+-- 
+1.8.3.1
+
