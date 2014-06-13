@@ -5,9 +5,9 @@ SRC_URI  = "git://git.kernel.org/pub/scm/network/nfc/neard.git;protocol=git \
 	"
 
 S      = "${WORKDIR}/git"
-SRCREV = "647f2705bebf051ea85ab74399461203c8ba900e"
+SRCREV = "2b7240569750ab5a2282c80d4a34ea001ffc17dc"
 PV     = "0.14+git${SRCPV}"
-PR     = "r2"
+PR     = "r3"
 
 
 EXTRA_OECONF += "--enable-tools \
