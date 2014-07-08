@@ -1,6 +1,6 @@
 require recipes-connectivity/bluez5/bluez5.inc
 
-SRCREV = "95f338a7fa8807c196ffa37c82b201ba4b987c3d"
+SRCREV = "f3cf06f3034be2267c363c94d1e2ee77f8310e23"
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/bluetooth/bluez.git \
 	file://bluetooth.conf \
@@ -8,7 +8,7 @@ SRC_URI = "\
 "
 
 S = "${WORKDIR}/git"
-PV = "5.19+git${SRCPV}"
+PV = "5.21+git${SRCPV}"
 
 EXTRA_OECONF += "\
     --disable-obex \
