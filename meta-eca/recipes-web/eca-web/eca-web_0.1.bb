@@ -37,7 +37,7 @@ FILES_${PN} = " \
 	    ${systemd_unitdir}/system/${PN}.service \
 "
 
-RDEPENDS_${PN} = "webpy"
+RDEPENDS_${PN} = "webpy python-shell python-io"
 
 do_install_append() {
 	install -d ${D}${systemd_unitdir}/system
