@@ -70,6 +70,7 @@ UTIL_PACKAGES="\
     bind-utils \
     usbutils \
     wireless-tools \
+    ethtool \
 "
 
 # Try to install as many wlan firmwares as possible
