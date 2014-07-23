@@ -1,0 +1,28 @@
+From b78a1dd8d79d795e2e1040842ce810253b661c2c Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Wed, 23 Jul 2014 10:49:34 +0300
+Subject: [PATCH 4/6] kernel: Disable pppoe
+
+PPPoE is not supported by ConnMan so no need to autoload this module.
+---
+ meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend b/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend
+index a0e468e..f4f2840 100644
+--- a/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend
++++ b/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend
+@@ -7,8 +7,8 @@ KERNEL_MODULE_PROBECONF += "g_acm_ms"
+ module_conf_g_acm_ms = "options g_acm_ms file=/dev/mmcblk0p1 removable=1 idVendor=0x8086 idProduct=0xDEAD"
+ 
+ # PPP module autoload
+-KERNEL_MODULE_AUTOLOAD += "pppox"
+-KERNEL_MODULE_AUTOLOAD += "pppoe"
++#KERNEL_MODULE_AUTOLOAD += "pppox"
++#KERNEL_MODULE_AUTOLOAD += "pppoe"
+ 
+ # find defconfig path
+ FILESEXTRAPATHS := "${THISDIR}/${PN}/:${THISDIR}/${PN}/iot-devkit/"
+-- 
+1.8.3.1
+

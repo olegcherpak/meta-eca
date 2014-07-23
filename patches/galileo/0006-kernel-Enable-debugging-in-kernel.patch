@@ -1,0 +1,31 @@
+From 0dc06a14945c06085f606faf67625fe1c29a18c2 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Wed, 23 Jul 2014 10:51:54 +0300
+Subject: [PATCH 6/6] kernel: Enable debugging in kernel
+
+---
+ meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark/debugging.cfg | 2 ++
+ meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend  | 1 +
+ 2 files changed, 3 insertions(+)
+ create mode 100644 meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark/debugging.cfg
+
+diff --git a/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark/debugging.cfg b/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark/debugging.cfg
+new file mode 100644
+index 0000000..2124237
+--- /dev/null
++++ b/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark/debugging.cfg
+@@ -0,0 +1,2 @@
++CONFIG_PRINTK_TIME=y
++CONFIG_DYNAMIC_DEBUG=y
+diff --git a/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend b/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend
+index e5e58d1..661dbc3 100644
+--- a/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend
++++ b/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark_3.8.bbappend
+@@ -45,3 +45,4 @@ SRC_URI += "file://netfilter_redirect.cfg"
+ SRC_URI += "file://ppp.cfg"
+ SRC_URI += "file://ftdi_sio.cfg"
+ SRC_URI += "file://usb_serial.cfg"
++SRC_URI += "file://debugging.cfg"
+-- 
+1.8.3.1
+

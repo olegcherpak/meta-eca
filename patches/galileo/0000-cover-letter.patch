@@ -1,0 +1,40 @@
+From 0dc06a14945c06085f606faf67625fe1c29a18c2 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Wed, 23 Jul 2014 11:12:32 +0300
+Subject: [PATCH 0/6] Use meta-intel-iot-devkit daisy-1.6.1 branch with latest meta and meta-oe
+
+Currently the devkit-daisy-1.6.1 branch in meta-intel-iot-devkit
+contains latest and greatest of the iot-devkit. See the sources at
+http://git.yoctoproject.org/cgit/cgit.cgi/meta-intel-iot-devkit/
+
+Unfortunately I want to use the latest of meta and meta-oe so some
+patches are needed for the devkit-daisy-1.6.1 branch
+
+Install these patches on top of devkit-daisy-1.6.1 branch.
+See also README.quark file in meta-eca sources for more details.
+
+Cheers,
+Jukka
+
+
+Jukka Rissanen (6):
+  libgcrypt: Use any libgcrypt version
+  kernel: Path to config fragments was missing
+  kernel: Use KERNEL_MODULE_AUTOLOAD
+  kernel: Disable pppoe
+  kernel: Autoload g_ether
+  kernel: Enable debugging in kernel
+
+ .../linux/linux-yocto-quark/debugging.cfg          |  2 ++
+ .../linux/linux-yocto-quark_3.8.bbappend           | 17 ++++++++-----
+ .../recipes-kernel/linux/linux-yocto-quark_3.8.bb  | 29 +++++++++++-----------
+ .../recipes-support/libgcrypt/libgcrypt_%.bbappend |  2 ++
+ .../libgcrypt/libgcrypt_1.5.3.bbappend             |  2 --
+ 5 files changed, 29 insertions(+), 23 deletions(-)
+ create mode 100644 meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark/debugging.cfg
+ create mode 100644 meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_%.bbappend
+ delete mode 100644 meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_1.5.3.bbappend
+
+-- 
+1.8.3.1
+

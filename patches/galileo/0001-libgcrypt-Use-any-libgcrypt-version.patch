@@ -1,0 +1,33 @@
+From a712249e45f7b5fba3eb9b8d3b28ba94d8434033 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Wed, 23 Jul 2014 10:40:43 +0300
+Subject: [PATCH 1/6] libgcrypt: Use any libgcrypt version
+
+This way we do not need to change the .bbappend file constantly
+when new .bb file is used.
+---
+ meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_%.bbappend     | 2 ++
+ meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_1.5.3.bbappend | 2 --
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+ create mode 100644 meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_%.bbappend
+ delete mode 100644 meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_1.5.3.bbappend
+
+diff --git a/meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_%.bbappend b/meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_%.bbappend
+new file mode 100644
+index 0000000..c868a65
+--- /dev/null
++++ b/meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_%.bbappend
+@@ -0,0 +1,2 @@
++EXTRA_OECONF += " --disable-aesni-support \
++                  --disable-padlock-support"
+diff --git a/meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_1.5.3.bbappend b/meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_1.5.3.bbappend
+deleted file mode 100644
+index c868a65..0000000
+--- a/meta-quark-bsp/recipes-support/libgcrypt/libgcrypt_1.5.3.bbappend
++++ /dev/null
+@@ -1,2 +0,0 @@
+-EXTRA_OECONF += " --disable-aesni-support \
+-                  --disable-padlock-support"
+-- 
+1.8.3.1
+
