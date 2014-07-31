@@ -4,7 +4,7 @@ DESCRIPTION = "Initializes Avahi daemon service."
 LICENSE  = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.avahi-daemon-init;md5=2fe93140f8c4e56b56fbcd64730767a4"
 
-FILESEXTRAPATHS := "${THISDIR}/${PN}"
+FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 SRC_URI = "\
 	file://avahi-daemon-init-settings.sh \
 	file://avahi-daemon-init.service \

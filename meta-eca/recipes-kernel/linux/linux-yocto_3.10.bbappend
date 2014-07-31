@@ -1,5 +1,5 @@
 # find defconfig path
-FILESEXTRAPATHS := "${THISDIR}/${PN}"
+FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 
 SRC_URI += " \
 	file://wlan-atheros.cfg \
