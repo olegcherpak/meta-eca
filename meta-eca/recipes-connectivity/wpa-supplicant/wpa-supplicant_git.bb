@@ -1,12 +1,11 @@
 require wpa-supplicant.inc
 
 # For P2P support we want to use a version from git
-SRCREV = "6d00ab04302df257cb3092b2b31b4eac42e77569"
+SRCREV = "1c2aa04c96626f5b000d167bb5274a8c39b7dac2"
 SRC_URI = "\
 	git://w1.fi/srv/git/hostap.git \
 	file://defconfig-gnutls \
 	file://fix-libnl3-host-contamination.patch \
-	file://p2p-dbus-group-finished-support.patch \
 "
 
 S = "${WORKDIR}/git"
