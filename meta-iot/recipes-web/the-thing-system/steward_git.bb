@@ -11,7 +11,7 @@ SRC_URI = "\
 	file://package.json \
 "
 
-SRCREV = "d8248b1a048dcba69bd4f5f7e2d4c7cef3ec9db2"
+SRCREV = "cbf0dfa5334b21855e728a8a6b3a15ec17d66a69"
 S = "${WORKDIR}/git"
 PR = "r10"
 PV = "1.9+git${SRCPV}"
