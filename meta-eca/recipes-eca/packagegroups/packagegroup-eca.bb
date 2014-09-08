@@ -46,6 +46,7 @@ OFONO_PACKAGES="\
 UI_PACKAGES="\
     webpy \
     eca-web \
+    connman-ncurses \
 "
 
 UTIL_PACKAGES="\
