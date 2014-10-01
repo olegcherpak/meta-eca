@@ -72,6 +72,7 @@ UTIL_PACKAGES="\
     usbutils \
     wireless-tools \
     ethtool \
+    omping \
 "
 
 # Try to install as many wlan firmwares as possible
