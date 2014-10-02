@@ -1,7 +1,7 @@
 require wpa-supplicant.inc
 
 # For P2P support we want to use a version from git
-SRCREV = "1c2aa04c96626f5b000d167bb5274a8c39b7dac2"
+SRCREV = "b5db69197a7f16a373a067c1800e8a418043d88e"
 SRC_URI = "\
 	git://w1.fi/srv/git/hostap.git \
 	file://defconfig-gnutls \
@@ -9,7 +9,7 @@ SRC_URI = "\
 "
 
 S = "${WORKDIR}/git"
-PR = "r1"
+PR = "r2"
 PV = "2.2+git${SRCPV}"
 
 do_configure_append () {
