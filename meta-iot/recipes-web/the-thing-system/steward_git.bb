@@ -22,6 +22,10 @@ DEPENDS_${PN} = "\
 	libpcap-dev \
 	libusb1 \
 	libbluetooth-dev \
+	libpcap \
+	libusb1 \
+	bluez5 \
+	avahi \
 	${@base_contains('DISTRO_FEATURES', 'systemd', 'systemd-dev', 'libudev-dev', d)} \
 "
 
