@@ -1,0 +1,16 @@
+If you need serial port console access, then following
+settings are useful. Add them to local.conf file.
+Note that these are only applicaple if you are using
+syslinux as your boot loader.
+
+<--snip-->
+
+# This setting ensures that:
+# 1) all kernel output is redirected to the serial console
+# 2) the kernel output is logged to the text console
+SYSLINUX_DEFAULT_CONSOLE = "console=ttyS0 console=tty0"
+
+# Enforce kernel to print all kernel messages to the console
+SYSLINUX_KERNEL_ARGS = "ignore_loglevel"
+
+<--snip-->
