@@ -72,6 +72,7 @@ UTIL_PACKAGES="\
     wireless-tools \
     ethtool \
     omping \
+    trace-cmd \
 "
 
 # Try to install as many wlan firmwares as possible
