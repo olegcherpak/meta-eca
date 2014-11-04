@@ -101,7 +101,6 @@ RDEPENDS_packagegroup-eca = "\
     initscripts \
     systemd-compat-units \
     kernel-modules \
-    eglibc \
     linux-firmware \
     \
     ${BLUEZ_PACKAGES} \
