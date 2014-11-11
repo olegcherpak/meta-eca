@@ -51,7 +51,6 @@ UI_PACKAGES="\
 UTIL_PACKAGES="\
     curl \
     less \
-    avahi \
     avahi-daemon \
     iproute2 \
     tcpdump \
