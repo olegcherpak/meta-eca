@@ -1,21 +1,30 @@
 Installation instructions for Galileo (quark) device
 ----------------------------------------------------
 
-You might want to check from README.md file what poky and meta-oe
-revisions are supported. Usually HEAD version work ok but if it
-does not, then you can use the tested version mentioned in that file.
+At the moment, the meta-eca with Galileo device has
+been tested with Yocto daisy release.
 
 $ mkdir yocto
 $ cd yocto
 $ git clone git://git.yoctoproject.org/poky
 $ cd poky
 $ export YOCTO=`pwd`
+$ git checkout -b daisy origin/daisy
 $ git clone git://git.openembedded.org/meta-openembedded
+$ cd meta-openembedded
+$ git checkout -b daisy origin/daisy
+$ cd ..
 $ git clone git://git.yoctoproject.org/meta-eca
+$ cd meta-eca
+$ git checkout -b daisy origin/daisy
+$ cd ..
 $ git clone git://git.yoctoproject.org/meta-intel
+$ cd meta-intel
+$ git checkout -b daisy origin/daisy
+$ cd ..
 $ git clone git://git.yoctoproject.org/meta-intel-iot-devkit
 $ cd meta-intel-iot-devkit
-$ git checkout -b devkit-daisy-1.6.1 origin/devkit-daisy-1.6.1
+$ git checkout -b devkit-daisy origin/devkit-daisy
 $ cd $YOCTO
 $ . oe-init-build-env build-galileo
 $ cd conf
@@ -51,16 +60,6 @@ to bblayers.conf and also add
 DISTRO_FEATURES_append = " internet-of-things"
 
 to local.conf file.
-
-
-Note that this version uses devkit-daisy-1.6.1 branch as only that
-contains working recipes when these instructions were written (23 Jul 2014).
-You need to apply patches from meta-eca/patches/galileo to
-meta-intel-iot-devkit.
-
-$ cd $YOCTO
-$ cd meta-intel-iot-devkit
-$ git am $YOCTO/meta-eca/patches/galileo/000[1-9]*.patch
 
 
 Then build the distro
