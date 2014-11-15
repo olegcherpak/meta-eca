@@ -24,7 +24,7 @@ $ git checkout -b daisy origin/daisy
 $ cd ..
 $ git clone git://git.yoctoproject.org/meta-intel-iot-devkit
 $ cd meta-intel-iot-devkit
-$ git checkout -b devkit-daisy origin/devkit-daisy
+$ git checkout -b devkit-daisy-1.6.1 origin/devkit-daisy-1.6.1
 $ cd $YOCTO
 $ . oe-init-build-env build-galileo
 $ cd conf
