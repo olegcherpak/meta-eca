@@ -38,7 +38,6 @@ if your name is not "user", then fix the path accordingly.
 /home/user/yocto/poky/meta-openembedded/meta-oe
 /home/user/yocto/poky/meta-openembedded/meta-systemd
 /home/user/yocto/poky/meta-openembedded/meta-networking
-/home/user/yocto/poky/meta-openembedded/meta-python
 /home/user/yocto/poky/meta-openembedded/meta-ruby
 /home/user/yocto/poky/meta-intel-iot-devkit/meta-quark-bsp
 /home/user/yocto/poky/meta-intel-iot-devkit/meta-iot-devkit
