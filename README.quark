@@ -26,6 +26,7 @@ $ git clone git://git.yoctoproject.org/meta-intel-iot-devkit
 $ cd meta-intel-iot-devkit
 $ git checkout -b devkit-daisy-1.6.1 origin/devkit-daisy-1.6.1
 $ cd $YOCTO
+$ ln -s iot-devkit meta-intel-iot-devkit/meta-iot-devkit/recipes-kernel/linux/linux-yocto-quark/eca
 $ . oe-init-build-env build-galileo
 $ cd conf
 
@@ -70,10 +71,15 @@ $ bitbake eca-image
 If the build succeeds, the result image can be found at
 tmp-eglibc/deploy/images/quark
 
-Insert your micro SD card to your host device and figure out its device name
-(use dmesg and see messages at the end). Lets assume the SD card is at /dev/sdX
+Format a micro SD card with FAT32 (one partition is enough).
+Lets assume the micro SD is mounted at /media/boot.
 
 $ cd tmp-eglibc/deploy/images/quark
-$ sudo dd if=eca-image-quark.hddimg of=/dev/sdX
+$ cp -r boot /media/boot
+$ cp bzImage grub.efi /media/boot
+$ cp core-image-minimal-initramfs-quark.cpio.gz rootfs.img /media/boot
+$ cp rootfs.img /media/boot
+$ sync
+$ umount /media/boot
 
 Then eject the SD card, insert it to Galileo and boot.
