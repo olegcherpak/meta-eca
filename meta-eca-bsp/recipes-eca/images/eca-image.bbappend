@@ -1,10 +1,18 @@
 
-IMAGE_FSTYPES_clanton = "ext3 live"
+IMAGE_FSTYPES_quark = "ext3 live"
 
-NOISO_clanton = "1"
-NOHDD_clanton = "1"
+NOISO_quark = "1"
+NOHDD_quark = "1"
 
-EXTRA_IMAGEDEPENDS_clanton = "eca-grub-conf"
+EXTRA_IMAGEDEPENDS_quark = "eca-grub-conf"
+
+create_rootfs_link_postprocess() {
+	DIR=$PWD
+	cd ${DEPLOY_DIR_IMAGE}
+	rm -f rootfs.img
+	ln -s ${IMAGE_LINK_NAME}.ext3 rootfs.img
+	cd $DIR
+}
 
 # root fs name should be rootfs.img as initrd expects to find that
-IMAGE_POSTPROCESS_COMMAND_clanton += "rm -f rootfs.img; ln -s ${IMAGE_LINK_NAME}.ext3 rootfs.img; "
+IMAGE_POSTPROCESS_COMMAND_quark += " create_rootfs_link_postprocess; "
