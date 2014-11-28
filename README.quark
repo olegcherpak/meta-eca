@@ -77,7 +77,7 @@ Lets assume the micro SD is mounted at /media/boot.
 $ cd tmp-eglibc/deploy/images/quark
 $ cp -r boot /media/boot
 $ cp bzImage grub.efi /media/boot
-$ cp core-image-minimal-initramfs-quark.cpio.gz rootfs.img /media/boot
+$ cp core-image-minimal-initramfs-quark.cpio.gz /media/boot
 $ cp rootfs.img /media/boot
 $ sync
 $ umount /media/boot
