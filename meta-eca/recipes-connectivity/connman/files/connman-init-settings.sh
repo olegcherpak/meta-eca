@@ -84,6 +84,9 @@ Tethering=$TETHERING
 Tethering.Identifier=$TETHERING_AP_SSID
 Tethering.Passphrase=$TETHERING_AP_PASSPHRASE
 
+[Gadget]
+Enable=true
+Tethering=true
 
 [Wired]
 Enable=true

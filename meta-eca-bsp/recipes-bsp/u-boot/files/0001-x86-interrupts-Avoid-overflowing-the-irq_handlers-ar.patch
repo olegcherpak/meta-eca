@@ -1,0 +1,26 @@
+From 81bc91e1e8fdd51f1e7334dc01c0c25fad6cd465 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Sat, 22 Nov 2014 10:52:25 +0200
+Subject: [PATCH] x86: interrupts: Avoid overflowing the irq_handlers array
+
+We were checking the array past the last entry.
+---
+ arch/x86/lib/interrupts.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/x86/lib/interrupts.c b/arch/x86/lib/interrupts.c
+index 6bb22d2..146ad11 100644
+--- a/arch/x86/lib/interrupts.c
++++ b/arch/x86/lib/interrupts.c
+@@ -130,7 +130,7 @@ int do_irqinfo(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
+	printf("Interrupt-Information:\n");
+	printf("Nr  Routine   Arg       Count\n");
+
+-	for (irq = 0; irq <= CONFIG_SYS_NUM_IRQS; irq++) {
++	for (irq = 0; irq < CONFIG_SYS_NUM_IRQS; irq++) {
+		if (irq_handlers[irq].handler != NULL) {
+			printf("%02d  %08lx  %08lx  %d\n",
+					irq,
+--
+2.1.0
+

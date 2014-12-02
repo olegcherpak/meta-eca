@@ -1,0 +1,140 @@
+Installation instructions for Intel Edison device
+-------------------------------------------------
+
+At the moment, the meta-eca with Edison device has
+been tested with Yocto dizzy release.
+
+$ mkdir yocto
+$ cd yocto
+$ git clone git://git.yoctoproject.org/poky
+$ cd poky
+$ export YOCTO=`pwd`
+$ git checkout -b dizzy origin/dizzy
+$ git clone git://git.openembedded.org/meta-openembedded
+$ cd meta-openembedded
+$ git checkout -b dizzy origin/dizzy
+$ cd ..
+$ git clone git://git.yoctoproject.org/meta-eca
+
+Get the latest edison-src.tgz file from download center at
+https://downloadcenter.intel.com/SearchResult.aspx?lang=eng&keyword=edison
+As of this writing, the latest tgz file is called
+edison-src-rel1-maint-rel1-ww42-14.tgz
+
+$ tar xvfz edison-src-*.tgz
+
+You need to apply patches to edison-src.
+
+$ cd edison-src
+$ patch -p1 < $YOCTO/meta-eca/patches/edison/edison-src.diff
+
+$ cd $YOCTO
+$ . oe-init-build-env build-edison
+$ cd conf
+
+Edit bblayers.conf file and add these layers to BBLAYERS variable,
+if your name is not "user", then fix the path accordingly.
+
+/home/user/yocto/poky/meta-eca/meta-eca
+/home/user/yocto/poky/meta-eca/meta-eca-bsp
+/home/user/yocto/poky/meta-openembedded/meta-oe
+/home/user/yocto/poky/meta-openembedded/meta-systemd
+/home/user/yocto/poky/meta-openembedded/meta-networking
+/home/user/yocto/poky/meta-openembedded/meta-python
+/home/user/yocto/poky/meta-openembedded/meta-ruby
+/home/user/yocto/poky/edison-src/device-software/meta-edison
+/home/user/yocto/poky/edison-src/device-software/meta-edison-distro
+
+Edit local.conf file (use the correct path when setting EDISONREPO_TOP_DIR
+variable)
+
+* set BB_NUMBER_THREADS and PARALLEL_MAKE accordingly to your machine
+  capabilities (optional)
+* set your target to MACHINE ?= "edison"
+* set DISTRO ?= "eca"
+* add following BBMASK lines to ignore conflicting recipes
+  BBMASK  = "meta/recipes-connectivity/bluez/bluez4*"
+  BBMASK .= "|meta/recipes-bsp/u-boot/"
+  BBMASK .= "|meta-openembedded/meta-systemd/oe-core/recipes-connectivity/bluez/bluez4*"
+  BBMASK .= "|meta-edison/recipes-kernel/linux/"
+  BBMASK .= "|meta-edison-distro/recipes-support/i2c-tools/"
+  BBMASK .= "|meta-edison-distro/recipes-core/busybox/"
+  BBMASK .= "|meta-edison-distro/recipes-connectivity/wpa_supplicant/"
+  BBMASK .= "|meta-edison-distro/recipes-connectivity/ofono/"
+  BBMASK .= "|meta-edison-distro/recipes-connectivity/bluez5/"
+  BBMASK .= "|meta-edison-distro/recipes-connectivity/libpcap/"
+  BBMASK .= "|meta-edison-distro/recipes-bsp/u-boot/"
+  BBMASK .= "|meta-edison-distro/recipes-support/tcpdump/"
+* add EDISONREPO_TOP_DIR = "/home/user/yocto/poky/edison-src"
+
+
+If you want to build the Internet-of-Things version of ECA, then add
+
+/home/user/yocto/poky/meta-eca/meta-iot
+
+to bblayers.conf and also add
+
+DISTRO_FEATURES_append = " internet-of-things"
+
+to local.conf file.
+
+Then build the distro
+
+$ cd $BUILDDIR
+$ bitbake eca-image
+
+If you see some build errors for neard, then do this
+$ bitbake neard
+$ bitbake eca-image
+
+If the build succeeds, the result image can be found at
+tmp-glibc/deploy/images/edison
+
+Make sure you have USB Device Firmware Upgrade (DFU) packages
+installed in your system. For Fedora the package is called dfu-util.
+Set the parameter to eca-postBuild.sh script to be the real location
+of edison-src directory.
+
+$ cd $BUILDDIR/tmp-glibc/deploy/images/edison
+$ $YOCTO/meta-eca/scripts/edison/eca-postBuild.sh $YOCTO/edison-src
+
+WARNING: The next command will flash the Edison board. It is possible
+         that the flashing will fail which might brick your Edison
+	 device. If you are not an expert, do not try to flash the device.
+	 +--------------------------------------------------------------+
+	 | I will not be responsible if you mess things up so I suggest |
+	 | that you do not try the following. You have been warned!!!   |
+	 +--------------------------------------------------------------+
+	 If you continue and something will fail with the flashing,
+	 you can try to recover by first installing the xFSTK package
+	 from http://sourceforge.net/projects/xfstk/ and then running
+	 "sudo ./flashall --recover" command (I have not tested this thou).
+
+Then start flashing.
+
+$ cd toFlash
+$ sudo ./flashall
+
+Then connect Edison to your host via lower right hand side USB connector
+in Edison breakout board, and wait the flashing to finish.
+
+The device will now flash itself and reboot several times.
+Please wait until you see login prompt.
+
+
+KNOWN ISSUES
+------------
+
+If you use "connmanctl" command and press Control-C to exit its command prompt,
+then it is possible that the terminal stays in weird state and you do not see
+any keypresses. Just type "stty sane^J" blindly and the terminal should be reset
+to initial state (^J means that you press Control-J key). You should exit
+the connmanctl shell by typing "exit" or pressing Control-D to avoid this issue.
+
+
+If you want to reflash but the device refuses to load the firmware when booting.
+Login to system and type "reboot ota" in Edison, and type "sudo ./flashall" in
+another terminal in your host. This will cause the system to flash the device
+again.
+
+

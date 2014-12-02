@@ -1,0 +1,13 @@
+diff --git a/arch/x86/platform/intel-mid/early_printk_intel_mid.c b/arch/x86/platform/intel-mid/early_printk_intel_mid.c
+index 3b361bd..3b57777 100644
+--- a/arch/x86/platform/intel-mid/early_printk_intel_mid.c
++++ b/arch/x86/platform/intel-mid/early_printk_intel_mid.c
+@@ -444,6 +444,8 @@ void hsu_early_console_init(const char *s)
+ 		/* detect HSU clock is 50M or 19.2M */
+ 		if (clkctl && *clkctl & (1 << 16))
+ 			writel(0x0120, phsu + UART_MUL * 4); /* for 50M */
++		else if (*clkctl & (1 << 31))
++			writel(0x02EE, phsu + UART_MUL * 4);  /* for 38.4M */
+ 		else
+ 			writel(0x05DC, phsu + UART_MUL * 4);  /* for 19.2M */
+ 	} else

@@ -1,0 +1,150 @@
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison/recipes-kernel/bcm43340/bcm43340-fw.bb edison-src.maint-rel1-ww42/device-software/meta-edison/recipes-kernel/bcm43340/bcm43340-fw.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison/recipes-kernel/bcm43340/bcm43340-fw.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison/recipes-kernel/bcm43340/bcm43340-fw.bb	2014-11-27 23:41:53.254213136 +0200
+@@ -1,7 +1,7 @@
+ DESCRIPTION = "Firmware files for use with Linux kernel"
+ SECTION = "kernel"
+ 
+-FILESEXTRAPATHS_prepend := "${EDISONREPO_TOP_DIR}/broadcom_cws/wlan/firmware/"
++FILESEXTRAPATHS_prepend := "${EDISONREPO_TOP_DIR}/broadcom_cws/wlan/firmware:"
+ 
+ SRC_URI = "file://bcmdhd_aob.cal_4334x_b0 \
+            file://bcmdhd.cal_4334x_b0 \
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison/recipes-kernel/bcm43340/bcm43340-fw-mfg.bb edison-src.maint-rel1-ww42/device-software/meta-edison/recipes-kernel/bcm43340/bcm43340-fw-mfg.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison/recipes-kernel/bcm43340/bcm43340-fw-mfg.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison/recipes-kernel/bcm43340/bcm43340-fw-mfg.bb	2014-11-27 23:41:53.256213125 +0200
+@@ -1,7 +1,7 @@
+ DESCRIPTION = "MFG Firmware files for use with Linux kernel and FCC/EC specific tests"
+ SECTION = "kernel"
+ 
+-FILESEXTRAPATHS_prepend := "${EDISONREPO_TOP_DIR}/broadcom_cws/wlan/firmware/"
++FILESEXTRAPATHS_prepend := "${EDISONREPO_TOP_DIR}/broadcom_cws/wlan/firmware:"
+ 
+ SRC_URI = "file://bcmdhd_mfg.cal_4334x_b0 \
+            file://fw_bcmdhd_mfg.bin_4334x_b0"
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison/recipes-kernel/bcm43340-bt/bcm43340-bt_1.0.bb edison-src.maint-rel1-ww42/device-software/meta-edison/recipes-kernel/bcm43340-bt/bcm43340-bt_1.0.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison/recipes-kernel/bcm43340-bt/bcm43340-bt_1.0.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison/recipes-kernel/bcm43340-bt/bcm43340-bt_1.0.bb	2014-11-27 23:41:53.256213125 +0200
+@@ -1,7 +1,7 @@
+ DESCRIPTION = "Broadcom Bluetooth fw files and patch utility"
+ SECTION = "connectivity"
+ 
+-FILESEXTRAPATHS_prepend := "${EDISONREPO_TOP_DIR}/broadcom_cws/bluetooth/firmware/"
++FILESEXTRAPATHS_prepend := "${EDISONREPO_TOP_DIR}/broadcom_cws/bluetooth/firmware:"
+ 
+ SRC_URI = "file://BCM43341B0_002.001.014.0122.0166.hcd \
+            file://brcm_patchram_plus.c \
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-connectivity/bluetooth-rfkill-event/bluetooth-rfkill-event_1.0.bb edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-connectivity/bluetooth-rfkill-event/bluetooth-rfkill-event_1.0.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-connectivity/bluetooth-rfkill-event/bluetooth-rfkill-event_1.0.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-connectivity/bluetooth-rfkill-event/bluetooth-rfkill-event_1.0.bb	2014-11-27 23:44:26.151485813 +0200
+@@ -6,7 +6,7 @@
+ 
+ DEPENDS = "glib-2.0 bluez5"
+ 
+-FILESEXTRAPATHS_prepend := "${THISDIR}/files/"
++FILESEXTRAPATHS_prepend := "${THISDIR}/files/:"
+ 
+ inherit systemd
+ 
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-connectivity/openssh/openssh_%.bbappend edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-connectivity/openssh/openssh_%.bbappend
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-connectivity/openssh/openssh_%.bbappend	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-connectivity/openssh/openssh_%.bbappend	2014-11-27 23:50:47.661762807 +0200
+@@ -1 +1 @@
+-FILESEXTRAPATHS_prepend := "${THISDIR}/openssh"
++FILESEXTRAPATHS_prepend := "${THISDIR}/openssh:"
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-core/first-install/first-install.bb edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-core/first-install/first-install.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-core/first-install/first-install.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-core/first-install/first-install.bb	2014-11-27 23:46:17.590911386 +0200
+@@ -33,8 +33,3 @@
+ 				${sysconfdir} \
+ 				/sbin/first-install.sh"
+ 
+-# As this package is tied to systemd, only build it when we're also building systemd.
+-python () {
+-    if not oe.utils.contains ('DISTRO_FEATURES', 'systemd', True, False, d):
+-        raise bb.parse.SkipPackage("'systemd' not in DISTRO_FEATURES")
+-}
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-core/ota-update/ota-update.bb edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-core/ota-update/ota-update.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-core/ota-update/ota-update.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-core/ota-update/ota-update.bb	2014-11-27 23:46:38.375811804 +0200
+@@ -33,8 +33,3 @@
+ 				${sysconfdir} \
+ 				/sbin/ota-update.sh"
+ 
+-# As this package is tied to systemd, only build it when we're also building systemd.
+-python () {
+-    if not oe.utils.contains ('DISTRO_FEATURES', 'systemd', True, False, d):
+-        raise bb.parse.SkipPackage("'systemd' not in DISTRO_FEATURES")
+-}
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-core/otg/otg.bb edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-core/otg/otg.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-core/otg/otg.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-core/otg/otg.bb	2014-11-27 23:45:55.623024622 +0200
+@@ -25,8 +25,3 @@
+ FILES_${PN} = "${base_libdir}/systemd/system/*.service \
+ 				${sysconfdir}"
+ 
+-# As this package is tied to systemd, only build it when we're also building systemd.
+-python () {
+-    if not oe.utils.contains ('DISTRO_FEATURES', 'systemd', True, False, d):
+-        raise bb.parse.SkipPackage("'systemd' not in DISTRO_FEATURES")
+-}
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-support/crashlog/crashlog.bb edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-support/crashlog/crashlog.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-support/crashlog/crashlog.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-support/crashlog/crashlog.bb	2014-11-27 23:46:58.414721618 +0200
+@@ -23,9 +23,3 @@
+ 	install -c -m 0755 ${WORKDIR}/retrieve_crashlog.sh ${D}${sbindir}
+ }
+ 
+-# As this package is tied to systemd, only build it when we're also building systemd.
+-python () {
+-    if not oe.utils.contains ('DISTRO_FEATURES', 'systemd', True, False, d):
+-        raise bb.parse.SkipPackage("'systemd' not in DISTRO_FEATURES")
+-}
+-
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-support/pwr-button-handler/pwr-button-handler_0.1.bb edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-support/pwr-button-handler/pwr-button-handler_0.1.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-support/pwr-button-handler/pwr-button-handler_0.1.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-support/pwr-button-handler/pwr-button-handler_0.1.bb	2014-11-27 23:47:17.703634809 +0200
+@@ -3,7 +3,7 @@
+ LICENSE = "MIT"
+ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+ 
+-FILESEXTRAPATHS_prepend := "${THISDIR}/files/"
++FILESEXTRAPATHS_prepend := "${THISDIR}/files/:"
+ 
+ inherit systemd
+ 
+diff -Naur edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-support/watchdog-sample/watchdog-sample.bb edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-support/watchdog-sample/watchdog-sample.bb
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison-distro/recipes-support/watchdog-sample/watchdog-sample.bb	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison-distro/recipes-support/watchdog-sample/watchdog-sample.bb	2014-11-27 23:47:50.647557568 +0200
+@@ -3,7 +3,7 @@
+ LICENSE = "MIT"
+ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+ 
+-FILESEXTRAPATHS_prepend := "${THISDIR}/watchdog-sample/"
++FILESEXTRAPATHS_prepend := "${THISDIR}/watchdog-sample/:"
+ 
+ SRC_URI += "file://watchdog-sample.service"
+ SRC_URI += "file://watchdog-sample.c"
+@@ -38,9 +38,3 @@
+ FILES_${PN} += "${sysconfdir}/systemd/system/basic.target.wants/watchdog-sample.service"
+ FILES_${PN} += "${bindir}/watchdog-sample"
+ 
+-# As this package is tied to systemd, only build it when we're also building systemd.
+-python () {
+-    if not oe.utils.contains ('DISTRO_FEATURES', 'systemd', True, False, d):
+-        raise bb.parse.SkipPackage("'systemd' not in DISTRO_FEATURES")
+-}
+-
+--- edison-src.maint-rel1-ww42.original/device-software/meta-edison/conf/machine/edison.conf	2014-10-14 15:57:18.000000000 +0300
++++ edison-src.maint-rel1-ww42/device-software/meta-edison/conf/machine/edison.conf	2014-11-29 09:26:34.065581749 +0200
+@@ -12,10 +12,7 @@
+ SERIAL_CONSOLES = "115200;ttyMFD2"
+ UBOOT_MACHINE = "edison_config"
+ 
+-module_autoload_bcm_bt_lpm = "bcm_bt_lpm"
+-module_autoload_bcm4334x = "bcm4334x"
+ module_conf_bcm4334x = "options bcm4334x firmware_path=/etc/firmware/fw_bcmdhd.bin nvram_path=/etc/firmware/bcmdhd.cal"
+-module_autoload_g_multi = "g_multi"
+ # FIXME: file parameter should be based on partition UUID (from U-Boot) or fixed
+ # with label (label seems to work, but driver is probed too early)
+ module_conf_g_multi = "options g_multi file=/dev/mmcblk0p9 stall=0 idVendor=0x8087 idProduct=0x0A9E iProduct=Edison iManufacturer=Intel"
