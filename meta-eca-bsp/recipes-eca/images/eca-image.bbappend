@@ -1,4 +1,6 @@
-
+########
+# Settings for Galileo (quark)
+#
 IMAGE_FSTYPES_quark = "ext3 live"
 
 NOISO_quark = "1"
