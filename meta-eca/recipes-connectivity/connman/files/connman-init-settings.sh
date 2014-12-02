@@ -45,10 +45,10 @@ TetheringTechnologies=wifi,bluetooth,gadget,ethernet
 PersistentTetheringMode=true
 EOF
 
-function get_mac
+get_mac()
 {
     # Get the mac address of the first network interface returned by kernel
-    IFACE=`head -n 3 /proc/net/dev|tail -n 1|awk '{ print $1 }'|sed 's/://'`
+    IFACE=`cat /proc/net/dev|grep -v tether|tail -n +3|head -n 1|awk '{ print $1 }'|sed 's/://'`
     if [ -z "$IFACE" -o ! -d /sys/class/net/$IFACE ]; then
 	echo 010203040506
     else
