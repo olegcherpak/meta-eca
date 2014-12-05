@@ -20,6 +20,7 @@
 
 CONNMAN_DIR=/var/lib/connman
 CONNMAN_SETTINGS=$CONNMAN_DIR/settings
+CONNMAN_SETTINGS_TEMPLATE=/usr/lib/connman/connman.settings.template
 
 if [ -s $CONNMAN_SETTINGS ]; then
     exit 0
@@ -68,29 +69,10 @@ if [ -z "$TETHERING_AP_PASSPHRASE" ]; then
     TETHERING_AP_PASSPHRASE=$MAC
 fi
 
-cat > $CONNMAN_SETTINGS <<EOF
-[global]
-OfflineMode=false
-
-[Bluetooth]
-Enable=true
-
-[Cellular]
-Enable=true
-
-[WiFi]
-Enable=true
-Tethering=$TETHERING
-Tethering.Identifier=$TETHERING_AP_SSID
-Tethering.Passphrase=$TETHERING_AP_PASSPHRASE
-
-[Gadget]
-Enable=true
-Tethering=true
-
-[Wired]
-Enable=true
-EOF
+sed -e "s/@TETHERING@/$TETHERING/" \
+    -e "s/@TETHERING_AP_SSID@/$TETHERING_AP_SSID/" \
+    -e "s/@TETHERING_AP_PASSPHRASE@/$TETHERING_AP_PASSPHRASE/" \
+    $CONNMAN_SETTINGS_TEMPLATE > $CONNMAN_SETTINGS
 
 if [ $? -eq 0 -a -f $CONNMAN_SETTINGS ]; then
     chmod 0600 $CONNMAN_SETTINGS
