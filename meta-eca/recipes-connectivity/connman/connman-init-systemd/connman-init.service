@@ -1,6 +1,6 @@
 [Unit]
 Description=Initialize ConnMan settings
-After=syslog.target
+Before=connman.service
 ConditionFileNotEmpty=!/var/lib/connman/settings
 
 [Service]

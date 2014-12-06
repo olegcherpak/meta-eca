@@ -6,6 +6,7 @@ SRCREV = "d83837ce485110507e2370f21fb94fab85d4befb"
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/network/connman/connman.git \
 	file://add_xuser_dbus_permission.patch \
+	file://connman.service \
 "
 LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e \
                     file://src/main.c;beginline=1;endline=20;md5=486a279a6ab0c8d152bcda3a5b5edc36 \
@@ -19,7 +20,7 @@ SRC_URI += "\
 "
 
 S = "${WORKDIR}/git"
-PR = "${INC_PR}.1"
+PR = "${INC_PR}.2"
 PV = "1.26+git${SRCPV}"
 
 
@@ -49,4 +50,5 @@ RDEPENDS_${PN} = "\
 do_install_append() {
 	install -d ${D}${sysconfdir}/connman
 	install -m 0644 ${S}/src/main.conf ${D}${sysconfdir}/connman/main.conf.example
+	install -m 0755 ${WORKDIR}/connman.service ${D}${nonarch_base_libdir}/systemd/system
 }
