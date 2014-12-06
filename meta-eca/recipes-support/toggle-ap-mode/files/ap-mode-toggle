@@ -1,0 +1,102 @@
+#!/bin/sh
+
+wait_connman()
+{
+	while [ 1 ];
+	do
+	    connmanctl technologies 2>&1 | grep "was not provided" > /dev/null
+	    if [ $? -ne 0 ]; then
+		break
+	    fi
+	    sleep 5
+	done
+}
+
+ap_start()
+{
+	wait_connman
+
+	connmanctl tether wifi on
+	systemctl stop connman
+
+	# reload the driver for softap mode
+	modprobe -r bcm4334x
+	modprobe bcm4334x op_mode=2
+
+	# ConnMan controls the AP mode
+	systemctl start connman
+}
+
+ap_stop()
+{
+	wait_connman
+
+	connmanctl tether wifi off
+	systemctl stop connman
+
+	# reload the driver for sta/p2p mode
+	modprobe -r bcm4334x
+	modprobe bcm4334x
+
+	# ConnMan controls the AP mode
+	systemctl start connman
+}
+
+check_status()
+{
+	wait_connman
+
+	# Get the Wifi tethering status. We return 0 if tethering is not ON.
+	echo `connmanctl technologies 2>&1 | \
+	         sed '1,/Type = wifi/d' | \
+		 grep Tethering | \
+		 head -n 1 | \
+		 awk '{ print $3 }'`
+}
+
+case "$1" in
+start-or-stop)
+	case `check_status` in
+	    False) ap_stop;;
+	    True) ap_start;;
+	    *) exit 2;;
+	esac
+	;;
+
+start)
+	ap_start
+	;;
+
+stop)
+	ap_stop
+	;;
+
+check)
+	case `check_status` in
+	    False) exit 0;;
+	    True) exit 1;;
+	    *) exit 2;;
+	esac
+	;;
+
+toggle)
+	case `check_status` in
+	    False) ap_start;;
+	    True) ap_stop;;
+	    *) ;;
+	esac
+	;;
+
+*)
+	echo "Usage: $0 start|stop|check|toggle"
+	echo "  start  - AP mode is started"
+	echo "  stop   - AP mode is stopped and we return back to station mode"
+	echo "  check  - 0 is returned if wifi tethering is currently Off"
+	echo "           1 is returned if wifi tethering is currently On"
+	echo "  toggle - Start or stop AP mode depending on previous mode"
+	echo
+	echo "This script is only usable in Edison where the Broadcom"
+	echo "wifi driver firmware needs to be told which mode to operate."
+	;;
+
+esac

@@ -37,6 +37,7 @@ RDEPENDS_packagegroup-eca_append_edison += "\
 	watchdog-sample \
 	pwr-button-handler \
 	crashlog \
+	ap-mode-toggle \
 "
 
 # Wifi firmware
