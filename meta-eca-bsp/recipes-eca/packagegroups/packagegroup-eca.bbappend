@@ -35,7 +35,7 @@ RDEPENDS_packagegroup-eca_append_edison += "\
 	usbutils \
 	i2c-tools \
 	watchdog-sample \
-	pwr-button-handler \
+	eca-pwr-button-handler \
 	crashlog \
 	ap-mode-toggle \
 "
