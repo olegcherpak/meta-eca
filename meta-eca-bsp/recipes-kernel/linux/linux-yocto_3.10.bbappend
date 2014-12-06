@@ -13,3 +13,8 @@ SRC_URI += "file://enable-early-printk-intel.patch"
 
 KERNEL_MODULE_AUTOLOAD_edison += "g_multi bcm_bt_lpm"
 KERNEL_MODULE_PROBECONF_edison += "g_multi"
+
+module_conf_bcm4334x_edison = "options bcm4334x firmware_path=/etc/firmware/fw_bcmdhd.bin nvram_path=/etc/firmware/bcmdhd.cal"
+# FIXME: file parameter should be based on partition UUID (from U-Boot) or fixed
+# with label (label seems to work, but driver is probed too early)
+module_conf_g_multi_edison = "options g_multi file=/dev/mmcblk0p9 stall=0 idVendor=0x8087 idProduct=0x0A9E iProduct=Edison iManufacturer=Intel"
