@@ -1,10 +1,6 @@
 [Unit]
 Description=Start or stop WiFI AP Mode in Edison
-
-# We cannot start after connman service because the
-# ap-mode-toggle script would start and stop connman
-# and cause havoc with this script.
-After=connman-init.service
+After=connman.service
 
 [Service]
 Type=oneshot

@@ -16,15 +16,28 @@ ap_start()
 {
 	wait_connman
 
-	connmanctl tether wifi on
-	systemctl stop connman
-
 	# reload the driver for softap mode
 	modprobe -r bcm4334x
 	modprobe bcm4334x op_mode=2
 
-	# ConnMan controls the AP mode
-	systemctl start connman
+	# These small sleeps are unfortunate but bcm4334x driver is not able
+	# to work properly without them.
+	sleep 3
+
+	connmanctl tether wifi on
+
+	sleep 2
+
+	# Sometimes the wlan driver is very slow to take the wlan UP,
+	# so do it here (brctl will fail otherwise)
+	ifconfig wlan0 up
+
+	# FIXME: ConnMan will try to add wlan0 to tether bridge but in Edison
+	# that currently fails with EBUSY. This is either wlan driver and/or
+	# wpa_supplicant issue. Because of this add the wlan0 to bridge
+	# manually. This is a dirty hack that will be removed when the bridging
+	# works ok. JRi 8 Dec 2014
+	brctl addif tether wlan0
 }
 
 ap_stop()
@@ -32,14 +45,10 @@ ap_stop()
 	wait_connman
 
 	connmanctl tether wifi off
-	systemctl stop connman
 
 	# reload the driver for sta/p2p mode
 	modprobe -r bcm4334x
 	modprobe bcm4334x
-
-	# ConnMan controls the AP mode
-	systemctl start connman
 }
 
 check_status()

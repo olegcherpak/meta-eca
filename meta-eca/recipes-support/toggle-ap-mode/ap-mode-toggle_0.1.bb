@@ -11,7 +11,7 @@ SRC_URI = "\
 "
 
 S = "${WORKDIR}"
-PR = "r5"
+PR = "r6"
 
 SYSTEMD_SERVICE_${PN} = "ap-mode-toggle.service"
 
