@@ -9,7 +9,7 @@ Enable=true
 
 [WiFi]
 Enable=true
-Tethering=false
+Tethering=@TETHERING@
 Tethering.Identifier=@TETHERING_AP_SSID@
 Tethering.Passphrase=@TETHERING_AP_PASSPHRASE@
 
