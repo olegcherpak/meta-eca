@@ -8,7 +8,8 @@ Before=remote-fs.target
 Type=dbus
 BusName=net.connman
 Restart=on-failure
-ExecStart=/usr/sbin/connmand -n
+EnvironmentFile=-/etc/connman/connmand.env
+ExecStart=/usr/sbin/connmand -n $DEBUG
 StandardOutput=null
 
 [Install]

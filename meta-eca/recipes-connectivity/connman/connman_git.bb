@@ -15,12 +15,11 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e \
 # Enable debugging the easy way in systemd based distro.
 # See 0001-doc-Debugging-in-host-that-uses-systemd.patch for usage.
 SRC_URI += "\
-    file://0002-systemd-Use-environment-file-for-connmand-debug-opti.patch \
     file://0003-systemd-Use-environment-file-for-connman-vpnd-debug-.patch \
 "
 
 S = "${WORKDIR}/git"
-PR = "${INC_PR}.2"
+PR = "${INC_PR}.3"
 PV = "1.26+git${SRCPV}"
 
 
