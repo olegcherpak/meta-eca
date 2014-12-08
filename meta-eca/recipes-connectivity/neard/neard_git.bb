@@ -7,13 +7,13 @@ SRC_URI  = "\
 
 LIC_FILES_CHKSUM = "\
 	 file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e \
-	 file://src/near.h;beginline=1;endline=20;md5=fa0b3e277aa4c27c9d45fd5828f7494e \
+	 file://src/near.h;beginline=1;endline=20;md5=358e4deefef251a4761e1ffacc965d13 \
 "
 
 S      = "${WORKDIR}/git"
-SRCREV = "00c9abd9411e9d262cf5de90734522ab6bc0bca5"
-PV     = "0.14+git${SRCPV}"
-PR     = "r5"
+SRCREV = "80113dd4d96bcb66aeb3f35c075f65d85ab742be"
+PV     = "0.15+git${SRCPV}"
+PR     = "r1"
 
 
 EXTRA_OECONF += "--enable-tools \
