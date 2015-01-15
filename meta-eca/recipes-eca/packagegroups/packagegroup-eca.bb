@@ -53,6 +53,7 @@ UTIL_PACKAGES="\
     less \
     avahi-daemon \
     iproute2 \
+    iproute2-tc \
     tcpdump \
     screen \
     bridge-utils \
