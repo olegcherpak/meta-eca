@@ -1,7 +1,7 @@
 require recipes-connectivity/connman/connman.inc
 
 # We use a known good version instead of some buggy point version.
-SRCREV = "3240a051826bb665fbd5cc0d9eb7c2bdde3ad77a"
+SRCREV = "7dc6ae4ea72d024bb0c893ddd862c0265347fbd1"
 
 SRC_URI = "\
 	git://git.kernel.org/pub/scm/network/connman/connman.git \
@@ -19,8 +19,8 @@ SRC_URI += "\
 "
 
 S = "${WORKDIR}/git"
-PR = "${INC_PR}.3"
-PV = "1.26+git${SRCPV}"
+PR = "${INC_PR}.0"
+PV = "1.28+git${SRCPV}"
 
 
 # Override some options from poky connman recipe
