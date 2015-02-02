@@ -18,6 +18,8 @@ inherit distutils
 RDEPENDS_${PN} = "\
   python-netclient \
   python-netserver \
+  python-pydoc \
+  python-pkgutil \
 "
 
 SRC_URI[md5sum] = "46f4ef88b676daebd3053bbd2ee16425"
