@@ -10,7 +10,7 @@ PRIORITY = "optional"
 SRCNAME = "scapy"
 PR = "ml2"
 
-SRC_URI = "http://www.secdev.org/projects/scapy/files/scapy-${PV}.tar.gz"
+SRC_URI = "http://www.secdev.org/projects/scapy/files/scapy-${PV}.zip"
 S = "${WORKDIR}/${SRCNAME}-${PV}"
 
 inherit distutils
@@ -20,5 +20,5 @@ RDEPENDS_${PN} = "\
   python-netserver \
 "
 
-SRC_URI[md5sum] = "406990bd8da1f4958b354b4b6fc4b3eb"
-SRC_URI[sha256sum] = "c5363b224df0efbd78d7dc4d8a518e5518b2e7affc2e5f1fcecd4efa3ab815af"
+SRC_URI[md5sum] = "46f4ef88b676daebd3053bbd2ee16425"
+SRC_URI[sha256sum] = "9a4bacfca772f385d71bad43b1676d5f5b380c8bceb24443dcda29bc13108262"
