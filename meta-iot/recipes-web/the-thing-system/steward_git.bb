@@ -49,9 +49,15 @@ FILES_${PN}-dbg += "\
 	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/.debug \
 	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/.debug \
 	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/*/.debug \
+	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/*/*/.debug \
+	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/*/*/*/.debug \
+	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/*/*/*/*/.debug \
+	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/*/*/*/*/*/.debug \
+	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/*/*/*/*/*/*/.debug \
+	${THE_THING_SYSTEM}/steward/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/.debug \
 "
 
-RDEPENDS_${PN} = "openssl tts-nodejs steward-init ruby"
+RDEPENDS_${PN} = "openssl tts-nodejs steward-init ruby bash"
 
 def get_arch(bb, d):
     val = (bb.data.getVar("MACHINEOVERRIDES", d) or "")
