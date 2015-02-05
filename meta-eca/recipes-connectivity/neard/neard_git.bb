@@ -3,6 +3,7 @@ require recipes-connectivity/neard/neard.inc
 SRC_URI  = "\
 	 git://git.kernel.org/pub/scm/network/nfc/neard.git;protocol=git \
 	 file://neard.service.in \
+	 file://Makefile.am-fix-parallel-issue.patch \
 "
 
 LIC_FILES_CHKSUM = "\
@@ -13,7 +14,7 @@ LIC_FILES_CHKSUM = "\
 S      = "${WORKDIR}/git"
 SRCREV = "80113dd4d96bcb66aeb3f35c075f65d85ab742be"
 PV     = "0.15+git${SRCPV}"
-PR     = "r1"
+PR     = "r2"
 
 
 EXTRA_OECONF += "--enable-tools \
