@@ -25,3 +25,6 @@ RRECOMMENDS_${PN} = "\
     ${@base_contains('DISTRO_FEATURES', 'bluetooth', 'bluez5', '', d)} \
     ${@base_contains('DISTRO_FEATURES', 'wifi','wpa-supplicant', '', d)} \
     "
+
+# Neard needs $systemd_unitdir in place during configure...
+DEPENDS = "systemd"
