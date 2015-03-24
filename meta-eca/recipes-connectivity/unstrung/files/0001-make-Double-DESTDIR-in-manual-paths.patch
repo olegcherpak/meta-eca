@@ -1,0 +1,28 @@
+From a7c43a2d27dda2101f77b073663b44efb972b4db Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Tue, 24 Mar 2015 09:59:56 +0200
+Subject: [PATCH] make: Double DESTDIR in manual paths
+
+There is already DESTDIR defined in Makefile.program when
+installing manual pages. This means that manual pages gets
+installed to wrong directory.
+---
+ Makefile.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.inc b/Makefile.inc
+index ec2befa..5189b33 100644
+--- a/Makefile.inc
++++ b/Makefile.inc
+@@ -14,7 +14,7 @@ HOSTFLAGS=-m32
+ USE_OBJDIR?=false
+ XMLTO=xmlto
+ 
+-MANTREE=${DESTDIR}/usr/share/man
++MANTREE=/usr/share/man
+ INSTALL=install
+ INSTMANFLAGS=-D
+ INSTBINFLAGS=-D
+-- 
+2.1.0
+
