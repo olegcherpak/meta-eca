@@ -2,17 +2,23 @@ Instructions for Intel FRI2
 ---------------------------
 
 You might want to check from README.md file what poky and meta-oe
-revisions are supported. Usually HEAD version work ok but if it
-does not, then you can use the tested version mentioned in that file.
+revisions are supported. This build has been tested with Yocto dizzy
+release.
 
 $ mkdir yocto
 $ cd yocto
 $ git clone git://git.yoctoproject.org/poky
 $ cd poky
+$ git checkout -b dizzy origin/dizzy
 $ git clone git://git.openembedded.org/meta-openembedded
+$ cd meta-openembedded
+$ git checkout -b dizzy origin/dizzy
+$ cd ..
 $ git clone git://git.yoctoproject.org/meta-eca
-$ export YOCTO=`pwd`
 $ git clone git://git.yoctoproject.org/meta-intel
+$ cd meta-intel
+$ git checkout -b dizzy origin/dizzy
+$ cd ..
 $ . oe-init-build-env build-fri2
 $ cd conf
 
@@ -32,7 +38,7 @@ if your name is not "user", then fix the path accordingly.
 Edit local.conf file
 
 * set BB_NUMBER_THREADS and PARALLEL_MAKE accordingly to your machine
-  capabilities
+  capabilities (optional)
 * set your target to MACHINE ?= "fri2-noemgd"
 * set DISTRO ?= "eca"
 * add BBMASK = "meta/recipes-connectivity/bluez/bluez4*|meta-openembedded/meta-systemd/oe-core/recipes-connectivity/bluez/bluez4*"
