@@ -5,7 +5,6 @@ SRCREV = "0bb20efcd00826d5396bacc834f2e47a63a52f4f"
 SRC_URI = "\
 	git://w1.fi/srv/git/hostap.git \
 	file://defconfig-gnutls \
-	file://fix-libnl3-host-contamination.patch \
 "
 
 S = "${WORKDIR}/git"
