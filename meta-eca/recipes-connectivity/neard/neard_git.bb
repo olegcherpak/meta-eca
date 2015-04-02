@@ -12,9 +12,9 @@ LIC_FILES_CHKSUM = "\
 "
 
 S      = "${WORKDIR}/git"
-SRCREV = "80113dd4d96bcb66aeb3f35c075f65d85ab742be"
+SRCREV = "29fb0096f1b7b1b7437f2fccdd19c8a64ecb44e6"
 PV     = "0.15+git${SRCPV}"
-PR     = "r2"
+PR     = "r3"
 
 
 EXTRA_OECONF += "--enable-tools \
