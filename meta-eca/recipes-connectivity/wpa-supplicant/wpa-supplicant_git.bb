@@ -1,7 +1,7 @@
 require wpa-supplicant.inc
 
 # For P2P support we want to use a version from git
-SRCREV = "6a6569b8bdee332ab2969b53f5d31da541fe2513"
+SRCREV = "0bb20efcd00826d5396bacc834f2e47a63a52f4f"
 SRC_URI = "\
 	git://w1.fi/srv/git/hostap.git \
 	file://defconfig-gnutls \
@@ -10,7 +10,7 @@ SRC_URI = "\
 
 S = "${WORKDIR}/git"
 PR = "r0"
-PV = "2.3+git${SRCPV}"
+PV = "2.4+git${SRCPV}"
 
 do_configure_append () {
 	# Activate config options needed by connman and tethering
