@@ -1,0 +1,50 @@
+From 3fb7796e48e1aabf1948c8602143fd273f90c7d8 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Wed, 8 Apr 2015 13:54:47 +0300
+Subject: [PATCH] connman: Create connman.service at proper moment
+
+ConnMan commit ac332c5d01b0737c18cb58c8ccc67cf6b0427e1d changes
+how the connman.service file is created from .in file. After
+that commit, the file is created by Makefile instead of configure.
+This means that we need to tweak the service file in compile
+time instead of configure time because the generated file will not
+be there after the configuration.
+
+This commit can be used even with older ConnMan version as the
+connman.service file is there when the compilation happens.
+
+Signed-off-by: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+---
+
+This patch is needed when using Yocto dizzy release and with
+ConnMan 1.28+ac332c5d or later.
+
+meta/recipes-connectivity/connman/connman.inc | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/meta/recipes-connectivity/connman/connman.inc b/meta/recipes-connectivity/connman/connman.inc
+index f121a81..74b8351 100644
+--- a/meta/recipes-connectivity/connman/connman.inc
++++ b/meta/recipes-connectivity/connman/connman.inc
+@@ -68,16 +68,14 @@ SYSTEMD_WIRED_SETUP = "ExecStartPre=-${libdir}/connman/wired-setup"
+ 
+ inherit autotools-brokensep pkgconfig systemd update-rc.d
+ 
+-do_configure_append () {
+-	sed -i "s#ExecStart=#${SYSTEMD_WIRED_SETUP}\nExecStart=#" ${S}/src/connman.service
+-}
+-
+ # This allows *everyone* to access ConnMan over DBus, without any access
+ # control.  Really the at_console flag should work, which would mean that
+ # both this and the xuser patch can be dropped.
+ do_compile_append() {
+ 	sed -i -e s:deny:allow:g src/connman-dbus.conf
+ 	sed -i -e s:deny:allow:g vpn/vpn-dbus.conf
++
++	sed -i "s#ExecStart=#${SYSTEMD_WIRED_SETUP}\nExecStart=#" ${B}/src/connman.service
+ }
+ 
+ do_install_append() {
+-- 
+2.1.0
+
