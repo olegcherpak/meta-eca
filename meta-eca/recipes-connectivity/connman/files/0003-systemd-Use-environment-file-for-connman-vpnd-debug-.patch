@@ -14,16 +14,16 @@ Signed-off-by: Jukka Rissanen <jukka.rissanen@linux.intel.com>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/vpn/connman-vpn.service.in b/vpn/connman-vpn.service.in
-index ec02a86..2472f00 100644
+index de65a70..15e7bbf 100644
 --- a/vpn/connman-vpn.service.in
 +++ b/vpn/connman-vpn.service.in
-@@ -5,7 +5,8 @@ After=syslog.target
+@@ -6,7 +6,8 @@ After=dbus.socket
  [Service]
  Type=dbus
  BusName=net.connman.vpn
--ExecStart=@prefix@/sbin/connman-vpnd -n
+-ExecStart=@sbindir@/connman-vpnd -n
 +EnvironmentFile=-@sysconfdir@/connman/connman-vpnd.env
-+ExecStart=@prefix@/sbin/connman-vpnd -n $DEBUG
++ExecStart=@sbindir@/connman-vpnd -n $DEBUG
  StandardOutput=null
  
  [Install]
