@@ -21,6 +21,9 @@ revision: 853dcfa0d618dc26bd27b3a1b49494b98d6eee97
 Using the above git sha's and branch, bitbaking eca-image is
 known to work. Using head versions should work also just fine.
 
+Check also patches/dizzy release for any patches you might need
+to apply.
+
 
 Build a QEMU image including ECA components
 -------------------------------------------
