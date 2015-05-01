@@ -37,10 +37,10 @@ EXTRA_OECONF += "\
 
 
 # Make sure we will use bluez5 instead of older bluez4
-PACKAGECONFIG[bluetooth] = "--enable-bluetooth, --disable-bluetooth, bluez5"
+PACKAGECONFIG[bluez5] = "--enable-bluetooth, --disable-bluetooth, bluez5"
 RDEPENDS_${PN} = "\
 	dbus \
-	${@base_contains('PACKAGECONFIG', 'bluetooth', 'bluez5', '', d)} \
+	${@base_contains('PACKAGECONFIG', 'bluez5', 'bluez5', '', d)} \
 	${@base_contains('PACKAGECONFIG', 'wifi','wpa-supplicant', '', d)} \
 	${@base_contains('PACKAGECONFIG', '3g','ofono', '', d)} \
 	"

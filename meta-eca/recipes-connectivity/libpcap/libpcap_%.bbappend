@@ -1,1 +1,1 @@
-PACKAGECONFIG[bluetooth] = "--enable-bluetooth,--disable-bluetooth,bluez5"
+PACKAGECONFIG[bluez5] = "--enable-bluetooth,--disable-bluetooth,bluez5"
