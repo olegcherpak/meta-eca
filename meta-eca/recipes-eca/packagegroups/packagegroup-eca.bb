@@ -85,6 +85,11 @@ WLAN_FIRMWARE="\
     linux-firmware-wl12xx \
 "
 
+# IEEE 802.15.4 needs userspace helpers
+WPAN_PACKAGES="\
+    wpan-tools \
+"
+
 RDEPENDS_packagegroup-eca = "\
     base-files \
     base-passwd \
@@ -110,6 +115,7 @@ RDEPENDS_packagegroup-eca = "\
     ${UI_PACKAGES} \
     ${UTIL_PACKAGES} \
     ${WLAN_FIRMWARE} \
+    ${WPAN_PACKAGES} \
 "
 
 RRECOMMENDS_${PN} = "\
