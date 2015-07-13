@@ -1,0 +1,23 @@
+How to use IEEE 802.15.4 radio with 6LoWPAN
+-------------------------------------------
+
+The instructions here are for RaspberryPi device and
+OpenLabs 802.15.4 radio chip [1]. You can probably
+get the OpenLabs 802.15.4 radio to work with other
+devices like Beaglebone with little wiring and tweaking.
+
+* Create ECA image and follow instructions in README.rpi file
+
+* After booting ECA, load kernel modules (if not automatically
+  loaded)
+  # modprobe mac802154
+  # modprobe mrf24j40
+
+* Setup network interfaces (see also [2])
+  # iwpan dev wpan0 set pan_id 0xbeef
+  # ip link add link wpan0 name lowpan0 type lowpan
+  # ifconfig wpan0 up
+  # ifconfig lowpan0 up
+
+[1] http://openlabs.co/store/Raspberry-Pi-802.15.4-radio
+[2] http://wpan.cakelab.org/

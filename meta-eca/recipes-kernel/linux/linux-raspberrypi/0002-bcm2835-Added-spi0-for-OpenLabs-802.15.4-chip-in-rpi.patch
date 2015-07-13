@@ -1,0 +1,42 @@
+From 0bac55f8cb4fb40d7b7f13c843a562db21f7b41c Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Fri, 10 Jul 2015 12:41:05 +0300
+Subject: [PATCH 2/2] bcm2835: Added spi0 for OpenLabs 802.15.4 chip in rpi-b
+
+---
+ arch/arm/boot/dts/bcm2835-rpi-b.dts | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm2835-rpi-b.dts b/arch/arm/boot/dts/bcm2835-rpi-b.dts
+index b867224..2786a43 100644
+--- a/arch/arm/boot/dts/bcm2835-rpi-b.dts
++++ b/arch/arm/boot/dts/bcm2835-rpi-b.dts
+@@ -24,6 +24,25 @@
+ 	gpios = <&gpio 16 1>;
+ };
+ 
++&spi0 {
++    status="okay";
++    spidev@0{
++        status = "disabled";
++    };
++    spidev@1{
++        status = "disabled";
++    };
++    at86rf233@0 {
++        compatible = "atmel,at86rf233";
++        reg = <0>;
++        interrupts = <23 1>;
++        interrupt-parent = <&gpio>;
++        reset-gpio = <&gpio 24 1>;
++        sleep-tpio = <&gpio 25 1>;
++        spi-max-frequency = <500000>;
++    };
++};
++
+ / {
+ 	__overrides__ {
+ 		act_led_gpio = <&act_led>,"gpios:4";
+-- 
+2.1.0
+

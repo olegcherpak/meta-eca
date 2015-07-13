@@ -1,0 +1,53 @@
+From d94bc929a6d78c8f428185b1a22a37260ca20cce Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Mon, 13 Jul 2015 15:43:12 +0300
+Subject: [PATCH 2/2] bcm2709: Added spi0 for OpenLabs 802.15.4 chip
+
+---
+ arch/arm/boot/dts/bcm2709-rpi-2-b.dts | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+index f25f0a2..0ab7245 100644
+--- a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
++++ b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+@@ -43,10 +43,12 @@
+ };
+ 
+ &spi0 {
++	status = "okay";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&spi0_pins>;
+ 
+ 	spidev@0{
++		status = "disabled";
+ 		compatible = "spidev";
+ 		reg = <0>;	/* CE0 */
+ 		#address-cells = <1>;
+@@ -55,12 +57,23 @@
+ 	};
+ 
+ 	spidev@1{
++		status = "disabled";
+ 		compatible = "spidev";
+ 		reg = <1>;	/* CE1 */
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 		spi-max-frequency = <500000>;
+ 	};
++
++	at86rf233@0 {
++		compatible = "atmel,at86rf233";
++		reg = <0>;
++		interrupts = <23 1>;
++		interrupt-parent = <&gpio>;
++		reset-gpio = <&gpio 24 1>;
++		sleep-tpio = <&gpio 25 1>;
++		spi-max-frequency = <500000>;
++	};
+ };
+ 
+ &i2c0 {
+-- 
+2.1.0
+

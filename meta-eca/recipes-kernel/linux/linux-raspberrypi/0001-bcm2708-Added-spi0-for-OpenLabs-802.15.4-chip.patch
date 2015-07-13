@@ -1,0 +1,95 @@
+From 5009d5e948351a91c9be26883f98cd0d468195f0 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Mon, 13 Jul 2015 15:42:23 +0300
+Subject: [PATCH 1/2] bcm2708: Added spi0 for OpenLabs 802.15.4 chip
+
+---
+ arch/arm/boot/dts/bcm2708-rpi-b-plus.dts | 13 +++++++++++++
+ arch/arm/boot/dts/bcm2708-rpi-b.dts      | 13 +++++++++++++
+ 2 files changed, 26 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm2708-rpi-b-plus.dts b/arch/arm/boot/dts/bcm2708-rpi-b-plus.dts
+index 66a01a1..2501310 100644
+--- a/arch/arm/boot/dts/bcm2708-rpi-b-plus.dts
++++ b/arch/arm/boot/dts/bcm2708-rpi-b-plus.dts
+@@ -43,10 +43,12 @@
+ };
+ 
+ &spi0 {
++	status = "okay";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&spi0_pins>;
+ 
+ 	spidev@0{
++		status = "disabled";
+ 		compatible = "spidev";
+ 		reg = <0>;	/* CE0 */
+ 		#address-cells = <1>;
+@@ -55,12 +57,23 @@
+ 	};
+ 
+ 	spidev@1{
++		status = "disabled";
+ 		compatible = "spidev";
+ 		reg = <1>;	/* CE1 */
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 		spi-max-frequency = <500000>;
+ 	};
++
++	at86rf233@0 {
++		compatible = "atmel,at86rf233";
++		reg = <0>;
++		interrupts = <23 1>;
++		interrupt-parent = <&gpio>;
++		reset-gpio = <&gpio 24 1>;
++		sleep-tpio = <&gpio 25 1>;
++		spi-max-frequency = <500000>;
++	};
+ };
+ 
+ &i2c0 {
+diff --git a/arch/arm/boot/dts/bcm2708-rpi-b.dts b/arch/arm/boot/dts/bcm2708-rpi-b.dts
+index e77ae43..5818428 100644
+--- a/arch/arm/boot/dts/bcm2708-rpi-b.dts
++++ b/arch/arm/boot/dts/bcm2708-rpi-b.dts
+@@ -43,10 +43,12 @@
+ };
+ 
+ &spi0 {
++	status = "okay";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&spi0_pins>;
+ 
+ 	spidev@0{
++		status = "disabled";
+ 		compatible = "spidev";
+ 		reg = <0>;	/* CE0 */
+ 		#address-cells = <1>;
+@@ -55,12 +57,23 @@
+ 	};
+ 
+ 	spidev@1{
++		status = "disabled";
+ 		compatible = "spidev";
+ 		reg = <1>;	/* CE1 */
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 		spi-max-frequency = <500000>;
+ 	};
++
++	at86rf233@0 {
++		compatible = "atmel,at86rf233";
++		reg = <0>;
++		interrupts = <23 1>;
++		interrupt-parent = <&gpio>;
++		reset-gpio = <&gpio 24 1>;
++		sleep-tpio = <&gpio 25 1>;
++		spi-max-frequency = <500000>;
++	};
+ };
+ 
+ &i2c0 {
+-- 
+2.1.0
+
