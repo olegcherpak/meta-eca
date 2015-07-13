@@ -1,0 +1,51 @@
+From 9e239091294f869811df160dfe1b73412794c506 Mon Sep 17 00:00:00 2001
+From: Jukka Rissanen <jukka.rissanen@linux.intel.com>
+Date: Mon, 13 Jul 2015 12:53:30 +0300
+Subject: [PATCH] meta-raspberrypi: Fixing KERNEL_DEVICETREE
+
+Remove dtb files that are obsolete. Fix also the path
+to overlay dtb files.
+---
+ conf/machine/include/rpi-base.inc | 25 +++++++++++++------------
+ 1 file changed, 13 insertions(+), 12 deletions(-)
+
+diff --git a/conf/machine/include/rpi-base.inc b/conf/machine/include/rpi-base.inc
+index 1dda207..14a43b1 100644
+--- a/conf/machine/include/rpi-base.inc
++++ b/conf/machine/include/rpi-base.inc
+@@ -22,19 +22,20 @@ KERNEL_DEVICETREE ?= " \
+     bcm2708-rpi-b.dtb \
+     bcm2708-rpi-b-plus.dtb \
+     bcm2709-rpi-2-b.dtb \
++    bcm2835-rpi-b.dtb \
++    bcm2835-rpi-b-plus.dtb \
+     \
+-    ds1307-rtc-overlay.dtb \
+-    hifiberry-amp-overlay.dtb \
+-    hifiberry-dac-overlay.dtb \
+-    hifiberry-dacplus-overlay.dtb \
+-    hifiberry-digi-overlay.dtb \
+-    iqaudio-dac-overlay.dtb \
+-    iqaudio-dacplus-overlay.dtb \
+-    lirc-rpi-overlay.dtb \
+-    pcf8523-rtc-overlay.dtb \
+-    pps-gpio-overlay.dtb \
+-    w1-gpio-overlay.dtb \
+-    w1-gpio-pullup-overlay.dtb \
++    overlays/hifiberry-amp-overlay.dtb \
++    overlays/hifiberry-dac-overlay.dtb \
++    overlays/hifiberry-dacplus-overlay.dtb \
++    overlays/hifiberry-digi-overlay.dtb \
++    overlays/i2c-rtc-overlay.dtb \
++    overlays/iqaudio-dac-overlay.dtb \
++    overlays/iqaudio-dacplus-overlay.dtb \
++    overlays/lirc-rpi-overlay.dtb \
++    overlays/pps-gpio-overlay.dtb \
++    overlays/w1-gpio-overlay.dtb \
++    overlays/w1-gpio-pullup-overlay.dtb \
+     "
+ KERNEL_IMAGETYPE ?= "Image"
+ 
+-- 
+2.1.0
+

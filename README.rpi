@@ -2,20 +2,23 @@ Instructions for RaspberryPi device
 -----------------------------------
 
 You might want to check from README.md file what poky and meta-oe
-revisions are supported. This build has been tested with Yocto dizzy
+revisions are supported. This build has been tested with Yocto fido
 release.
 
 $ mkdir yocto
 $ cd yocto
 $ git clone git://git.yoctoproject.org/poky
 $ cd poky
-$ git checkout -b dizzy origin/dizzy
+$ git checkout -b fido origin/fido
 $ git clone git://git.openembedded.org/meta-openembedded
 $ cd meta-openembedded
-$ git checkout -b dizzy origin/dizzy
+$ git checkout -b fido origin/fido
+$ cd ..
+$ git clone git://git.yoctoproject.org/meta-raspberrypi
+$ cd meta-raspberrypi
+$ git checkout -b fido origin/fido
 $ cd ..
 $ git clone git://git.yoctoproject.org/meta-eca
-$ git clone git://git.yoctoproject.org/meta-raspberrypi
 $ . oe-init-build-env build-rpi
 $ cd conf
 
@@ -55,6 +58,13 @@ Then build the distro
 
 $ cd $BUILDDIR
 $ bitbake eca-image
+
+If you see this error
+  tmp-glibc/deploy/images/raspberrypi/Image-ds1307-rtc-overlay.dtb: No such file or directory
+then apply this patch to meta-raspberrypi repo
+  # cd meta-raspberrypi
+  # git am <meta-eca>/patches/fido/0001-meta-raspberrypi-Fixing-KERNEL_DEVICETREE.patch
+and bitbake again.
 
 If the build succeeds, the result image can be found at
 tmp-eglibc/deploy/images/raspberrypi

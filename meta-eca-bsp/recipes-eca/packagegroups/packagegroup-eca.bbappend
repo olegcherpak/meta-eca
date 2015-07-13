@@ -63,3 +63,13 @@ RDEPENDS_packagegroup-eca_append_edison += "\
 RDEPENDS_packagegroup-eca_remove_edison += "\
     ${IWLWIFI} \
 "
+
+########
+# Packages for RaspberryPi board
+RDEPENDS_packagegroup-eca_append_rpi += "\
+	u-boot-rpi \
+	pi-blaster \
+	rpi-gpio \
+	rpio \
+	wiringpi \
+"
