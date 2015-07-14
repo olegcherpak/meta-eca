@@ -11,7 +11,7 @@ devices like Beaglebone with little wiring and tweaking.
 * After booting ECA, load kernel modules (if not automatically
   loaded)
   # modprobe mac802154
-  # modprobe mrf24j40
+  # modprobe at86rf230
 
 * Setup network interfaces (see also [2])
   # iwpan dev wpan0 set pan_id 0xbeef
